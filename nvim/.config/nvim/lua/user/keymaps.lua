@@ -1,30 +1,30 @@
--- yank in visual mode 
+-- yank in visual mode
 
 -- \ y
 
--- leader key 
+-- leader key
 
 -- spc
 
 -- switch to window
 -- ctrl h / j / k / l
 
---  save current file 
+--  save current file
 -- spc w
 
--- resize current window 
+-- resize current window
 
--- ctrl left / down / up / right 
+-- ctrl left / down / up / right
 
--- switch buffer 
+-- switch buffer
 
 -- shift h / l
 
 -- show / close error info
-    
+
 -- g l
 
--- toggle floating terminal 
+-- toggle floating terminal
 
 -- spc t f
 -- ctrl \ = toggle terminal
@@ -33,7 +33,7 @@
 
 -- spc t n
 
--- misc 
+-- misc
 
 -- g d = go to definition (where a binding was declared)
 -- spc l f = format document
@@ -42,8 +42,6 @@
 -- spc t p = toggle python terminal
 
 local opts = { noremap = true, silent = true }
-
-local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -65,29 +63,25 @@ vim.g.maplocalleader = " "
 
 -- Buffers
 
-
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
 -- Move to previous/next
-keymap('n', '<A-,>', ':BufferPrevious<CR>', opts)
-keymap('n', '<A-.>', ':BufferNext<CR>', opts)
+keymap("n", "<A-,>", ":BufferPrevious<CR>", opts)
+keymap("n", "<A-.>", ":BufferNext<CR>", opts)
 -- Re-order to previous/next
-keymap('n', '<A-<>', ':BufferMovePrevious<CR>', opts)
-keymap('n', '<A->>', ' :BufferMoveNext<CR>', opts)
+keymap("n", "<A-<>", ":BufferMovePrevious<CR>", opts)
+keymap("n", "<A->>", " :BufferMoveNext<CR>", opts)
 -- Goto buffer in position...
-keymap('n', '<A-1>', ':BufferGoto 1<CR>', opts)
-keymap('n', '<A-2>', ':BufferGoto 2<CR>', opts)
-keymap('n', '<A-3>', ':BufferGoto 3<CR>', opts)
-keymap('n', '<A-4>', ':BufferGoto 4<CR>', opts)
-keymap('n', '<A-5>', ':BufferGoto 5<CR>', opts)
-keymap('n', '<A-6>', ':BufferGoto 6<CR>', opts)
-keymap('n', '<A-7>', ':BufferGoto 7<CR>', opts)
-keymap('n', '<A-8>', ':BufferGoto 8<CR>', opts)
-keymap('n', '<A-9>', ':BufferGoto 9<CR>', opts)
-keymap('n', '<A-0>', ':BufferLast<CR>', opts)
+keymap("n", "<A-1>", ":BufferGoto 1<CR>", opts)
+keymap("n", "<A-2>", ":BufferGoto 2<CR>", opts)
+keymap("n", "<A-3>", ":BufferGoto 3<CR>", opts)
+keymap("n", "<A-4>", ":BufferGoto 4<CR>", opts)
+keymap("n", "<A-5>", ":BufferGoto 5<CR>", opts)
+keymap("n", "<A-6>", ":BufferGoto 6<CR>", opts)
+keymap("n", "<A-7>", ":BufferGoto 7<CR>", opts)
+keymap("n", "<A-8>", ":BufferGoto 8<CR>", opts)
+keymap("n", "<A-9>", ":BufferGoto 9<CR>", opts)
+keymap("n", "<A-0>", ":BufferLast<CR>", opts)
 -- Close buffer
-keymap('n', '<A-c>', ':BufferClose<CR>', opts)
+keymap("n", "<A-c>", ":BufferClose<CR>", opts)
 -- Wipeout buffer
 --                 :BufferWipeout<CR>
 -- Close commands
@@ -95,11 +89,11 @@ keymap('n', '<A-c>', ':BufferClose<CR>', opts)
 --                 :BufferCloseBuffersLeft<CR>
 --                 :BufferCloseBuffersRight<CR>
 -- Magic buffer-picking mode
-keymap('n', '<C-p>', ':BufferPick<CR>', opts)
+keymap("n", "<C-p>", ":BufferPick<CR>", opts)
 -- Sort automatically by...
-keymap('n', '<Space>bb', ':BufferOrderByBufferNumber<CR>', opts)
-keymap('n', '<Space>bd', ':BufferOrderByDirectory<CR>', opts)
-keymap('n', '<Space>bl', ':BufferOrderByLanguage<CR>', opts)
+keymap("n", "<Space>bb", ":BufferOrderByBufferNumber<CR>", opts)
+keymap("n", "<Space>bd", ":BufferOrderByDirectory<CR>", opts)
+keymap("n", "<Space>bl", ":BufferOrderByLanguage<CR>", opts)
 
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
@@ -139,10 +133,10 @@ keymap("n", "<", "<<", opts)
 keymap("n", ">", ">>", opts)
 
 -- Use proper movement keys
-keymap("n","<Up>","<Nop>",opts)
-keymap("n","<Down>","<Nop>",opts)
-keymap("n","<Left>","<Nop>",opts)
-keymap("n","<Right>","<Nop>",opts)
+keymap("n", "<Up>", "<Nop>", opts)
+keymap("n", "<Down>", "<Nop>", opts)
+keymap("n", "<Left>", "<Nop>", opts)
+keymap("n", "<Right>", "<Nop>", opts)
 
 -- Insert --
 
@@ -152,11 +146,10 @@ keymap("n","<Right>","<Nop>",opts)
 -- keymap("i", "<ESC>", "<Nop>", opts)
 
 -- Use proper movement keys
-keymap("i","<Up>","<Nop>",opts)
-keymap("i","<Down>","<Nop>",opts)
-keymap("i","<Left>","<Nop>",opts)
-keymap("i","<Right>","<Nop>",opts)
-
+keymap("i", "<Up>", "<Nop>", opts)
+keymap("i", "<Down>", "<Nop>", opts)
+keymap("i", "<Left>", "<Nop>", opts)
+keymap("i", "<Right>", "<Nop>", opts)
 
 -- Stay in indent mode
 -- Visual --
@@ -178,10 +171,10 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Use proper movement keys
-keymap("v","<Up>","<Nop>",opts)
-keymap("v","<Down>","<Nop>",opts)
-keymap("v","<Left>","<Nop>",opts)
-keymap("v","<Right>","<Nop>",opts)
+keymap("v", "<Up>", "<Nop>", opts)
+keymap("v", "<Down>", "<Nop>", opts)
+keymap("v", "<Left>", "<Nop>", opts)
+keymap("v", "<Right>", "<Nop>", opts)
 
 -- Terminal --
 -- Better terminal navigation
@@ -189,4 +182,3 @@ keymap("v","<Right>","<Nop>",opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-

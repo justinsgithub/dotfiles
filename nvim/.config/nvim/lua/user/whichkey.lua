@@ -170,6 +170,20 @@ local mappings = {
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
+    S = {
+    -- name = "Session",
+    -- s = { "<cmd>SaveSession<cr>", "Save" },
+    -- l = { "<cmd>LoadLastSession!<cr>", "Load Last" },
+    -- d = { "<cmd>LoadCurrentDirSession!<cr>", "Load Last Dir" },
+    -- f = { "<cmd>Telescope sessions save_current=false<cr>", "Find Session" },
+    name = "Surround",
+    ["."] = { "<cmd>lua require('surround').repeat_last()<cr>", "Repeat" },
+    a = { "<cmd>lua require('surround').surround_add(true)<cr>", "Add" },
+    d = { "<cmd>lua require('surround').surround_delete()<cr>", "Delete" },
+    r = { "<cmd>lua require('surround').surround_replace()<cr>", "Replace" },
+    q = { "<cmd>lua require('surround').toggle_quotes()<cr>", "Quotes" },
+    b = { "<cmd>lua require('surround').toggle_brackets()<cr>", "Brackets" },
+  },
 
   t = {
     name = "Terminal",

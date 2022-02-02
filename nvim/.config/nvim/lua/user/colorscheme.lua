@@ -3,7 +3,7 @@
 
 vim.cmd([[
 try
-  colorscheme monokai_soda
+  colorscheme vim-monokai-tasty
 catch /^Vim\%((\a\+)\)\=:E185/
  colorscheme default
 set background=dark

@@ -49,8 +49,8 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  auto_close = true, --changed to false
-  open_on_tab = false,
+  auto_close = false, --changed to false
+  open_on_tab = true,
   hijack_cursor = false,
   update_cwd = true,
   update_to_buf_dir = {
@@ -98,7 +98,7 @@ nvim_tree.setup {
         { key = "v", cb = tree_cb "vsplit" },
       },
     },
-    number = false,
+    number = true,
     relativenumber = false,
   },
   trash = {
