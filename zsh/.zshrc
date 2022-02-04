@@ -14,6 +14,10 @@ source $ZSH/oh-my-zsh.sh
 
 hash -d docs=$HOME/docs
 
+hash -d myself=$HOME/myself
+  
+hash -d eztext=$HOME/eztezt
+
 alias quicknote="vim $HOME/myself/quicknotes.md"
 
 alias -g L='|less'
