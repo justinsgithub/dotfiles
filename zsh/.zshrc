@@ -20,6 +20,8 @@ hash -d eztext=$HOME/eztezt
 
 alias quicknote="vim $HOME/myself/quicknotes.md"
 
+alias laravel="$HOME/.config/composer/vendor/laravel/installer/bin/laravel"
+
 alias -g L='|less'
 
 alias cat="ccat"
@@ -60,7 +62,7 @@ alias correctspelling="vim ~/.config/nvim/lua/user/common-misspellings.lua"
 
 alias svimconfig='vim ~/.SpaceVim.d/init.toml'
 
-alias weztermconfig="vim ~/.wezterm.lua"
+alias weztermconfig="vim ~/.config/wezterm/wezterm.lua"
 
 alias promptconfig="vim ~/.config/zsh/.oh-my-zsh/custom/themes/my.zsh-theme"
 

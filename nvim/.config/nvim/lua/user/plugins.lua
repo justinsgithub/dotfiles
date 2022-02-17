@@ -64,7 +64,8 @@ return packer.startup(function(use)
 	use("ryanoasis/vim-devicons")
 	use("phanviet/vim-monokai-pro")
 	use("sainnhe/sonokai")
-	use("patstockwell/vim-monokai-tasty")
+--	use("patstockwell/vim-monokai-tasty")
+	use("justinsgithub/vim-monokai-tasty")
 	use("HerringtonDarkholme/yats.vim")
 	use("pangloss/vim-javascript")
 	use("MaxMEllon/vim-jsx-pretty")
@@ -139,11 +140,8 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 
 	-- Recently added
+	use("rcarriga/nvim-notify")
 	use({ "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
-	use({ "blackCauldron7/surround.nvim", config = function()
-			require("surround").setup({ mappings_style = "sandwich" })
-		end,
-	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

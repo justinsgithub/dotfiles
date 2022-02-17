@@ -21,24 +21,24 @@ vim.g.maplocalleader = " "
 -- Buffers
 
 -- Move to previous/next
-keymap("n", "<A-,>", ":BufferPrevious<CR>", opts)
-keymap("n", "<A-.>", ":BufferNext<CR>", opts)
--- Re-order to previous/next
-keymap("n", "<A-<>", ":BufferMovePrevious<CR>", opts)
-keymap("n", "<A->>", " :BufferMoveNext<CR>", opts)
--- Goto buffer in position...
-keymap("n", "<A-1>", ":BufferGoto 1<CR>", opts)
-keymap("n", "<A-2>", ":BufferGoto 2<CR>", opts)
-keymap("n", "<A-3>", ":BufferGoto 3<CR>", opts)
-keymap("n", "<A-4>", ":BufferGoto 4<CR>", opts)
-keymap("n", "<A-5>", ":BufferGoto 5<CR>", opts)
-keymap("n", "<A-6>", ":BufferGoto 6<CR>", opts)
-keymap("n", "<A-7>", ":BufferGoto 7<CR>", opts)
-keymap("n", "<A-8>", ":BufferGoto 8<CR>", opts)
-keymap("n", "<A-9>", ":BufferGoto 9<CR>", opts)
-keymap("n", "<A-0>", ":BufferLast<CR>", opts)
+--keymap("n", "<C-,>", ":BufferPrevious<CR>", opts)
+--keymap("n", "<C-.>", ":BufferNext<CR>", opts)
+--k- Re-order to previous/next
+--keymap("n", "<C-<>", ":BufferMovePrevious<CR>", opts)
+--keymap("n", "<C->>", " :BufferMoveNext<CR>", opts)
+--k- Goto buffer in position...
+--keymap("n", "<C-1>", ":BufferGoto 1<CR>", opts)
+--keymap("n", "<C-2>", ":BufferGoto 2<CR>", opts)
+--keymap("n", "<C-3>", ":BufferGoto 3<CR>", opts)
+--keymap("n", "<C-4>", ":BufferGoto 4<CR>", opts)
+--keymap("n", "<C-5>", ":BufferGoto 5<CR>", opts)
+--keymap("n", "<C-6>", ":BufferGoto 6<CR>", opts)
+--keymap("n", "<C-7>", ":BufferGoto 7<CR>", opts)
+--keymap("n", "<C-8>", ":BufferGoto 8<CR>", opts)
+--keymap("n", "<C-9>", ":BufferGoto 9<CR>", opts)
+--keymap("n", "<C-0>", ":BufferLast<CR>", opts)
 -- Close buffer
-keymap("n", "<A-c>", ":BufferClose<CR>", opts)
+keymap("n", "<C-c>", ":BufferClose<CR>", opts)
 -- Wipeout buffer
 --                 :BufferWipeout<CR>
 -- Close commands
@@ -80,7 +80,7 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", "<S-t><S-n>", ":tabnew<CR>", opts)
 
 -- Delete Buffer
-keymap("n", "<S-b><S-d>", ":Bdelete<CR>", opts)
+keymap("n", "<S-b><S-d>", ":BufferClose<CR>", opts)
 
 -- Correct spelling error
 keymap("n", "<A-z>", "1z=", opts)
@@ -94,6 +94,10 @@ keymap("n", "<Up>", "<Nop>", opts)
 keymap("n", "<Down>", "<Nop>", opts)
 keymap("n", "<Left>", "<Nop>", opts)
 keymap("n", "<Right>", "<Nop>", opts)
+
+-- Use proper movement keys
+keymap("n", "<A-o>", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
+
 
 -- Insert --
 
@@ -114,8 +118,8 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
