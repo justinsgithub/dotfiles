@@ -1,16 +1,8 @@
--- monokai
--- default
--- vim-monokai-tasty
-
-vim.cmd([[
+vim.cmd [[
 try
-  colorscheme vim-monokai-tasty 
+  colorscheme vim-monokai-tasty
 catch /^Vim\%((\a\+)\)\=:E185/
- colorscheme default
-set background=dark
+  colorscheme default
+  set background=dark
 endtry
-]])
-
-vim.cmd([[
-  hi Normal guibg=NONE ctermbg=NONE
-]])
+]]

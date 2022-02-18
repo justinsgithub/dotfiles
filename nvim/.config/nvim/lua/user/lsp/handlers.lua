@@ -1,16 +1,13 @@
 local M = {}
 
 M.setup = function()
+  local icons = require "user.icons"
   local signs = {
 
-    --   error
-    --   info
-    --   question
-    --   warning
-    { name = "DiagnosticSignError", text = " " },
-    { name = "DiagnosticSignWarn", text = " " },
-    { name = "DiagnosticSignHint", text = " " },
-    { name = "DiagnosticSignInfo", text = " " },
+    { name = "DiagnosticSignError", text = icons.diagnostics.Error },
+    { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+    { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+    { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
   }
 
   for _, sign in ipairs(signs) do
@@ -49,19 +46,12 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-      let ftToIgnore = ['html']
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> if index(ftToIgnore, &ft) < 0 | lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> if index(ftToIgnore, &ft) < 0 | lua vim.lsp.buf.clear_references()
-      augroup END
-    ]],
-      false
-    )
+    local status_ok, illuminate = pcall(require, "illuminate")
+    if not status_ok then
+      return
+    end
+    illuminate.on_attach(client)
   end
 end
 

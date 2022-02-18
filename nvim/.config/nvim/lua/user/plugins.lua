@@ -30,14 +30,13 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
-
--- packer.init {
---  display = {
---    open_fn = function()
---      return require("packer.util").float { border = "rounded" }
---    end,
---  },
---}
+packer.init({
+	display = {
+		open_fn = function()
+			return require("packer.util").float({ border = "rounded" })
+		end,
+	},
+})
 
 -- Install your plugins here
 return packer.startup(function(use)
@@ -49,40 +48,24 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
-	-- use "moll/vim-bbye"
 	use("nvim-lualine/lualine.nvim")
-	-- use "akinsho/toggleterm.nvim"
+	use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim")
 	use("lewis6991/impatient.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("goolord/alpha-nvim")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("folke/which-key.nvim")
-	--use "Xuyuanp/nerdtree-git-plugin"
-	--use "tiagofumo/vim-nerdtree-syntax-highlight"
-	use("lilydjwg/colorizer")
-	use("ryanoasis/vim-devicons")
-	use("phanviet/vim-monokai-pro")
-	use("sainnhe/sonokai")
---	use("patstockwell/vim-monokai-tasty")
-	use("justinsgithub/vim-monokai-tasty")
-	use("HerringtonDarkholme/yats.vim")
-	use("pangloss/vim-javascript")
-	use("MaxMEllon/vim-jsx-pretty")
-	use("styled-components/vim-styled-components")
-	use("elzr/vim-json")
-	use("jparise/vim-graphql")
-  use { 'michaelb/sniprun', run = 'bash ./install.sh'}
-
+	use("wakatime/vim-wakatime")
 
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-	-- use "lunarvim/darkplus.nvim"
-	-- use "folke/tokyonight.nvim"
-	-- use "rebelot/kanagawa.nvim"
-	use("tanvirtin/monokai.nvim")
-
-	use("onsails/lspkind-nvim")
+	use("lunarvim/darkplus.nvim")
+	use("patstockwell/vim-monokai-tasty")
+	use("pangloss/vim-javascript")
+	use("MaxMEllon/vim-jsx-pretty")
+	use("elzr/vim-json")
+	use("styled-components/vim-styled-components")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -91,8 +74,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-emoji")
-	use("hrsh7th/cmp-nvim-lua")
 	use({
 		"tzachar/cmp-tabnine",
 		config = function()
@@ -107,7 +88,14 @@ return packer.startup(function(use)
 		run = "./install.sh",
 		requires = "hrsh7th/nvim-cmp",
 	})
-	-- use 'David-Kunz/cmp-npm' -- doesn't seem to work
+
+	use({
+		"ray-x/lsp_signature.nvim",
+		event = "BufRead",
+		config = function()
+			require("lsp_signature").setup()
+		end
+	})
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -118,14 +106,7 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-	use("filipdutescu/renamer.nvim")
-	use("simrat39/symbols-outline.nvim")
-	use("ray-x/lsp_signature.nvim")
-	use("b0o/SchemaStore.nvim")
-	use({
-		"folke/trouble.nvim",
-		cmd = "TroubleToggle",
-	})
+
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 
@@ -139,9 +120,15 @@ return packer.startup(function(use)
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 
-	-- Recently added
-	use("rcarriga/nvim-notify")
-	use({ "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
+  -- My new additions
+use ("rcarriga/nvim-notify")
+use {
+  'romgrk/barbar.nvim',
+  requires = {'kyazdani42/nvim-web-devicons'}
+}
+use ("p00f/nvim-ts-rainbow")
+
+
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

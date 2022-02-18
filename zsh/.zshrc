@@ -50,7 +50,7 @@ alias pinstall="pip install"
 
 alias sourcevenv="source venv/bin/activate"
 
-alias zshconfig="vim ~/.zshrc; zsh"
+alias zshconfig="vim ~/stow-files/zsh/.zshrc; zsh"
 
 alias mkserve="mkdocs serve"
 
@@ -62,11 +62,9 @@ alias correctspelling="vim ~/.config/nvim/lua/user/common-misspellings.lua"
 
 alias svimconfig='vim ~/.SpaceVim.d/init.toml'
 
-alias weztermconfig="vim ~/.config/wezterm/wezterm.lua"
+alias weztermconfig="vim ~/stow-files/wezterm/.config/wezterm/wezterm.lua"
 
 alias promptconfig="vim ~/.config/zsh/.oh-my-zsh/custom/themes/my.zsh-theme"
-
-alias linode="ssh example_user@0.0.0.0"
 
 alias rustdocs="rustup docs --book"
 

@@ -1,12 +1,5 @@
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-
--- ctrl h / l move between window and explorer
---  leader e to toggle tree 
--- a creates new file / folder
--- r renames file / folder
--- d deletes file / folder
-
 vim.g.nvim_tree_icons = {
   default = "",
   symlink = "",
@@ -49,7 +42,7 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  auto_close = true, --changed to false
+  auto_close = true,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
