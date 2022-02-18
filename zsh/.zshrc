@@ -56,7 +56,7 @@ alias mkserve="mkdocs serve"
 
 alias mkbuild="mkdocs build"
 
-alias vimconfig='vim ~/.config/nvim/init.vim'
+alias vimconfig="vim ~/stow-files/nvim/.config/nvim/init.lua"
 
 alias correctspelling="vim ~/.config/nvim/lua/user/common-misspellings.lua"
 
