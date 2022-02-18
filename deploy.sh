@@ -1,6 +1,6 @@
 #!/usr/bin/zsh
 
 git add . 
-git commit -m "auto deploy"
+git commit -m $1
 git push 
 

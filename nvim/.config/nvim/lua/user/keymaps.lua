@@ -64,10 +64,7 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "<space>t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
 
 -- Newer keymaps
-keymap("n", "e", "<cmd>NvimTreeToggle<cr>", opts)
 keymap("n", "<S-Z>", ":wq<CR>", opts)
-keymap("n", "f", "/", opts)
-keymap("n", "F", "?", opts)
 
 -- Terminal --
 -- Better terminal navigation
