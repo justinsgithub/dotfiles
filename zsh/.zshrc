@@ -58,7 +58,9 @@ alias mkbuild="mkdocs build"
 
 alias vimconfig="vim ~/stow-files/nvim/.config/nvim/init.lua"
 
-alias correctspelling="vim ~/.config/nvim/lua/user/common-misspellings.lua"
+alias keymaps="vim ~/stow-files/nvim/.config/nvim/lua/user/keymaps.lua"
+
+alias correctspelling="vim ~/.config/nvim/lua/user/misspellings.lua"
 
 alias svimconfig='vim ~/.SpaceVim.d/init.toml'
 

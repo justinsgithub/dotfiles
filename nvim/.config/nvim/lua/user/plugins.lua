@@ -127,6 +127,7 @@ use {
   requires = {'kyazdani42/nvim-web-devicons'}
 }
 use ("p00f/nvim-ts-rainbow")
+use ("ggandor/lightspeed.nvim")
 
 
 

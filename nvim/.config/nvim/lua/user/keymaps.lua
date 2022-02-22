@@ -41,7 +41,7 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Insert --
 -- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+-- keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -62,9 +62,13 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Set transparent background
 keymap("n", "<space>t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
+keymap("n", "\\t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
 
--- Newer keymaps
-keymap("n", "<S-Z>", ":wq<CR>", opts)
+-- Yank to system clipboard
+keymap("n", "\\;", '"+', opts)
+
+-- Search and replace
+keymap("n", "\\s", ':%s/', opts)
 
 -- Terminal --
 -- Better terminal navigation
