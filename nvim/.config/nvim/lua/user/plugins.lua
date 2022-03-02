@@ -128,6 +128,8 @@ use {
 }
 use ("p00f/nvim-ts-rainbow")
 use ("ggandor/lightspeed.nvim")
+use ("b0o/SchemaStore.nvim")
+
 
 
 

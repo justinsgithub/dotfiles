@@ -8,7 +8,7 @@ ZSH_THEME="frisk"
 
 CASE_SENSITIVE="true"
 
-plugins=( sudo copydir copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
+plugins=( sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -70,7 +70,7 @@ alias promptconfig="vim ~/.config/zsh/.oh-my-zsh/custom/themes/my.zsh-theme"
 
 alias rustdocs="rustup docs --book"
 
-alias install="sudo apt-get --install-suggests -y $@"
+alias packjson="cat ./package.json"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
