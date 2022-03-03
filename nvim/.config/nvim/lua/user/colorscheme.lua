@@ -6,3 +6,5 @@ catch /^Vim\%((\a\+)\)\=:E185/
   set background=dark
 endtry
 ]]
+
+vim.cmd[[hi Normal guibg=NONE ctermbg=NONE]]

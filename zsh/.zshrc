@@ -4,11 +4,11 @@ export PATH=/usr/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="frisk"
+ZSH_THEME="nicoulaj"
 
 CASE_SENSITIVE="true"
 
-plugins=( sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
+plugins=( debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -72,20 +72,10 @@ alias rustdocs="rustup docs --book"
 
 alias packjson="cat ./package.json"
 
+alias whichtheme="print $RANDOM_THEME"
+
+alias whichports="sudo lsof -i -P -n | grep LISTEN"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/justin/bin/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/justin/bin/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/justin/bin/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/justin/bin/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
