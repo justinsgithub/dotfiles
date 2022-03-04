@@ -28,7 +28,7 @@ local function footer()
 	-- local fortune = handle:read("*a")
 	-- handle:close()
 	-- return fortune
-	return "justintylers.com"
+	return "github.com/LunarVim/Neovim-from-scratch"
 end
 
 dashboard.section.footer.val = footer()

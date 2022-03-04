@@ -39,6 +39,10 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
+-- single press indent
+keymap("n", ">", ">>", opts)
+keymap("n", "<", "<<", opts)
+
 -- Insert --
 -- Press jk fast to enter
 -- keymap("i", "jk", "<ESC>", opts)
