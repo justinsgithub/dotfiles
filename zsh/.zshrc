@@ -1,4 +1,4 @@
-export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin/nvim-linux64/bin
+export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin
 
 export PATH=/usr/bin:$PATH
 
