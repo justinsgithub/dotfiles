@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 
 return {
-	window_background_opacity = 0.9,
+	window_background_opacity = 0.95,
 	--color_scheme = "Batman",
 	-- color_scheme = "Monokai Remastered",
 	color_scheme = "Monokai Vivid",

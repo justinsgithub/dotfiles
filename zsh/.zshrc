@@ -4,7 +4,7 @@ export PATH=/usr/bin:$PATH
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="nicoulaj"
+ZSH_THEME="agnosterzac"
 
 CASE_SENSITIVE="true"
 
@@ -56,7 +56,7 @@ alias mkserve="mkdocs serve"
 
 alias mkbuild="mkdocs build"
 
-alias vimconfig="vim ~/stow-files/nvim/.config/nvim/init.lua"
+alias vimconfig="vim ~/stow-files/nvim/.config/nvim/init.vim"
 
 alias keymaps="vim ~/stow-files/nvim/.config/nvim/lua/user/keymaps.lua"
 
@@ -75,6 +75,10 @@ alias packjson="cat ./package.json"
 alias whichtheme="print $RANDOM_THEME"
 
 alias whichports="sudo lsof -i -P -n | grep LISTEN"
+
+alias f="find . | grep "
+
+alias capswitch="setxkbmap -option caps:escape"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

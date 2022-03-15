@@ -31,6 +31,6 @@ stow $FOLDER-NAME
 
 - cargo install stylua
 
-- npm install -g eslint prettier typescript typescript-language-server
+- npm install -g eslint prettier typescript typescript-language-server neovim emmet-ls ls_emmet
 
 - sudo pip install flake8 black

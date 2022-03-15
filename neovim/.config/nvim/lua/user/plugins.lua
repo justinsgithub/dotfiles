@@ -126,7 +126,7 @@ use {
   'romgrk/barbar.nvim',
   requires = {'kyazdani42/nvim-web-devicons'}
 }
-use ("p00f/nvim-ts-rainbow")
+-- use ("p00f/nvim-ts-rainbow") did not install correctly, may not desire anyways
 use ("ggandor/lightspeed.nvim")
 use ("b0o/SchemaStore.nvim")
 
