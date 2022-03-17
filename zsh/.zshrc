@@ -76,7 +76,7 @@ alias whichtheme="print $RANDOM_THEME"
 
 alias whichports="sudo lsof -i -P -n | grep LISTEN"
 
-alias f="find . | grep "
+alias f="find . -name $1"
 
 alias capswitch="setxkbmap -option caps:escape"
 
