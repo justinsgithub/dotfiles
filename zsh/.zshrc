@@ -1,6 +1,4 @@
-export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin
-
-export PATH=/usr/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin:/Users/justin/Library/Python/3.8/bin:/Users/justin/.local/bin
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -43,6 +41,8 @@ alias mkdir="mkdir -pv"
 alias adminpass="cat ~/eztext/.pass"
 
 alias py="python3"
+
+alias python="python3"
 
 alias pyvenv="python3 -m venv venv"
 
