@@ -105,6 +105,12 @@ alias dmapports="docker run -d -p 3000:8080 $1" # runs container and exposes con
 alias dnetwork="docker network ls" # lists existing docker networks
 alias dhost="docker run -d --network=host ubuntu_networking /webapp" #runs image and command in background and exposes container ports on localhost
 alias dnone="docker run -d --network=none ubuntu_networking /webapp" #runs container in background without any networking capabilities outside of itself
+alias drunmountbind='docker run -d --mount type=bind,src="/home/justin/docs/src/software/docker/demo/logs",dst=/logs scratch_volume' # persists data from docker container in specified directory
+alias drunmountvolume='docker run -d --mount type=volume,src="logs",dst=/logs scratch_volume' # persists data from docker container in Docker managed "logs" directory 
+alias druntmpfs='docker run -it --mount type=tmpfs,dst=/logs ubuntu' # data is only available inside the container while it runs and will be erased once the container stops
+alias dlistvolumes='docker volume ls'
+alias dinspectvolume="docker volume inspect $1" #inspects specified volume
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
