@@ -1,4 +1,4 @@
-export PATH=$PATH:/usr/local/go/bin:/Users/justin/.local/bin
+export PATH=$PATH:/usr/local/go/bin:/Users/justin/.local/bin:/Users/justin/Library/Python/3.8/bin
 
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -30,7 +30,7 @@ alias ls='ls --color=auto'
 
 alias l="ls -1"
 
-alias rm="mv --force -t ~/.archive"
+#alias rm="mv --force -t ~/.archive" does not work with mac ?
 
 alias v="nvim"
 
@@ -108,8 +108,23 @@ alias drunmountvolume='docker run -d --mount type=volume,src="logs",dst=/logs sc
 alias druntmpfs='docker run -it --mount type=tmpfs,dst=/logs ubuntu' # data is only available inside the container while it runs and will be erased once the container stops
 alias dlistvolumes='docker volume ls'
 alias dinspectvolume="docker volume inspect $1" #inspects specified volume
+alias dlogs="docker logs $1" # prints any output from the container, such as console.logs from a nodejs app
 
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# # To use the bundled libc++ please add the following LDFLAGS:
+#   LDFLAGS="-L/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib"
+#
+# llvm is keg-only, which means it was not symlinked into /opt/homebrew,
+# because macOS already provides this software and installing another version in
+# parallel can cause all kinds of trouble.
+#
+# If you need to have llvm first in your PATH, run:
+#   echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
+#
+# For compilers to find llvm you may need to set:
+#   export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+#  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"

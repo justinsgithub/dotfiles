@@ -65,14 +65,21 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Set transparent background
-keymap("n", "<space>t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
-keymap("n", "\\t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
+-- keymap("n", "<space>t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
+-- keymap("n", "\\t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
 
--- Yank to system clipboard
-keymap("n", "\\;", '"+', opts)
+-- Yank system
+keymap("n", "\\ys", '"+', opts)
 
--- Search and replace
-keymap("n", "\\s", ':%s/', opts)
+-- Search replace
+keymap("n", "\\sr", ':%s/', opts)
+
+-- Split horizontal
+keymap("n", "\\sh", ':split<CR>', opts)
+-- Split vertical
+keymap("n", "\\sv", ':vsplit<CR>', opts)
+-- Split close
+keymap("n", "\\sc", ':close<CR>', opts)
 
 -- Terminal --
 -- Better terminal navigation

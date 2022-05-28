@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 
+-- CTRL + SHIFT + ARROW = switch panes
 local mykeys = {}
 for i = 1, 8 do
 	-- CTRL+ALT + number to activate that tab
@@ -12,14 +13,9 @@ end
 
 table.insert(mykeys, { key = "m", mods = "ALT", action = wezterm.action({ SendString = "Hello" }) })
 table.insert(mykeys, { key = "f", mods = "ALT", action = "ToggleFullScreen" })
-table.insert(
-	mykeys,
-	{ key = "v", mods = "ALT", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) }
-)
-table.insert(
-	mykeys,
-	{ key = "h", mods = "ALT", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) }
-)
+table.insert( mykeys, { key = "v", mods = "ALT", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) })
+table.insert( mykeys, { key = "h", mods = "ALT", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) })
+table.insert(mykeys, { key = "t", mods = "ALT", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) })
 
 return {
 	window_background_opacity = 0.95,

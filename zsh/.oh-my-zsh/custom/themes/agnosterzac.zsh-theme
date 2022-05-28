@@ -279,7 +279,7 @@ prompt_git() {
 
     prompt_segment $bgclr $fgclr
 
-		print -n "%{$fg_bold[$fgclr]%}${ref/refs\/heads\//$PL_BRANCH_CHAR $upstream_prompt}${mode}$to_push$to_pull$clean$tagged$stashed$untracked$modified$deleted$added$ready_commit%{$fg_no_bold[$fgclr]%} NodeJS=$(node --version)"
+		print -n "%{$fg_bold[$fgclr]%}${ref/refs\/heads\//$PL_BRANCH_CHAR $upstream_prompt}${mode}$to_push$to_pull$clean$tagged$stashed$untracked$modified$deleted$added$ready_commit%{$fg_no_bold[$fgclr]%} Node=$(node --version)"
   fi
 }
 
@@ -355,7 +355,7 @@ build_prompt() {
   print -n "\n"
   prompt_status
   prompt_battery
-  prompt_time
+#  prompt_time
   prompt_virtualenv
   prompt_dir
   prompt_git

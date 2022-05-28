@@ -1,4 +1,3 @@
--- test
 require("user.alpha")
 require("user.autocommands")
 require("user.autopairs")
