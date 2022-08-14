@@ -345,7 +345,6 @@ prompt_status() {
   [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS"
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$LIGHTNING"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$GEAR"
-
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
@@ -355,11 +354,7 @@ build_prompt() {
   print -n "\n"
   prompt_status
   prompt_battery
-<<<<<<< HEAD
 #  prompt_time
-=======
-# prompt_time
->>>>>>> 085d83d23dd5521867cc12b7a8268397727e3ef2
   prompt_virtualenv
   prompt_dir
   prompt_git
