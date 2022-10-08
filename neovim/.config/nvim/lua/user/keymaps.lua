@@ -68,9 +68,6 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("n", "<space>t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
 -- keymap("n", "\\t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
 
--- Yank system
-keymap("n", "\\ys", '"+', opts)
-
 -- Search replace
 keymap("n", "\\sr", ':%s/', opts)
 
@@ -87,4 +84,5 @@ keymap("n", "\\sc", ':close<CR>', opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
 
