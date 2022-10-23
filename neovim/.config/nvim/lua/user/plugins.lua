@@ -130,6 +130,7 @@ use {
 -- use ("p00f/nvim-ts-rainbow") did not install correctly, may not desire anyways
 use ("ggandor/lightspeed.nvim")
 use ("b0o/SchemaStore.nvim")
+use ("ap/vim-css-color")
 
 
 

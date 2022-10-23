@@ -51,7 +51,7 @@ function reload(mod)
 		local m = require(mod)
 		return m
 	end
-	-- vim.notify "begin reload!!!"
+	vim.notify "begin reload!!!"
 
 	local old = package.loaded[mod]
 	package.loaded[mod] = nil
