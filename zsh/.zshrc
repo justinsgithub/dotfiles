@@ -10,11 +10,9 @@ plugins=( vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer 
 
 source $ZSH/oh-my-zsh.sh
 
-hash -d docs=$HOME/docs
+# hash -d docs=$HOME/Github/docs
 
-hash -d myself=$HOME/myself
-
-hash -d eztext=$HOME/eztezt
+alias vim="nvim"
 
 alias quicknote="vim $HOME/myself/quicknotes.md"
 
@@ -32,10 +30,6 @@ alias l="ls -1"
 
 alias rm="mv --force -t ~/.archive"
 
-alias v="nvim"
-
-alias vim="nvim"
-
 alias mkdir="mkdir -pv"
 
 alias adminpass="cat ~/eztext/.pass"
@@ -48,7 +42,7 @@ alias pinstall="pip install"
 
 alias sourcevenv="source venv/bin/activate"
 
-alias zshconfig="vim ~/stow-files/zsh/.zshrc; zsh"
+alias zshconfig="vim ~/stow-files/zsh/.zshrc; zsh;"
 
 alias mkserve="mkdocs serve"
 
