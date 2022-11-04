@@ -70,14 +70,13 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- keymap("n", "\\t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
 
 -- Search replace
-keymap("n", "\\sr", ':%s/', opts)
+--[[ keymap("n", "\\sr", ':%s/', opts) ]]
 
 -- Split horizontal
-keymap("n", "\\sh", ':split<CR>', opts)
+--[[ keymap("n", "\\sh", ':split<CR>', opts) ]]
 -- Split vertical
-keymap("n", "\\sv", ':vsplit<CR>', opts)
--- Split close
-keymap("n", "\\sc", ':close<CR>', opts)
+--[[ keymap("n", "\\sv", ':vsplit<CR>', opts) ]]
+-- Split close--[[ keymap("n", "\\sc", ':close<CR>', opts) ]]
 
 -- Terminal --
 -- Better terminal navigation

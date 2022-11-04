@@ -80,14 +80,14 @@ local opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
- -- ["b"] = {
- --   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
- --   "Buffers",
- -- },
+  -- ["b"] = {
+  --   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+  --   "Buffers",
+  -- },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["w"] = { "<cmd>w!<CR>", "Save" },
+  --[[ ["w"] = { "<cmd>w!<CR>", "Save" }, ]]
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
@@ -96,18 +96,18 @@ local mappings = {
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
   b = {
-    name="Buffers",
-  p = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
-  c = { "<cmd>bdelete<CR>", "Close Buffer" },
-  ["1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "Buffer 1" },
-  ["2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "Buffer 2" },
-  ["3"] = { "<cmd>BufferLineGoToBuffer 3<CR>", "Buffer 3" },
-  ["4"] = { "<cmd>BufferLineGoToBuffer 4<CR>", "Buffer 4" },
-  ["5"] = { "<cmd>BufferLineGoToBuffer 5<CR>", "Buffer 5" },
-  ["6"] = { "<cmd>BufferLineGoToBuffer 6<CR>", "Buffer 6" },
-  ["7"] = { "<cmd>BufferLineGoToBuffer 7<CR>", "Buffer 7" },
-  ["8"] = { "<cmd>BufferLineGoToBuffer 8<CR>", "Buffer 8" },
-  ["$"] = { "<cmd>BufferLineGoToBuffer 9<CR>", "Buffer 9" },
+    name = "Buffers",
+    p = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
+    c = { "<cmd>bdelete<CR>", "Close Buffer" },
+    ["1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "Buffer 1" },
+    ["2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "Buffer 2" },
+    ["3"] = { "<cmd>BufferLineGoToBuffer 3<CR>", "Buffer 3" },
+    ["4"] = { "<cmd>BufferLineGoToBuffer 4<CR>", "Buffer 4" },
+    ["5"] = { "<cmd>BufferLineGoToBuffer 5<CR>", "Buffer 5" },
+    ["6"] = { "<cmd>BufferLineGoToBuffer 6<CR>", "Buffer 6" },
+    ["7"] = { "<cmd>BufferLineGoToBuffer 7<CR>", "Buffer 7" },
+    ["8"] = { "<cmd>BufferLineGoToBuffer 8<CR>", "Buffer 8" },
+    ["$"] = { "<cmd>BufferLineGoToBuffer 9<CR>", "Buffer 9" },
     ["9"] = { "<cmd>BufferLineGoToBuffer -1<CR>", "Last Buffer" },
   },
 
@@ -176,16 +176,33 @@ local mappings = {
   },
   s = {
     name = "Search",
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    b = { "<cmd>Telescope git_branches<cr>", "Checkout Branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    f = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    r = { ":%s/", "Search And Replace" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
+  W = { "<cmd>w!<CR>", "Save" },
+  w = {
+    name = "Window",
+    h = { "<cmd>split<CR>", "Split Horizontal" },
+    v = { "<cmd>vsplit<CR>", "Split Vertical" },
+    c = { "<cmd>close<CR>", "Close Window" },
+  },
 }
+-- Search replace
+--[[ keymap("n", "\\sr", ':%s/', opts) ]]
+
+-- Split horizontal
+--[[ keymap("n", "\\sh", ':split<CR>', opts) ]]
+-- Split vertical
+--[[ keymap("n", "\\sv", ':vsplit<CR>', opts) ]]
+-- Split close
+--[[ keymap("n", "\\sc", ':close<CR>', opts) ]]
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
