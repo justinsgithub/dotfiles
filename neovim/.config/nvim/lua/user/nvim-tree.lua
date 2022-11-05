@@ -18,11 +18,11 @@ nvim_tree.setup({
 		add_trailing = false,
 		group_empty = false,
 		highlight_git = false,
-		full_name = false,
-		highlight_opened_files = "none",
+		full_name = true,
+		highlight_opened_files = "all", -- none, name, icon, all
 		root_folder_modifier = ":~",
 		indent_markers = {
-			enable = false,
+			enable = true,
 			inline_arrows = true,
 			icons = {
 				corner = "└",

@@ -6,6 +6,9 @@ ZSH_THEME="agnosterzac"
 
 CASE_SENSITIVE="true"
 
+# to fix Node.js error, added command to the beginning of package.json "dev" command instead
+# export NODE_OPTIONS=--openssl-legacy-provider 
+
 plugins=( vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 
 source $ZSH/oh-my-zsh.sh

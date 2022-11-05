@@ -98,7 +98,7 @@ local mappings = {
   b = {
     name = "Buffers",
     p = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
-    c = { "<cmd>bdelete<CR>", "Close Buffer" },
+    c = { "<cmd>Bwipeout<CR>", "Close Buffer" },
     ["1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "Buffer 1" },
     ["2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "Buffer 2" },
     ["3"] = { "<cmd>BufferLineGoToBuffer 3<CR>", "Buffer 3" },
@@ -109,6 +109,7 @@ local mappings = {
     ["8"] = { "<cmd>BufferLineGoToBuffer 8<CR>", "Buffer 8" },
     ["$"] = { "<cmd>BufferLineGoToBuffer 9<CR>", "Buffer 9" },
     ["9"] = { "<cmd>BufferLineGoToBuffer -1<CR>", "Last Buffer" },
+    t = { "<cmd>tabnew %<CR>", "New Tab" },
   },
 
   p = {

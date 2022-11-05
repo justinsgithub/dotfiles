@@ -133,6 +133,7 @@ return packer.startup(function(use)
   use("ggandor/lightspeed.nvim")
   use("b0o/SchemaStore.nvim")
   use("ap/vim-css-color")
+  use("moll/vim-bbye")
   use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "kyazdani42/nvim-web-devicons" })
 
   -- Automatically set up your configuration after cloning packer.nvim
