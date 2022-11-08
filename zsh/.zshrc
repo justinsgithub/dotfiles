@@ -51,9 +51,13 @@ alias mkserve="mkdocs serve"
 
 alias mkbuild="mkdocs build"
 
-alias vimconfig="vim ~/stow-files/neovim/.config/nvim"
+alias vconf="vim ~/stow-files/neovim/.config/nvim"
 
-alias keymaps="vim ~/stow-files/nvim/.config/nvim/lua/user/keymaps.lua"
+alias vinit="vim ~/stow-files/neovim/.config/nvim/init.lua"
+
+alias vplug="vim ~/stow-files/neovim/.config/nvim/lua/user/plugins.lua"
+
+alias vmaps="vim ~/stow-files/neovim/.config/nvim/lua/user/keymaps.lua"
 
 alias correctspelling="vim ~/.config/nvim/lua/user/misspellings.lua"
 

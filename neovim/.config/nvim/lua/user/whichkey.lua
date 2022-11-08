@@ -14,7 +14,7 @@ local setup = {
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     presets = {
-      operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+      operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = true, -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
@@ -64,8 +64,8 @@ local setup = {
     -- list of mode / prefixes that should never be hooked by WhichKey
     -- this is mostly relevant for key maps that start with a native binding
     -- most people should not need to change this
-    i = { "j", "k" },
-    v = { "j", "k" },
+    -- i = { "j", "k" },
+    -- v = { "j", "k" },
   },
 }
 
@@ -79,39 +79,14 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  -- ["b"] = {
-  --   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-  --   "Buffers",
-  -- },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
-  --[[ ["w"] = { "<cmd>w!<CR>", "Save" }, ]]
-  ["f"] = {
+  a = { "<cmd>Alpha<cr>", "Alpha" },
+  e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  f = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
   },
-  ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-
-  b = {
-    name = "Buffers",
-    p = { "<cmd>BufferLinePick<CR>", "Pick Buffer" },
-    c = { "<cmd>Bwipeout<CR>", "Close Buffer" },
-    ["1"] = { "<cmd>BufferLineGoToBuffer 1<CR>", "Buffer 1" },
-    ["2"] = { "<cmd>BufferLineGoToBuffer 2<CR>", "Buffer 2" },
-    ["3"] = { "<cmd>BufferLineGoToBuffer 3<CR>", "Buffer 3" },
-    ["4"] = { "<cmd>BufferLineGoToBuffer 4<CR>", "Buffer 4" },
-    ["5"] = { "<cmd>BufferLineGoToBuffer 5<CR>", "Buffer 5" },
-    ["6"] = { "<cmd>BufferLineGoToBuffer 6<CR>", "Buffer 6" },
-    ["7"] = { "<cmd>BufferLineGoToBuffer 7<CR>", "Buffer 7" },
-    ["8"] = { "<cmd>BufferLineGoToBuffer 8<CR>", "Buffer 8" },
-    ["$"] = { "<cmd>BufferLineGoToBuffer 9<CR>", "Buffer 9" },
-    ["9"] = { "<cmd>BufferLineGoToBuffer -1<CR>", "Last Buffer" },
-    t = { "<cmd>tabnew %<CR>", "New Tab" },
-  },
-
+  h = { "<cmd>nohlsearch<CR>", "No Highlight" },
+  q = { "<cmd>q!<CR>", "Quit" },
   p = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -120,7 +95,6 @@ local mappings = {
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
-
   g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
@@ -187,23 +161,14 @@ local mappings = {
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
-  W = { "<cmd>w!<CR>", "Save" },
   w = {
     name = "Window",
     h = { "<cmd>split<CR>", "Split Horizontal" },
     v = { "<cmd>vsplit<CR>", "Split Vertical" },
     c = { "<cmd>close<CR>", "Close Window" },
   },
+  P = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 }
--- Search replace
---[[ keymap("n", "\\sr", ':%s/', opts) ]]
-
--- Split horizontal
---[[ keymap("n", "\\sh", ':split<CR>', opts) ]]
--- Split vertical
---[[ keymap("n", "\\sv", ':vsplit<CR>', opts) ]]
--- Split close
---[[ keymap("n", "\\sc", ':close<CR>', opts) ]]
 
 which_key.setup(setup)
 which_key.register(mappings, opts)

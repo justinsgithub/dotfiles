@@ -44,9 +44,27 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", ">", ">>", opts)
 keymap("n", "<", "<<", opts)
 
--- Insert --
+-- THE BEES KNEES (backslash commands)
+keymap("n", "\\b", ":BufferLinePick<CR>", opts)
+keymap("n", "\\c", ":Bwipeout<CR>", opts)
+keymap("n", "\\f", ":Telescope live_grep theme=ivy<cr>", opts)
+keymap("n", "\\s", ":w<CR>", opts)
+keymap("n", "\\1", ":BufferLineGoToBuffer 1<CR>", opts)
+keymap("n", "\\2", ":BufferLineGoToBuffer 2<CR>", opts)
+keymap("n", "\\3", ":BufferLineGoToBuffer 3<CR>", opts)
+keymap("n", "\\4", ":BufferLineGoToBuffer 4<CR>", opts)
+keymap("n", "\\5", ":BufferLineGoToBuffer 5<CR>", opts)
+keymap("n", "\\6", ":BufferLineGoToBuffer 6<CR>", opts)
+keymap("n", "\\7", ":BufferLineGoToBuffer 7<CR>", opts)
+keymap("n", "\\8", ":BufferLineGoToBuffer 8<CR>", opts)
+keymap("n", "\\9", ":BufferLineGoToBuffer 9<CR>", opts)
+--[[ keymap("n", "\\$", ":BufferLineGoToBuffer -1<CR>", opts) ]]
+keymap("n", "\\t", ":tabnew %<CR>", opts)
+
+-- Insert
 -- Press jk fast to enter
 -- keymap("i", "jk", "<ESC>", opts)
+
 
 -- Visual --
 -- Stay in indent mode
@@ -68,19 +86,3 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Set transparent background
 -- keymap("n", "<space>t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
 -- keymap("n", "\\t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
-
--- Search replace
---[[ keymap("n", "\\sr", ':%s/', opts) ]]
-
--- Split horizontal
---[[ keymap("n", "\\sh", ':split<CR>', opts) ]]
--- Split vertical
---[[ keymap("n", "\\sv", ':vsplit<CR>', opts) ]]
--- Split close--[[ keymap("n", "\\sc", ':close<CR>', opts) ]]
-
--- Terminal --
--- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
