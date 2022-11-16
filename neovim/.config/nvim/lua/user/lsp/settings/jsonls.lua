@@ -1,4 +1,4 @@
-local status_ok, packer = pcall(require, "packer")
+local status_ok, schemastore = pcall(require, "schemastore")
 if not status_ok then
   return
 end
@@ -6,7 +6,7 @@ end
 return {
  settings = {
     json = {
-      schemas = require('schemastore').json.schemas(),
+      schemas = schemastore.json.schemas(),
     },
   },
   setup = {
