@@ -30,14 +30,15 @@ if not status_ok then
 end
 
 -- Have packer use a popup window
-packer.init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-  },
-})
+--[[ packer.init({ ]]
+--[[   display = { ]]
+--[[     open_fn = function() ]]
+--[[       return require("packer.util").float({ border = "rounded" }) ]]
+--[[     end, ]]
+--[[   }, ]]
+--[[ }) ]]
 
+-- rm packer_compiled.lua if acting weird
 -- Install your plugins here
 return packer.startup(function(use)
   -- My plugins here
@@ -56,10 +57,9 @@ return packer.startup(function(use)
   use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
   use("folke/which-key.nvim")
   use("wakatime/vim-wakatime")
+  use { "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42" }
 
-  -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use("lunarvim/darkplus.nvim")
+
   use("patstockwell/vim-monokai-tasty")
   use("pangloss/vim-javascript")
   use("MaxMEllon/vim-jsx-pretty")
@@ -98,10 +98,10 @@ return packer.startup(function(use)
 
   use({
     "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function()
-      require("lsp_signature").setup()
-    end,
+    --[[ event = "BufRead", ]]
+    --[[ config = function() ]]
+    --[[   require("lsp_signature").setup() ]]
+    --[[ end, ]]
   })
 
   -- snippets
@@ -109,8 +109,9 @@ return packer.startup(function(use)
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
   -- LSP
-  use("neovim/nvim-lspconfig") -- enable LSP
-  use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+  use("neovim/nvim-lspconfig") -- simple to use language server installer
+  use("williamboman/mason.nvim") -- simple to use language server installer
+  use("williamboman/mason-lspconfig.nvim") -- simple to use language server installer
   use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
   use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 
@@ -130,7 +131,7 @@ return packer.startup(function(use)
   -- My new additions
   use("rcarriga/nvim-notify")
   -- use ("p00f/nvim-ts-rainbow") did not install correctly, may not desire anyways
-  use("ggandor/lightspeed.nvim")
+  --[[ use("ggandor/lightspeed.nvim") ]]
   use("b0o/SchemaStore.nvim")
   use("ap/vim-css-color")
   use("moll/vim-bbye")

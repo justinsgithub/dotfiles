@@ -15,7 +15,11 @@ source $ZSH/oh-my-zsh.sh
 
 # hash -d docs=$HOME/Github/docs
 
+hash -d lua=$HOME/.config/nvim/lua
+
 alias vim="nvim"
+
+alias v="nvim"
 
 alias quicknote="vim $HOME/myself/quicknotes.md"
 

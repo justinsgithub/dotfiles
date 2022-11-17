@@ -31,7 +31,11 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- bufferline
+-- Registers
+keymap("n", ";", '"', opts)
+
+
+-- Bufferline
 keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
 keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 --[[ keymap("n", "<leader>bc", ":bprevious<CR>", opts) ]]

@@ -1,7 +1,6 @@
 require("user.alpha")
 require("user.autocommands")
 require("user.autopairs")
-require("user.bufferline")
 require("user.cmp")
 require("user.colorscheme")
 require("user.comment")
