@@ -1,9 +1,11 @@
 local servers = {
 	"sumneko_lua",
+	"solargraph",
 	"cssls",
 	"html",
-	-- "tsserver",
+	"tsserver",
 	"pyright",
+	"tailwindcss",
 	"bashls",
 	"jsonls",
 	"yamlls",

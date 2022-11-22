@@ -33,6 +33,7 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Registers
 keymap("n", ";", '"', opts)
+keymap("v", ";", '"', opts)
 
 
 -- Bufferline

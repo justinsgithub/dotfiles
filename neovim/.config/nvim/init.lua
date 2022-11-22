@@ -1,6 +1,7 @@
 require("user.alpha")
 require("user.autocommands")
 require("user.autopairs")
+require("user.bufferline")
 require("user.cmp")
 require("user.colorscheme")
 require("user.comment")
@@ -19,3 +20,5 @@ require("user.project")
 require("user.telescope")
 require("user.treesitter")
 require("user.whichkey")
+
+-- :%s/.*\n/\0\r/g double space file
