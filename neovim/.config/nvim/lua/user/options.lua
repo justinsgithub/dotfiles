@@ -48,3 +48,4 @@ vim.cmd 'set whichwrap+=<,>,[,],h,l'
 -- New additions
 
 --vim.cmd 'set clipboard+=unnamedplus'
+vim.opt.runtimepath:remove("/usr/share/vim/vimfiles")  -- separate vim plugins from neovim in case vim still in use
