@@ -2,9 +2,13 @@ export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/ho
 
 export ZSH="$HOME/.oh-my-zsh"
 
+source ~/.envars
+
 ZSH_THEME="agnosterzac"
 
 CASE_SENSITIVE="true"
+
+export EDITOR="nvim"
 
 # to fix Node.js error, added command to the beginning of package.json "dev" command instead
 # export NODE_OPTIONS=--openssl-legacy-provider 
@@ -55,6 +59,7 @@ alias mkserve="mkdocs serve"
 
 alias mkbuild="mkdocs build"
 
+alias vimconfig="vim ~/stow-files/neovim/.config/nvim"
 alias vconf="vim ~/stow-files/neovim/.config/nvim"
 
 alias vinit="vim ~/stow-files/neovim/.config/nvim/init.lua"
@@ -142,5 +147,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 eval "$(rbenv init - zsh)"
-source "$HOME/Github/social-automation/python/env/bin/activate"
+source "$HOME/Github/social-automation/env/bin/activate"
+# export PATH="/home/linuxbrew/.linuxbrew/opt/openssl@3/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/justin/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

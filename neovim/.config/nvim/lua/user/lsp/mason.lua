@@ -1,5 +1,7 @@
 local servers = {
 	"sumneko_lua",
+	"emmet_ls",
+	"prismals",
 	"solargraph",
 	"cssls",
 	"html",

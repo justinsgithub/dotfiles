@@ -13,8 +13,8 @@ end
 
 table.insert(mykeys, { key = "m", mods = "ALT", action = wezterm.action({ SendString = "Hello" }) })
 table.insert(mykeys, { key = "f", mods = "ALT", action = "ToggleFullScreen" })
-table.insert( mykeys, { key = "V", mods = "ALT", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) })
-table.insert( mykeys, { key = "H", mods = "ALT", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) })
+table.insert( mykeys, { key = "H", mods = "ALT", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) })
+table.insert( mykeys, { key = "V", mods = "ALT", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) })
 table.insert( mykeys, { key = "h", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Left" }) })
 table.insert( mykeys, { key = "j", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Down" }) })
 table.insert( mykeys, { key = "k", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Up" }) })
