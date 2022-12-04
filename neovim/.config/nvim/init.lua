@@ -22,3 +22,10 @@ require("user.treesitter")
 require("user.whichkey")
 
 -- :%s/.*\n/\0\r/g double space file
+-- * = search for word under cursor
+-- g* = search for word under cursor
+-- /the\> search for words that end in the
+-- /\<the\> search for the exact word the
+-- /the.e finds there and these 
+
+-- -- --
