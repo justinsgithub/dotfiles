@@ -2,7 +2,7 @@ export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/ho
 
 export ZSH="$HOME/.oh-my-zsh"
 
-# source ~/.envars
+source ~/.envars
 
 ZSH_THEME="agnosterzac"
 
@@ -74,7 +74,7 @@ alias svimconfig='vim ~/.SpaceVim.d/init.toml'
 
 alias weztermconfig="vim ~/stow-files/wezterm/.config/wezterm/wezterm.lua"
 
-alias promptconfig="vim ~/.config/zsh/.oh-my-zsh/custom/themes/my.zsh-theme"
+alias promptconfig="vim ~/.oh-my-zsh/custom/themes/agnosterzac.zsh-theme"
 
 alias rustdocs="rustup docs --book"
 

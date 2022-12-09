@@ -353,7 +353,7 @@ build_prompt() {
   RETVAL=$?
   print -n "\n"
   prompt_status
-  prompt_battery
+  # prompt_battery
 #  prompt_time
   prompt_virtualenv
   prompt_dir
