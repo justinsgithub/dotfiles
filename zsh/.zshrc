@@ -2,7 +2,9 @@ export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/ho
 
 export ZSH="$HOME/.oh-my-zsh"
 
-source ~/.envars
+"$HOME/Github/social-automation/env/bin/activate"
+
+[ -f ~/.envars ] && source ~/.envars
 
 ZSH_THEME="agnosterzac"
 
@@ -96,6 +98,8 @@ alias yb="yarn build"
 
 alias json="python3 -m json.tool"
 
+alias t="typer"
+
 # docker
 alias Dimages="docker images" # list all local docker images
 alias Dinspect="docker inspect $1" # outputs information about specified image
@@ -149,10 +153,15 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 eval "$(rbenv init - zsh)"
-# source "$HOME/Github/social-automation/env/bin/activate"
+
 # export PATH="/home/linuxbrew/.linuxbrew/opt/openssl@3/bin:$PATH"
+[ -f "$HOME/Github/social-automation/env/bin/activate" ] && source "$HOME/Github/social-automation/env/bin/activate"
 
 # pnpm
 export PNPM_HOME="/home/justin/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
