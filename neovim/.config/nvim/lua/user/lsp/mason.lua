@@ -6,7 +6,7 @@ local servers = {
 	"cssls",
 	"html",
 	"tsserver",
-	"pyright",
+	"jedi_language_server",
 	"tailwindcss",
 	"bashls",
 	"jsonls",
