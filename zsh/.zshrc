@@ -5,6 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 "$HOME/Github/social-automation/env/bin/activate"
 
 [ -f ~/.envars ] && source ~/.envars
+[ -f ~/.zrefrences ] && source ~/.zrefrences
 
 ZSH_THEME="agnosterzac"
 
@@ -140,6 +141,7 @@ alias drushupdb='drush updatedb' # applies database updates
 # apt package manager
 alias Aupdate='sudo apt update && sudo apt upgrade' # syncs packages with repo and completes any available package upgrades
 alias Ainstalled='sudo apt list --installed' # lists all installed packages
+alias install="sudo apt install --install-recommends $@" # installs all command line arguments
 alias Asearch='sudo apt search ^stow$' # searches for package with exactly the name stow
 alias Agrepinstalled='sudo apt list --installed | grep htop' # lists all installed packages with the name htop included
 alias Arepos='cat /etc/apt/sources.list'
