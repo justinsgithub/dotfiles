@@ -46,9 +46,11 @@ alias rm="mv --force -t ~/.archive"
 
 alias mkdir="mkdir -pv"
 
-alias adminpass="cat ~/eztext/.pass"
+alias python="python3.11"
 
-alias py="python3"
+alias py="python3.11"
+
+alias python3="python3.11"
 
 alias pyvenv="python3 -m venv venv"
 
@@ -98,6 +100,8 @@ alias yd="yarn dev"
 alias yb="yarn build"
 
 alias json="python3 -m json.tool"
+
+alias pip="python3.11 -m pip"
 
 alias t="typer"
 
