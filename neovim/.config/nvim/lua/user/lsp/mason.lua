@@ -13,6 +13,7 @@ local servers = {
 	"jsonls",
 	"yamlls",
 	"volar",
+    "vimls"
 }
 
 local settings = {

@@ -1,7 +1,7 @@
 require("user.plugins")
 require("user.alpha")
 require("user.autocommands")
-require("user.autocorrect")
+--[[ require("user.autocorrect") ]]
 require("user.autopairs")
 require("user.bufferline")
 require("user.cmp")
