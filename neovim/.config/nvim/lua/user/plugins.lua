@@ -124,7 +124,6 @@ return packer.startup(function(use)
 				show_prediction_strength = true,
 			})
 		end,
-
 		run = "./install.sh",
 		requires = "hrsh7th/nvim-cmp",
 	})
@@ -177,6 +176,8 @@ return packer.startup(function(use)
     --[[ use("joedbenjamin/pixelemconverter") ]]
     --[[ use("/home/justin/Github/correct-me-daddy") ]]
     use("JustinsGithub/correct-me-daddy")
+    use({"godlygeek/tabular"})
+    use({"preservim/vim-markdown", requires = "godlygeek/tabular"})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
