@@ -174,9 +174,8 @@ return packer.startup(function(use)
 	})
 
     --[[ use("joedbenjamin/pixelemconverter") ]]
-    --[[ use("/home/justin/Github/correct-me-daddy") ]]
-    use("JustinsGithub/correct-me-daddy")
     use({"godlygeek/tabular"})
+    use({"panozzaj/vim-autocorrect"})
     use({"preservim/vim-markdown", requires = "godlygeek/tabular"})
 
 	-- Automatically set up your configuration after cloning packer.nvim

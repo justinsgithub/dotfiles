@@ -22,11 +22,38 @@ require("user.telescope")
 require("user.treesitter")
 require("user.whichkey")
 
--- :%s/.*\n/\0\r/g double space file
--- * = search for word under cursor
--- g* = search for word under cursor
--- /the\> search for words that end in the
--- /\<the\> search for the exact word the
--- /the.e finds there and these 
+-- VIM CHEATS
+--[[
 
--- -- --
+double space entire file
+:%s/.*\n/\0\r/g
+
+search for word under cursor
+*
+
+search for word under cursor
+g* 
+
+search for words that end in the
+/the\> 
+
+search for the exact word the
+/\<the\> 
+
+finds there and these 
+/the.e 
+
+]]
+
+-- VIM MACROS
+--[[
+
+use macros to record an action you need repeated multiple times in file
+such as adding 3 dashes to end and beginning of every paragraph in file
+
+press q to start recording macro
+press letter you want to save the recorded macro to
+press whatever keys needed to perform action you need repeated
+press q to stop recording macro
+
+]]
