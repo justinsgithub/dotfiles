@@ -22,16 +22,16 @@ require("user.telescope")
 require("user.treesitter")
 require("user.whichkey")
 
--- VIM CHEATS
+-- VIM HINTS
 --[[
 
 double space entire file
 :%s/.*\n/\0\r/g
 
-search for word under cursor
+search for EXACT word under cursor
 *
 
-search for word under cursor
+search for word under cursor including partials ("for" would also find "forlorn")
 g* 
 
 search for words that end in the
@@ -42,6 +42,19 @@ search for the exact word the
 
 finds there and these 
 /the.e 
+
+mark a spot locally in current file
+m<a-z>
+
+go to locally marked spot in file
+'<a-z>
+
+mark a spot globally
+m<A-Z>
+
+go to globally marked spot
+'<A-Z>
+
 
 ]]
 

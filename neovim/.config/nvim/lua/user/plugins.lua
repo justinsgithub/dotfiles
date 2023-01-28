@@ -87,10 +87,13 @@ return packer.startup(function(use)
 	use("wakatime/vim-wakatime")
 
 	use("patstockwell/vim-monokai-tasty")
+
+	use("HerringtonDarkholme/yats.vim")
 	use("pangloss/vim-javascript")
 	use("MaxMEllon/vim-jsx-pretty")
-	use("elzr/vim-json")
 	use("styled-components/vim-styled-components")
+	use("elzr/vim-json")
+	use("jparise/vim-graphql")
 
 	-- cmp plugins
 	--[[ use("hrsh7th/nvim-cmp") -- The completion plugin ]]
@@ -173,10 +176,10 @@ return packer.startup(function(use)
 		end,
 	})
 
-    --[[ use("joedbenjamin/pixelemconverter") ]]
-    use({"godlygeek/tabular"})
-    use({"panozzaj/vim-autocorrect"})
-    use({"preservim/vim-markdown", requires = "godlygeek/tabular"})
+	--[[ use("joedbenjamin/pixelemconverter") ]]
+	use({ "godlygeek/tabular" })
+	use({ "panozzaj/vim-autocorrect" })
+	use({ "preservim/vim-markdown", requires = "godlygeek/tabular" })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

@@ -44,6 +44,10 @@ alias rm="mv --force -t ~/.archive"
 
 alias mkdir="mkdir -pv"
 
+alias nrb="npm run build"
+
+alias nrd="npm run dev"
+
 alias python="python3.11"
 
 alias py="python3.11"
