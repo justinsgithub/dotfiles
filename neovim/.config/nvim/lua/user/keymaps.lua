@@ -32,8 +32,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Registers
-keymap("n", ";", '"', opts)
-keymap("v", ";", '"', opts)
+--[[ keymap("n", ";", '"', opts) ]]
+--[[ keymap("v", ";", '"', opts) ]]
 
 
 -- Bufferline

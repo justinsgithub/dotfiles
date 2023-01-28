@@ -43,17 +43,42 @@ search for the exact word the
 finds there and these 
 /the.e 
 
+MARKS
+
+a mark is automatically deleted when its line is deleted
+
 mark a spot locally in current file
 m<a-z>
 
-go to locally marked spot in file
+go to line of locally marked spot in file
 '<a-z>
+
+go to line and column of locally marked spot in file
+`<a-z>
 
 mark a spot globally
 m<A-Z>
 
-go to globally marked spot
+go to line of globally marked spot
 '<A-Z>
+
+go to line and column of globally marked spot
+`<A-Z>
+
+delete mark a
+:delmarks a
+
+delete marks a, b, c, d
+:delmarks a-d
+
+delete marks a, b, x, y
+:delmarks abxy
+
+delete marks a, A
+:delmarks aA
+
+delete all lowercase marks for the current buffer (a-z)
+:delmarks!
 
 
 ]]

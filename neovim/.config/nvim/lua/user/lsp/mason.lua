@@ -29,6 +29,16 @@ local settings = {
 	max_concurrent_installers = 4,
 }
 
+-- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+local neodev_status_ok, neodev = pcall(require, "neodev")
+if not neodev_status_ok then
+	return
+end
+
+neodev.setup({
+  -- add any options here, or leave empty to use the default settings
+})
+
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
 	ensure_installed = servers,
