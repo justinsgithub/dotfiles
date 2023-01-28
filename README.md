@@ -1,11 +1,14 @@
 # stow-files
 
+stow is a tool to manage your dot files, must be installed first
+
 stow */
+
 stow $FOLDER-NAME
 
 ## install common dependencies (debian based)
 
-- sudo apt install curl zsh ripgrep fzf python3-pygments golang-chroma git git-filter-repo build-essential xsel pip gcc make libc6=2.34-0ubuntu3  libc6-dev g++
+- sudo apt install stow curl zsh ripgrep fzf python3-pygments golang-chroma git git-filter-repo build-essential xsel pip gcc make libc6=2.34-0ubuntu3  libc6-dev g++
 
 - sudo pip install pynvim
 
