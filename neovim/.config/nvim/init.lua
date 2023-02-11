@@ -89,9 +89,10 @@ delete all lowercase marks for the current buffer (a-z)
 use macros to record an action you need repeated multiple times in file
 such as adding 3 dashes to end and beginning of every paragraph in file
 
-press q to start recording macro
-press letter you want to save the recorded macro to
+press q<KEY>  to start recording macro (saved to KEY)
 press whatever keys needed to perform action you need repeated
 press q to stop recording macro
+
+press @<KEY> to use macro
 
 ]]

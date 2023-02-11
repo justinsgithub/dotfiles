@@ -7,9 +7,9 @@ headerbar separator {
 }
 
 headerbar {
-    min-height: 24px;
-    padding-left: 2px; /* same as childrens vertical margins for nicer proportions */
-    padding-right: 2px;
+    min-height: 0px;
+    padding-left: 0px; /* same as childrens vertical margins for nicer proportions */
+    padding-right: 0px;
     margin: 0px; /* same as headerbar side padding for nicer proportions */
     padding: 0px;
   }
