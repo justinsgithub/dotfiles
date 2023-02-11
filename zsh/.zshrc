@@ -14,13 +14,17 @@ CASE_SENSITIVE="true"
 
 export EDITOR="nvim"
 
-plugins=( example vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
+plugins=( npm-yarn vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 
 source $ZSH/oh-my-zsh.sh
 
 # hash -d docs=$HOME/Github/docs
 
 hash -d lua=$HOME/.config/nvim/lua
+
+alias npm="mynpm"
+
+alias yarn="myyarn"
 
 alias vim="nvim"
 
