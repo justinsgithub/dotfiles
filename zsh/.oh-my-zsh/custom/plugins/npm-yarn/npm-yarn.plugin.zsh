@@ -4,6 +4,8 @@ function mynpm() {
   if [ -f ./yarn.lock ]; then
     message="Yarn lock file found, would you like to install using yarn instead?"
     print -P "%F{red}$message%f\n"
+    message="\npm to force command"
+    print -P "%F{orange}$message%f\n"
     # option1="Y to install using yarn"
     # option2="N to install using npm"
     # print -P "%F{green}$option1%f\n"
@@ -29,6 +31,8 @@ function myyarn() {
   if [ -f ./package-lock.json ]; then
     message="package-lock.json file found, did you mean to use npm instead of yarn?"
     print -P "%F{red}$message%f\n"
+    message="\yarn to force command"
+    print -P "%F{orange}$message%f\n"
     # option1="Y to install using npm"
     # option2="N to install using yarn"
     # print -P "%F{green}$option1%f\n"
@@ -49,5 +53,11 @@ function myyarn() {
     #       # do nothing
     #       ;;
     # esac
+  fi
+  if [ -f ./yarn.lock ]; then
+    message="yarn.lock file found, did you mean to use npm instead of yarn?"
+    print -P "%F{red}$message%f\n"
+    message='prepend backslash ( \\yarn ) to force command'
+    print -P "%F{orange}$message%f\n"
   fi
 }
