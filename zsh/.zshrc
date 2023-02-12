@@ -2,9 +2,7 @@ export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/ho
 
 export ZSH="$HOME/.oh-my-zsh"
 
-"$HOME/Github/social-automation/env/bin/activate"
-
-[ -f ~/.envars ] && source ~/.envars
+# [ -f ~/.envars ] && source ~/.envars
 
 # [ -f ~/.zreferences.sh ] && source ~/.zreferences.sh
 
@@ -22,9 +20,8 @@ source $ZSH/oh-my-zsh.sh
 
 hash -d lua=$HOME/.config/nvim/lua
 
-alias npm="mynpm"
-
-alias yarn="myyarn"
+# alias npm="mynpm"
+# alias yarn="myyarn"
 
 alias vim="nvim"
 
@@ -108,9 +105,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-eval "$(rbenv init - zsh)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# eval "$(rbenv init - zsh)"
 
 # [ -f "$HOME/Github/social-automation/env/bin/activate" ] && source "$HOME/Github/social-automation/env/bin/activate"
 
@@ -125,3 +122,4 @@ fpath+=~/.zfunc
 
 # to fix Node.js error, added command to the beginning of package.json "dev" command instead
 # export NODE_OPTIONS=--openssl-legacy-provider 
+setxkbmap -option "caps:swapescape"
