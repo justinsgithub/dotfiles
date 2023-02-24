@@ -11,7 +11,16 @@ if not c_status_ok then
 end
 
 -- default config
-illuminate.configure({})
+illuminate.configure({
+	-- providers: provider used to get references in the buffer, ordered by priority
+	providers = {
+		"lsp",
+		"treesitter",
+		"regex",
+	},
+	-- delay: delay in milliseconds
+	delay = 100,
+})
 
 colorizer.setup({ "css", "scss", "html", "javascript", "typescript", "javascriptreact", "typescriptreact" }, {
 	RGB = true, -- #RGB hex codes
