@@ -13,7 +13,7 @@ local servers = {
 	"jsonls",
 	"yamlls",
 	"volar",
-    "vimls"
+	"vimls",
 }
 
 local settings = {
@@ -36,7 +36,7 @@ if not neodev_status_ok then
 end
 
 neodev.setup({
-  -- add any options here, or leave empty to use the default settings
+	-- add any options here, or leave empty to use the default settings
 })
 
 require("mason").setup(settings)
@@ -58,6 +58,7 @@ for _, server in pairs(servers) do
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
 
+  -- incase a language server has @ in its name or starts with @ ??? 
 	server = vim.split(server, "@")[1]
 
 	local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)
@@ -65,5 +66,17 @@ for _, server in pairs(servers) do
 		opts = vim.tbl_deep_extend("force", conf_opts, opts)
 	end
 
-	lspconfig[server].setup(opts)
+	if server == "tsserver" then
+		require("typescript").setup({
+			disable_commands = false, -- prevent the plugin from creating Vim commands
+			debug = false, -- enable debug logging for commands
+			go_to_source_definition = {
+				fallback = true, -- fall back to standard LSP definition on failure
+			},
+			server = opts -- pass options to lspconfig's setup method
+			,
+		})
+	else
+		lspconfig[server].setup(opts)
+	end
 end
