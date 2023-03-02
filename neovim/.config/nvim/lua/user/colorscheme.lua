@@ -1,26 +1,9 @@
 vim.opt.termguicolors = true
 
-local i_status_ok, illuminate = pcall(require, "illuminate")
-if not i_status_ok then
-	return
-end
-
 local c_status_ok, colorizer = pcall(require, "colorizer")
 if not c_status_ok then
 	return
 end
-
--- default config
-illuminate.configure({
-	-- providers: provider used to get references in the buffer, ordered by priority
-	providers = {
-		"lsp",
-		"treesitter",
-		"regex",
-	},
-	-- delay: delay in milliseconds
-	delay = 100,
-})
 
 colorizer.setup({ "css", "scss", "html", "javascript", "typescript", "javascriptreact", "typescriptreact" }, {
 	RGB = true, -- #RGB hex codes
@@ -45,3 +28,4 @@ endtry
 ]])
 
 vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
+-- TODO: does not work, want highlight instead of underline

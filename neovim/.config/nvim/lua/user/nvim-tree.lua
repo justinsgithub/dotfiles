@@ -13,6 +13,12 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
+	actions = {
+		file_popup = {
+			open_win_config = {},
+		},
+	},
+	sort_by = "case_sensitive",
 	disable_netrw = true,
 	renderer = {
 		add_trailing = false,
@@ -25,7 +31,6 @@ nvim_tree.setup({
 			enable = true,
 			inline_arrows = true,
 			icons = {
-				corner = "└",
 				edge = "│",
 				item = "│",
 				none = " ",
@@ -97,6 +102,7 @@ nvim_tree.setup({
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
+		update_root = true,
 		ignore_list = {},
 	},
 	system_open = {
@@ -113,10 +119,22 @@ nvim_tree.setup({
 		timeout = 500,
 	},
 	view = {
-		width = 30,
+		float = {
+			enable = true,
+			open_win_config = {
+				relative = "editor",
+				border = "rounded",
+				--[[ width = 30, ]]
+				--[[ height = 30, ]]
+				row = 1,
+				col = 1,
+			},
+		},
+		preserve_window_proportions = false,
+		width = "99%",
 		hide_root_folder = false,
 		side = "left",
-		--  auto_resize = true,
+		adaptive_size = true,
 		mappings = {
 			custom_only = false,
 			list = {
@@ -125,7 +143,7 @@ nvim_tree.setup({
 				{ key = "v", cb = tree_cb("vsplit") },
 			},
 		},
-		number = false,
+		number = true,
 		relativenumber = true,
 	},
 	trash = {

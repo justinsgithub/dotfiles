@@ -30,6 +30,22 @@ vim.cmd([[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
+  " augroup _illuminate_augroup
+  "   autocmd!
+  "   autocmd VimEnter * hi link illuminatedWord ErrorMsg
+  " augroup END
+  "
+  " augroup illuminate_augroup
+  "   autocmd!
+  "   autocmd VimEnter * hi illuminatedWord cterm=italic gui=italic
+  " augroup END
+  "
+  " augroup illuminate_augroup1
+  "   autocmd!
+  "   autocmd VimEnter * hi illuminatedCurWord cterm=italic gui=italic
+  " augroup END
+  "
+  " to also close nvim_tree when quitting, (does not work properly, just close nvim tree first)
   " augroup _nvim_tree 
   "   autocmd!
   "   autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif

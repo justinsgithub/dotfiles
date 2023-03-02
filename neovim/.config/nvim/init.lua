@@ -1,3 +1,6 @@
+-- recommended by nvim-tree
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
 require("user.plugins")
 require("user.alpha")
 require("user.autocommands")
@@ -11,6 +14,7 @@ require("user.gitsigns")
 require("user.hot-reload")
 require("user.impatient")
 require("user.indentline")
+require("user.illuminate")
 require("user.keymaps")
 require("user.lsp")
 require("user.lualine")

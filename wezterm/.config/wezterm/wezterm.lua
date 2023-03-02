@@ -11,6 +11,8 @@ for i = 1, 8 do
 	})
 end
 
+table.insert(mykeys, { key = "[", mods = "ALT", action = wezterm.action.MoveTabRelative(-1) })
+table.insert(mykeys, { key = "]", mods = "ALT", action = wezterm.action.MoveTabRelative(1) })
 table.insert(mykeys, { key = "m", mods = "ALT", action = wezterm.action({ SendString = "Hello" }) })
 table.insert(mykeys, { key = "f", mods = "ALT", action = "ToggleFullScreen" })
 table.insert( mykeys, { key = "H", mods = "ALT", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) })
@@ -19,7 +21,7 @@ table.insert( mykeys, { key = "h", mods = "ALT", action = wezterm.action({ Activ
 table.insert( mykeys, { key = "j", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Down" }) })
 table.insert( mykeys, { key = "k", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Up" }) })
 table.insert( mykeys, { key = "l", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Right" }) })
-table.insert(mykeys, { key = "t", mods = "ALT", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) })
+table.insert(mykeys, { key = "n", mods = "ALT", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) })
 
 return {
   audible_bell = "Disabled",

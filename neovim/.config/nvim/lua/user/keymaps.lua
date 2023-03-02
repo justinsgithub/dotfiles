@@ -1,3 +1,12 @@
+local l_status_ok, leap = pcall(require, "leap")
+if not l_status_ok then
+	return
+end
+
+leap.add_default_mappings()
+
+leap.opts.case_sensitive = true
+
 local opts = { noremap = true, silent = true }
 
 -- local term_opts = { silent = true }
