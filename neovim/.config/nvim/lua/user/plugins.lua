@@ -70,6 +70,20 @@ return packer.startup(function(use)
 	use("wakatime/vim-wakatime")
 
 	-- colorscheme plugins
+	use({
+		"loctvl842/monokai-pro.nvim",
+		config = function()
+			require("monokai-pro").setup({
+				transparent_background = true,
+				filter = "pro",
+				--[[ override = function() ]]
+				--[[ 	return { ]]
+				--[[ 		Normal = { bg = "#000000" }, ]]
+				--[[ 	} ]]
+				--[[ end, ]]
+			})
+		end,
+	})
 	use("patstockwell/vim-monokai-tasty")
 	use("HerringtonDarkholme/yats.vim")
 	use("pangloss/vim-javascript")
@@ -110,6 +124,7 @@ return packer.startup(function(use)
 		requires = "hrsh7th/nvim-cmp",
 	})
 
+	-- not sure if needed
 	use({
 		"ray-x/lsp_signature.nvim",
 		--[[ event = "BufRead", ]]
@@ -129,6 +144,29 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42", enabled = true })
 	use({ "jose-elias-alvarez/typescript.nvim", commit = "f66d4472606cb24615dfb7dbc6557e779d177624" })
+	use({
+		"rmagatti/goto-preview",
+		config = function()
+			require("goto-preview").setup({
+				width = 120, -- Width of the floating window
+				height = 15, -- Height of the floating window
+				border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" }, -- Border characters of the floating window
+				default_mappings = true, -- Bind default mappings
+				debug = false, -- Print debug information
+				opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
+				resizing_mappings = false, -- Binds arrow keys to resizing the floating window.
+				post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
+				references = { -- Configure the telescope UI for slowing the references cycling window.
+					telescope = require("telescope.themes").get_dropdown({ hide_preview = false }),
+				},
+				-- These two configs can also be passed down to the goto-preview definition and implementation calls for one off "peak" functionality.
+				focus_on_open = true, -- Focus the floating window when opening it.
+				dismiss_on_move = false, -- Dismiss the floating window when moving the cursor.
+				force_close = true, -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
+				bufhidden = "wipe", -- the bufhidden option to set on the floating window. See :h bufhidden
+			})
+		end,
+	})
 
 	--[[ use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for ]]
 
@@ -140,7 +178,7 @@ return packer.startup(function(use)
 	use({ "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" })
 
 	use("rcarriga/nvim-notify")
-	use({"ggandor/leap.nvim"})
+	use({ "ggandor/leap.nvim" })
 	use("b0o/SchemaStore.nvim")
 	use({
 		"windwp/nvim-ts-autotag",

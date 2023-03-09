@@ -15,12 +15,12 @@ colorizer.setup({ "css", "scss", "html", "javascript", "typescript", "javascript
 	css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
 })
 
-vim.g.vim_monokai_tasty_italic = 1
+--[[ vim.g.vim_monokai_tasty_italic = 1 ]]
 --[[ vim.g.vim_monokai_tasty_machine_tint = 1 ]]
-vim.g.vim_monokai_tasty_highlight_active_window = 1
+--[[ vim.g.vim_monokai_tasty_highlight_active_window = 1 ]]
 vim.cmd([[
 try
-  colorscheme vim-monokai-tasty
+  colorscheme monokai-pro
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark

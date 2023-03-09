@@ -5,7 +5,7 @@ end
 
 leap.add_default_mappings()
 
-leap.opts.case_sensitive = true
+leap.opts.case_sensitive = false
 
 local opts = { noremap = true, silent = true }
 
