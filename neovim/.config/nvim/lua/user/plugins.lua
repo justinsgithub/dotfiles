@@ -67,7 +67,7 @@ return packer.startup(function(use)
 	use({ "goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" })
 	use({ "folke/which-key.nvim" })
 
-	use("wakatime/vim-wakatime")
+	--[[ use("wakatime/vim-wakatime") ]]
 
 	-- colorscheme plugins
 	use({
@@ -124,15 +124,6 @@ return packer.startup(function(use)
 		requires = "hrsh7th/nvim-cmp",
 	})
 
-	-- not sure if needed
-	use({
-		"ray-x/lsp_signature.nvim",
-		--[[ event = "BufRead", ]]
-		--[[ config = function() ]]
-		--[[   require("lsp_signature").setup() ]]
-		--[[ end, ]]
-	})
-
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
@@ -165,6 +156,27 @@ return packer.startup(function(use)
 				force_close = true, -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
 				bufhidden = "wipe", -- the bufhidden option to set on the floating window. See :h bufhidden
 			})
+		end,
+	})
+	use({
+		"folke/trouble.nvim",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+      require("trouble").setup(
+        --{
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+    --}
+    )
+		end,
+	})
+	-- not sure if needed
+	use({
+		"ray-x/lsp_signature.nvim",
+		event = "BufRead",
+		config = function()
+			require("lsp_signature").setup()
 		end,
 	})
 

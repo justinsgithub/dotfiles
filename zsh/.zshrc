@@ -6,7 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # [ -f ~/.zreferences.sh ] && source ~/.zreferences.sh
 
-ZSH_THEME="agnosterzac"
+ZSH_THEME="robbyrussell"
 
 CASE_SENSITIVE="true"
 
@@ -21,12 +21,11 @@ source $ZSH/oh-my-zsh.sh
 
 hash -d lua=$HOME/.config/nvim/lua
 
-# alias npm="mynpm"
 # alias yarn="myyarn"
 
-alias vim="nvim"
-
 alias v="nvim"
+
+alias p="pnpm"
 
 alias quicknote="vim $HOME/myself/quicknotes.md"
 
@@ -46,15 +45,11 @@ alias rm="mv --force -t ~/.archive"
 
 alias mkdir="mkdir -pv"
 
-alias nrb="npm run build"
+# alias python="python3.11"
 
-alias nrd="npm run dev"
+# alias py="python3.11"
 
-alias python="python3.11"
-
-alias py="python3.11"
-
-alias python3="python3.11"
+# alias python3="python3.11"
 
 alias pyvenv="python3 -m venv venv"
 
@@ -62,19 +57,19 @@ alias pinstall="pip install"
 
 alias sourcevenv="source venv/bin/activate"
 
-alias zshconfig="vim ~/stow-files/zsh/.zshrc; zsh;"
+alias zshconfig="vim ~/.dotfiles/zsh/.zshrc; zsh;"
 
 alias mkserve="mkdocs serve"
 
 alias mkbuild="mkdocs build"
 
-alias vimconfig="vim ~/stow-files/neovim/.config/nvim"
+alias vimconfig="vim ~/.dotfiles/neovim/.config/nvim"
 
 alias vimcorrect="vim ~/Github/correct-me-daddy/plugin/contributions/JustinsGithub.vim"
 
 alias svimconfig='vim ~/.SpaceVim.d/init.toml'
 
-alias weztermconfig="vim ~/stow-files/wezterm/.config/wezterm/wezterm.lua"
+alias weztermconfig="vim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
 
 alias promptconfig="vim ~/.oh-my-zsh/custom/themes/agnosterzac.zsh-theme"
 
@@ -94,11 +89,13 @@ alias nv="node --version"
 
 alias yd="yarn dev"
 
+alias gc="git clone"
+
 alias yb="yarn build"
 
 alias json="python3 -m json.tool"
 
-alias pip="python3.11 -m pip"
+# alias pip="python3.11 -m pip"
 
 alias update="sudo apt update && sudo apt upgrade"
 
@@ -114,7 +111,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # pnpm
 export PNPM_HOME="/home/justin/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 # pnpm end
 
 autoload -Uz compinit

@@ -2,16 +2,16 @@ local servers = {
 	"sumneko_lua",
 	"emmet_ls",
 	"prismals",
-	"solargraph",
+	--[[ "solargraph", ]]
 	"cssls",
 	"html",
 	"tsserver",
-	"jedi_language_server",
-	"pyright",
+	--[[ "jedi_language_server", ]]
+	--[[ "pyright", ]]
 	"tailwindcss",
 	"bashls",
 	"jsonls",
-	"yamlls",
+	--[[ "yamlls", ]]
 	"volar",
 	"vimls",
 }

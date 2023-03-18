@@ -141,15 +141,17 @@ nvim_tree.setup({
 				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
 				{ key = "h", cb = tree_cb("close_node") },
 				{ key = "v", cb = tree_cb("vsplit") },
+				{ key = "d", cb = tree_cb("trash") },
+				{ key = "D", cb = tree_cb("remove") },
 			},
 		},
 		number = true,
 		relativenumber = true,
 	},
-	trash = {
-		cmd = "trash",
-		require_confirm = true,
-	},
+	--[[ trash = { ]]
+	--[[ 	cmd = "gio trash", -- default ]]
+	--[[ 	require_confirm = true, ]]
+	--[[ }, ]]
 	-- quit_on_open = 0,
 	-- git_hl = 1,
 	-- disable_window_picker = 0,

@@ -63,7 +63,7 @@ keymap("n", "<", "<<", opts)
 -- THE BEES KNEES (backslash commands)
 keymap("n", "\\b", ":BufferLinePick<CR>", opts)
 keymap("n", "\\c", ":Bwipeout<CR>", opts)
-keymap("n", "\\f", ":Telescope live_grep theme=ivy<cr>", opts)
+-- keymap("n", "\\f", ":Telescope live_grep theme=ivy<cr>", opts)
 keymap("n", "\\s", ":w<CR>", opts)
 keymap("n", "\\1", ":BufferLineGoToBuffer 1<CR>", opts)
 keymap("n", "\\2", ":BufferLineGoToBuffer 2<CR>", opts)
@@ -78,9 +78,10 @@ keymap("n", "\\9", ":BufferLineGoToBuffer 9<CR>", opts)
 keymap("n", "\\t", ":tabnew %<CR>", opts)
 
 -- Insert
--- Press jk fast to enter
--- keymap("i", "jk", "<ESC>", opts)
-
+-- Press jk fast to exit insert mode
+--[[ keymap("i", "jk", "<ESC>", opts) ]]
+--[[ keymap("i", "kj", "<ESC>", opts) ]]
+--[[ keymap("i", "<ESC>", "", opts) ]]
 
 -- Visual --
 -- Stay in indent mode

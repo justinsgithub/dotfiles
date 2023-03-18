@@ -4,7 +4,6 @@ vim.g.loaded_netrwPlugin = 1
 require("user.plugins")
 require("user.alpha")
 require("user.autocommands")
---[[ require("user.autocorrect") ]]
 require("user.autopairs")
 require("user.bufferline")
 require("user.cmp")
