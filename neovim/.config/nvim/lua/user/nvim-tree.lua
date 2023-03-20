@@ -13,6 +13,16 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
+  -- project.nvim
+	sync_root_with_cwd = true,
+	respect_buf_cwd = true,
+	update_focused_file = {
+		enable = true,
+		update_cwd = true,
+		--update_root = true,
+		ignore_list = {},
+	},
+  -- end project.nvim
 	actions = {
 		file_popup = {
 			open_win_config = {},
@@ -98,12 +108,6 @@ nvim_tree.setup({
 			warning = "",
 			error = "",
 		},
-	},
-	update_focused_file = {
-		enable = true,
-		update_cwd = true,
-		update_root = true,
-		ignore_list = {},
 	},
 	system_open = {
 		cmd = nil,

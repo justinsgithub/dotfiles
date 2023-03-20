@@ -57,21 +57,17 @@ alias pinstall="pip install"
 
 alias sourcevenv="source venv/bin/activate"
 
-alias zshconfig="vim ~/.dotfiles/zsh/.zshrc; zsh;"
+alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc; zsh;"
 
 alias mkserve="mkdocs serve"
 
 alias mkbuild="mkdocs build"
 
-alias vimconfig="vim ~/.dotfiles/neovim/.config/nvim"
+alias vimconfig="nvim ~/.dotfiles/neovim/.config/nvim"
 
-alias vimcorrect="vim ~/Github/correct-me-daddy/plugin/contributions/JustinsGithub.vim"
+alias weztermconfig="nvim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
 
-alias svimconfig='vim ~/.SpaceVim.d/init.toml'
-
-alias weztermconfig="vim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
-
-alias promptconfig="vim ~/.oh-my-zsh/custom/themes/agnosterzac.zsh-theme"
+alias promptconfig="nvim ~/.oh-my-zsh/custom/themes/agnosterzac.zsh-theme"
 
 alias rustdocs="rustup docs --book"
 

@@ -39,8 +39,20 @@ neodev.setup({
 	-- add any options here, or leave empty to use the default settings
 })
 
-require("mason").setup(settings)
-require("mason-lspconfig").setup({
+local m_ok, mason = pcall(require, "mason")
+if not m_ok then
+	return
+end
+
+mason.setup(settings)
+
+
+local ml_ok, masonconf = pcall(require, "mason-lspconfig")
+if not ml_ok then
+	return
+end
+
+masonconf.setup({
 	ensure_installed = servers,
 	automatic_installation = true,
 })
@@ -67,7 +79,11 @@ for _, server in pairs(servers) do
 	end
 
 	if server == "tsserver" then
-		require("typescript").setup({
+    local ok, ts = pcall(require, "typescript")
+    if not ok then
+      return
+    end
+		ts.setup({
 			disable_commands = false, -- prevent the plugin from creating Vim commands
 			debug = false, -- enable debug logging for commands
 			go_to_source_definition = {
