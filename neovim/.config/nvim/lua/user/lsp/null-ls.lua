@@ -18,7 +18,7 @@ null_ls.setup({
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		formatting.yamlfmt,
-		diagnostics.eslint,
+		-- diagnostics.eslint, WAY TOO MUCH RESOURCES
 		diagnostics.actionlint
 	},
 })

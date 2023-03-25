@@ -13,10 +13,10 @@ if not snip_status_ok then
 	return
 end
 
-local tabnine_status_ok, tabnine = pcall(require, "cmp_tabnine.config")
-if not tabnine_status_ok then
-	return
-end
+--[[ local tabnine_status_ok, tabnine = pcall(require, "cmp_tabnine.config") ]]
+--[[ if not tabnine_status_ok then ]]
+--[[ 	return ]]
+--[[ end ]]
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -106,15 +106,11 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		-- { name = "nvim_lsp" },
-		-- { name = "luasnip" },
-		-- { name = "buffer" },
-		-- { name = "path" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
-		{ name = "cmp_tabnine" },
+		-- { name = "cmp_tabnine" },
 		{ name = "path" },
 		{ name = "emoji" },
 	},

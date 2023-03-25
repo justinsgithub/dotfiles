@@ -41,7 +41,7 @@ alias ls='ls --color=auto'
 
 alias l="ls -1"
 
-alias rm="mv --force -t ~/.archive"
+alias rm="gio trash"
 
 alias mkdir="mkdir -pv"
 
@@ -90,6 +90,8 @@ alias gc="git clone"
 alias yb="yarn build"
 
 alias json="python3 -m json.tool"
+
+alias pyserve="python3 -m http.server"
 
 # alias pip="python3.11 -m pip"
 

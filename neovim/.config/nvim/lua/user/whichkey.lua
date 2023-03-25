@@ -157,14 +157,14 @@ local mappings = {
 		l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "Quickfix" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-		t = {
-			name = "TypeScript",
-			r = { "<cmd>TypescriptRenameFile<CR>", "Rename File" },
-			o = { "<cmd>TypescriptOrganizeImports<CR>", "Organize Imports" },
-		},
 		T = { "<cmd>TroubleToggle<CR>", "Trouble Toggle" },
 		s = { "<cmd>Telescope lsp_document_symbols<CR>", "Document Symbols" },
 		S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", "Workspace Symbols" },
+	},
+	t = {
+		name = "TypeScript",
+		r = { "<cmd>TypescriptRenameFile<CR>", "Rename File" },
+		o = { "<cmd>TypescriptOrganizeImports<CR>", "Organize Imports" },
 	},
 	w = {
 		name = "Window",
