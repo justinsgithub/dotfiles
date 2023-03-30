@@ -70,10 +70,11 @@ return packer.startup(function(use)
 
 	-- colorscheme plugins
 	use({
-		"loctvl842/monokai-pro.nvim",
+    "loctvl842/monokai-pro.nvim",
+    commit = "c49d65af794cd97c49331237eb7ae208b93f9363",
 		config = function()
 			require("monokai-pro").setup({
-				transparent_background = true,
+				transparent_background = false,
 				filter = "pro",
 				--[[ override = function() ]]
 				--[[ 	return { ]]
@@ -101,28 +102,28 @@ return packer.startup(function(use)
 	use({ "hrsh7th/cmp-nvim-lsp", commit = "3cf38d9c957e95c397b66f91967758b31be4abe6" })
 	use({ "hrsh7th/cmp-nvim-lua", commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21" })
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	--[[ use({ ]]
-	--[[ 	"tzachar/cmp-tabnine", ]]
-	--[[ 	config = function() ]]
-	--[[ 		local tabnine = require("cmp_tabnine.config") ]]
-	--[[ 		tabnine:setup({ ]]
-	--[[ 			max_lines = 1000, ]]
-	--[[ 			max_num_results = 20, ]]
-	--[[ 			sort = true, ]]
-	--[[ 			run_on_every_keystroke = true, ]]
-	--[[ 			snippet_placeholder = "..", ]]
-	--[[ 			ignored_file_types = { ]]
-	--[[ 				-- default is not to ignore ]]
-	--[[ 				-- uncomment to ignore in lua: ]]
-	--[[ 				-- lua = true ]]
-	--[[ 			}, ]]
-	--[[ 			show_prediction_strength = true, ]]
-	--[[ 		}) ]]
-	--[[ 	end, ]]
-	--[[ 	run = "./install.sh", ]]
-	--[[ 	requires = "hrsh7th/nvim-cmp", ]]
-	--[[ }) ]]
-	--[[]]
+	use({
+		"tzachar/cmp-tabnine",
+		config = function()
+			local tabnine = require("cmp_tabnine.config")
+			tabnine:setup({
+				max_lines = 1000,
+				max_num_results = 20,
+				sort = true,
+				run_on_every_keystroke = true,
+				snippet_placeholder = "..",
+				ignored_file_types = {
+					-- default is not to ignore
+					-- uncomment to ignore in lua:
+					-- lua = true
+				},
+				show_prediction_strength = true,
+			})
+		end,
+		run = "./install.sh",
+		requires = "hrsh7th/nvim-cmp",
+	})
+
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
@@ -193,12 +194,7 @@ return packer.startup(function(use)
 	use("rcarriga/nvim-notify")
 	use({ "ggandor/leap.nvim" })
 	use("b0o/SchemaStore.nvim")
-	use({
-		"windwp/nvim-ts-autotag",
-		config = function()
-			require("nvim-ts-autotag").setup()
-		end,
-	})
+	use({ "windwp/nvim-ts-autotag" })
 
 	--[[ use("joedbenjamin/pixelemconverter") ]]
 	-- example of creating a basic vim plugin

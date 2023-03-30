@@ -57,17 +57,27 @@ alias pinstall="pip install"
 
 alias sourcevenv="source venv/bin/activate"
 
-alias zshconfig="nvim ~/.dotfiles/zsh/.zshrc; zsh;"
+alias zshconf="nvim ~/.dotfiles/zsh/.zshrc && source ~/.zshrc"
+
+alias addchatgpt="nvim ~/.dotfiles/chatgpt"
 
 alias mkserve="mkdocs serve"
 
 alias mkbuild="mkdocs build"
 
-alias vimconfig="nvim ~/.dotfiles/neovim/.config/nvim"
+alias vimconf="nvim ~/.dotfiles/neovim/.config/nvim"
 
-alias weztermconfig="nvim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
+alias alaconf="nvim ~/.dotfiles/alacritty/.config/alacritty/alacritty.yml"
 
-alias promptconfig="nvim ~/.oh-my-zsh/custom/themes/agnosterzac.zsh-theme"
+alias dotconf="nvim ~/.dotfiles/README.md"
+
+alias i3conf="nvim ~/.dotfiles/i3/.config/i3/config"
+
+alias tmuxconf="nvim ~/.dotfiles/tmux/.config/tmux/tmux.conf.local"
+
+alias weztermconf="nvim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
+
+alias promptconf="nvim ~/.oh-my-zsh/custom/themes/agnosterzac.zsh-theme"
 
 alias rustdocs="rustup docs --book"
 

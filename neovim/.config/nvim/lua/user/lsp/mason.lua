@@ -62,6 +62,11 @@ if not lspconfig_status_ok then
 	return
 end
 
+local ok, ts = pcall(require, "typescript")
+--[[ if not ok then ]]
+--[[   return ]]
+--[[ end ]]
+
 local opts = {}
 
 for _, server in pairs(servers) do
@@ -79,17 +84,16 @@ for _, server in pairs(servers) do
 	end
 
 	if server == "tsserver" then
-    local ok, ts = pcall(require, "typescript")
-    if not ok then
-      return
-    end
 		ts.setup({
 			disable_commands = false, -- prevent the plugin from creating Vim commands
 			debug = false, -- enable debug logging for commands
 			go_to_source_definition = {
 				fallback = true, -- fall back to standard LSP definition on failure
 			},
-			server = opts -- pass options to lspconfig's setup method
+      server = { -- pass options to lspconfig's setup method
+        on_attach = require("user.lsp.handlers").on_attach,
+        capabilities = require("user.lsp.handlers").capabilities,
+      }
 			,
 		})
 	else

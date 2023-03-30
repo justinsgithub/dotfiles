@@ -11,6 +11,7 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
 	debug = false,
 	sources = {
+    require("typescript.extensions.null-ls.code-actions"),
 		-- formatting.prettier.with({
      -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote", "--print-width=150", "--trailing-comma=all" },
     --	}),

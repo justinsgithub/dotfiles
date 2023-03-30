@@ -3,8 +3,8 @@ if not cmp_status_ok then
 	return
 end
 
-local compare_status_ok, compare = pcall(require, "cmp.config.compare")
-if not cmp_status_ok then
+local compare_status_ok, _ = pcall(require, "cmp.config.compare")
+if not compare_status_ok then
 	return
 end
 
@@ -13,7 +13,7 @@ if not snip_status_ok then
 	return
 end
 
---[[ local tabnine_status_ok, tabnine = pcall(require, "cmp_tabnine.config") ]]
+--[[ local tabnine_status_ok, _ = pcall(require, "cmp_tabnine.config") ]]
 --[[ if not tabnine_status_ok then ]]
 --[[ 	return ]]
 --[[ end ]]
@@ -84,12 +84,12 @@ cmp.setup({
 			-- Kind icons
 			-- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-			if entry.source.name == "cmp_tabnine" then
+			-- if entry.source.name == "cmp_tabnine" then
 				-- if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
 				-- menu = entry.completion_item.data.detail .. " " .. menu
 				-- end
-				vim_item.kind = icons.misc.Robot
-			end
+				-- vim_item.kind = icons.misc.Robot
+			--end
 			vim_item.menu = ({
 				-- nvim_lsp = "[LSP]",
 				-- luasnip = "[Snippet]",
@@ -106,6 +106,10 @@ cmp.setup({
 		end,
 	},
 	sources = {
+		-- { name = "nvim_lsp" },
+		-- { name = "luasnip" },
+		-- { name = "buffer" },
+		-- { name = "path" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },

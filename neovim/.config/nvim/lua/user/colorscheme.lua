@@ -5,7 +5,7 @@ if not c_status_ok then
 	return
 end
 
-colorizer.setup({ "css", "scss", "html", "javascript", "typescript", "javascriptreact", "typescriptreact" }, {
+colorizer.setup({ "css", "scss", "html", "javascript", "typescript", "javascriptreact", "typescriptreact", "lua", "json", "toml", "yaml" }, {
 	RGB = true, -- #RGB hex codes
 	RRGGBB = true, -- #RRGGBB hex codes
 	RRGGBBAA = true, -- #RRGGBBAA hex codes
