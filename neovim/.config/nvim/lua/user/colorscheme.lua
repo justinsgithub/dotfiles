@@ -27,5 +27,4 @@ catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 ]])
 
-vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
--- TODO: does not work, want highlight instead of underline
+-- vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])

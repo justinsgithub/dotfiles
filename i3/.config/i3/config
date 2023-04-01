@@ -195,6 +195,9 @@ bar {
         status_command i3status
 }
 
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
 exec wezterm
 exec brave-browser
 exec_always feh --bg-scale ~/.wallpapers/uhdpaper.com-download-hd-wallpaper-1204a.jpg

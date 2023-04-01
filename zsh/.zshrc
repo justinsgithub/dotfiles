@@ -132,3 +132,5 @@ fpath+=~/.zfunc
 # to fix Node.js error, added command to the beginning of package.json "dev" command instead
 # export NODE_OPTIONS=--openssl-legacy-provider 
 setxkbmap -option "caps:swapescape"
+
+setxkbmap -I$HOME/.xkb -print | sed 's/\(xkb_symbols.*\)"/\1+custom(numlock_to_super)"/' | xkbcomp -I$HOME/.xkb - $DISPLAY  > /dev/null 2>&1

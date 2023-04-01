@@ -92,6 +92,23 @@ return packer.startup(function(use)
 	use("elzr/vim-json")
 	use("jparise/vim-graphql")
 	use("norcalli/nvim-colorizer.lua")
+	use("LunarVim/lunar.nvim")
+	use("/home/justin/github/justinsgithub/monokai-vibrant.nvim")
+	use({
+    "/home/justin/github/justinsgithub/oh-my-monokai",
+    -- commit = "c49d65af794cd97c49331237eb7ae208b93f9363",
+		config = function()
+			require("mprovibe").setup({
+				transparent_background = false,
+				filter = "justinsgithub",
+				--[[ override = function() ]]
+				--[[ 	return { ]]
+				--[[ 		Normal = { bg = "#000000" }, ]]
+				--[[ 	} ]]
+				--[[ end, ]]
+			})
+		end,
+	})
 
 	-- cmp plugins
 	use({ "folke/neodev.nvim" })
