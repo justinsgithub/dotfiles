@@ -68,7 +68,7 @@ table.insert(mykeys, { key = "n", mods = "ALT", action = wezterm.action({ SpawnT
 
 return {
   audible_bell = "Disabled",
-	window_background_opacity = 0.99,
+	window_background_opacity = 0.90,
 	scrollback_lines = 10000,
 	color_scheme = "Monokai Vivid",
 	exit_behavior = "Close",

@@ -35,6 +35,12 @@ cmp.setup({
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
+	window = {
+		border = "rounded",
+	},
+	completion = {
+		border = "rounded",
+	},
 	mapping = {
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
@@ -85,10 +91,10 @@ cmp.setup({
 			-- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 			-- if entry.source.name == "cmp_tabnine" then
-				-- if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-				-- menu = entry.completion_item.data.detail .. " " .. menu
-				-- end
-				-- vim_item.kind = icons.misc.Robot
+			-- if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+			-- menu = entry.completion_item.data.detail .. " " .. menu
+			-- end
+			-- vim_item.kind = icons.misc.Robot
 			--end
 			vim_item.menu = ({
 				-- nvim_lsp = "[LSP]",

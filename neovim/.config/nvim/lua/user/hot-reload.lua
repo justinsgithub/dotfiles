@@ -1,4 +1,4 @@
-local M = {}
+local cmd = vim.api.nvim_create_user_command
 
 local function _assign(old, new, k)
 	local otype = type(old[k])
@@ -18,7 +18,7 @@ local function _replace(old, new, repeat_tbl)
 
 	--收集该删除的
 	local dellist = {}
-	for k, v in pairs(old) do
+	for k, _ in pairs(old) do
 		if not new[k] then
 			table.insert(dellist, k)
 		end
@@ -28,7 +28,7 @@ local function _replace(old, new, repeat_tbl)
 	end
 
 	--增加和替换
-	for k, v in pairs(new) do
+	for k, _ in pairs(new) do
 		if not old[k] then
 			old[k] = new[k]
 		else
@@ -46,60 +46,26 @@ local function _replace(old, new, repeat_tbl)
 	end
 end
 
-function reload(mod)
+cmd('HotReload', function(opts)
+  local mod = opts.args
 	if not package.loaded[mod] then
 		local m = require(mod)
 		return m
 	end
-	vim.notify "begin reload!!!"
+	vim.notify "Reloading Module!!"
 
 	local old = package.loaded[mod]
 	package.loaded[mod] = nil
 	local new = require(mod)
 
 	if type(old) == "table" and type(new) == "table" then
-		vim.notify("pick object in new module to old module!!!")
 		local repeat_tbl = {}
 		_replace(old, new, repeat_tbl)
 	end
 
 	package.loaded[mod] = old
-	vim.notify("finish reload!!!")
+	vim.notify("Finished Reload!!!")
 	return old
-end
-
--- local functor = {}
--- M.functor = functor
--- functor.__index = functor
---
--- function functor.new(func, mod, ...)
---   local self = {}
---   self.func = func
---   self.mod = mod
---   local arg_len = select("#", ...)
---   local arg1 = select(1, ...)
---   if arg1 or arg_len > 1 then
---     self.args = table.pack(...)
---   end
---   setmetatable(self, functor)
---   return self
--- end
---
--- function functor:get()
---   if self.mod then
---     return self.mod[self.func]
---   else
---     return self.func
---   end
--- end
---
--- function functor:call(...)
---   local func = self:get()
---   if self.args then
---     return func(table.unpack(self.args), ...)
---   else
---     return func(...)
---   end
--- end
-
-return M
+end,
+  {nargs = 1}
+)

@@ -1,3 +1,7 @@
+--[[ nnoremap gpt <cmd>lua require('goto-preview').goto_preview_type_definition()<CR> ]]
+--[[ nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR> ]]
+--[[ nnoremap gpr <cmd>lua require('goto-preview').goto_preview_references()<CR> ]]
+
 local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
 	return
@@ -14,13 +18,13 @@ local setup = {
 		-- the presets plugin, adds help for a bunch of default keybindings in Neovim
 		-- No actual key bindings are created
 		presets = {
-			operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-			motions = true, -- adds help for motions
-			text_objects = true, -- help for text objects triggered after entering an operator
-			windows = true, -- default bindings on <c-w>
-			nav = true, -- misc bindings to work with windows
+			operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+			motions = false, -- adds help for motions
+			text_objects = false, -- help for text objects triggered after entering an operator
+			windows = false, -- default bindings on <c-w>
+			nav = false, -- misc bindings to work with windows
 			z = true, -- bindings for folds, spelling and others prefixed with z
-			g = true, -- bindings for prefixed with g
+			g = false, -- bindings for prefixed with g
 		},
 	},
 	-- add operators that will trigger motion and text object completion
@@ -34,7 +38,7 @@ local setup = {
 		-- ["<tab>"] = "TAB",
 	},
 	icons = {
-		breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+		breadcrumb = "»", -- symbol used in the command line area that shows ytur active key combo
 		separator = "➜", -- symbol used between a key and it's label
 		group = "+", -- symbol prepended to a group
 	},
@@ -155,6 +159,8 @@ local mappings = {
 			"Prev Diagnostic",
 		},
 		l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Action" },
+    p = {"<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Go To Preview"},
+    P = {"<cmd>lua require('goto-preview').close_all_win()<CR>", "Close Preview Windows"},
 		q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "Quickfix" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
 		T = { "<cmd>TroubleToggle<CR>", "Trouble Toggle" },

@@ -67,6 +67,8 @@ alias mkbuild="mkdocs build"
 
 alias vimconf="nvim ~/.dotfiles/neovim/.config/nvim"
 
+alias vimplugs="nvim ~/.dotfiles/neovim/.config/nvim/lua/user/plugins.lua"
+
 alias alaconf="nvim ~/.dotfiles/alacritty/.config/alacritty/alacritty.yml"
 
 alias dotconf="nvim ~/.dotfiles/README.md"
@@ -105,6 +107,8 @@ alias pyserve="python3 -m http.server"
 
 # alias pip="python3.11 -m pip"
 
+alias i3class="xprop"
+
 alias update="sudo apt update && sudo apt upgrade"
 
 export NVM_DIR="$HOME/.nvm"
@@ -131,6 +135,7 @@ fpath+=~/.zfunc
 
 # to fix Node.js error, added command to the beginning of package.json "dev" command instead
 # export NODE_OPTIONS=--openssl-legacy-provider 
-setxkbmap -option "caps:swapescape"
 
 setxkbmap -I$HOME/.xkb -print | sed 's/\(xkb_symbols.*\)"/\1+custom(numlock_to_super)"/' | xkbcomp -I$HOME/.xkb - $DISPLAY  > /dev/null 2>&1
+setxkbmap -option "caps:swapescape"
+# feh --bg-scale ~/.wallpapers/uhdpaper.com-download-hd-wallpaper-1204a.jpg

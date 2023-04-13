@@ -115,28 +115,28 @@ bindsym $mod+a focus parent
 # set $ws2 "2"
 set $ws1 "1. Term"
 set $ws2 "2. Web"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws3 "3. Joplin"
+set $ws4 "4."
+set $ws5 "5."
+set $ws6 "6."
+set $ws7 "7."
+set $ws8 "8."
+set $ws9 "9."
+set $ws10 "10."
 
 # switch to workspace
 # bindsym $mod+1 workspace number $ws1
 bindsym $mod+1 workspace $ws1
 # bindsym $mod+2 workspace number $ws2
 bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 # bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -154,6 +154,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 assign [class="org.wezfurlong.wezterm"] $ws1
 assign [class="Brave-browser"] $ws2
+assign [class="Joplin"] $ws3
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -198,6 +199,19 @@ bar {
 # bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 # bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
+# exec xrandr --output eDP-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-2 --off
 exec wezterm
 exec brave-browser
+exec joplin
 exec_always feh --bg-scale ~/.wallpapers/uhdpaper.com-download-hd-wallpaper-1204a.jpg
+exec compton
+
+# Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png

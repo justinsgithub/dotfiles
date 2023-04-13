@@ -15,15 +15,22 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	vim.cmd([[packadd packer.nvim]])
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+-- PackerCompile needs to be ran anytime plugins are changed
+-- PackerClean will remove unused plugins
+-- PackerUpdate will remove unused, update current, and install new plugins
+-- PackerInstall will install new plugins
+-- PackerSync will Perform `PackerUpdate` and then `PackerCompile`.
+-- SLOW INTERNET - PackerInstall && PackerCompile
 
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+-- vim.cmd([[
+  --[[ augroup packer_user_config ]]
+  --[[   autocmd! ]]
+  --[[   autocmd BufWritePost plugins.lua source <afile> | PackerSync ]]
+  --[[ augroup end ]]
+-- ]])
 -- Use a protected call so we don't error out on first use
+
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
 	return
@@ -41,6 +48,7 @@ packer.init({
 -- rm packer_compiled.lua if acting weird
 -- Install plugins here
 return packer.startup(function(use)
+  use({ "MunifTanjim/nui.nvim"} )
 	use({ "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" }) -- Have packer manage itself
 	use({ "nvim-lua/plenary.nvim", commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7" }) -- Useful lua functions used by lots of plugins
 	use({ "windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" }) -- Autopairs, integrates with both cmp and treesitter
@@ -93,22 +101,14 @@ return packer.startup(function(use)
 	use("jparise/vim-graphql")
 	use("norcalli/nvim-colorizer.lua")
 	use("LunarVim/lunar.nvim")
-	use("/home/justin/github/justinsgithub/monokai-vibrant.nvim")
+	--[[ use("/home/justin/github/justinsgithub/monokai-vibrant.nvim") ]]
+  use("navarasu/onedark.nvim")
 	use({
     "/home/justin/github/justinsgithub/oh-my-monokai",
     -- commit = "c49d65af794cd97c49331237eb7ae208b93f9363",
-		config = function()
-			require("mprovibe").setup({
-				transparent_background = false,
-				filter = "justinsgithub",
-				--[[ override = function() ]]
-				--[[ 	return { ]]
-				--[[ 		Normal = { bg = "#000000" }, ]]
-				--[[ 	} ]]
-				--[[ end, ]]
-			})
-		end,
 	})
+  --[[ use{"justinsgithub/oh-my-monokai.nvim"} ]]
+  use{"rktjmp/lush.nvim"}
 
 	-- cmp plugins
 	use({ "folke/neodev.nvim" })
@@ -149,6 +149,14 @@ return packer.startup(function(use)
 	use({ "neovim/nvim-lspconfig", commit = "f11fdff7e8b5b415e5ef1837bdcdd37ea6764dda" }) -- enable LSP
 	use({ "williamboman/mason.nvim", commit = "c2002d7a6b5a72ba02388548cfaf420b864fbc12" }) -- simple to use language server installer
 	use({ "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" })
+  use({
+  "folke/persistence.nvim",
+  event = "BufReadPre", -- this will only start session saving when an actual file was opened
+  module = "persistence",
+  config = function()
+    require("persistence").setup()
+  end,
+})
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42", enabled = true })
 	use({ "jose-elias-alvarez/typescript.nvim", commit = "f66d4472606cb24615dfb7dbc6557e779d177624" })
