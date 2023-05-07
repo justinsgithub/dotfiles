@@ -45,6 +45,8 @@ alias rm="gio trash"
 
 alias mkdir="mkdir -pv"
 
+alias INSTALL='sudo apt install --install-suggests'
+
 # alias python="python3.11"
 
 # alias py="python3.11"
@@ -132,10 +134,12 @@ esac
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+alias windowclassname="xprop"
+
 
 # to fix Node.js error, added command to the beginning of package.json "dev" command instead
 # export NODE_OPTIONS=--openssl-legacy-provider 
 
-setxkbmap -I$HOME/.xkb -print | sed 's/\(xkb_symbols.*\)"/\1+custom(numlock_to_super)"/' | xkbcomp -I$HOME/.xkb - $DISPLAY  > /dev/null 2>&1
-setxkbmap -option "caps:swapescape"
+# setxkbmap -I$HOME/.xkb -print | sed 's/\(xkb_symbols.*\)"/\1+custom(numlock_to_super)"/' | xkbcomp -I$HOME/.xkb - $DISPLAY  > /dev/null 2>&1
+# setxkbmap -option "caps:swapescape"
 # feh --bg-scale ~/.wallpapers/uhdpaper.com-download-hd-wallpaper-1204a.jpg

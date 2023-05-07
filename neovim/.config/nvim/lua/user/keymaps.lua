@@ -39,8 +39,8 @@ keymap("v", "|", '"+', opts)
 
 
 -- Bufferline
-keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<S-l>", ":TablineBufferNext<CR>", opts)
+keymap("n", "<S-h>", ":TablineBufferPrevious<CR>", opts)
 --[[ keymap("n", "<leader>bc", ":bprevious<CR>", opts) ]]
 
 -- move text up and down
@@ -66,7 +66,7 @@ keymap("n", "\\7", ":BufferLineGoToBuffer 7<CR>", opts)
 keymap("n", "\\8", ":BufferLineGoToBuffer 8<CR>", opts)
 keymap("n", "\\9", ":BufferLineGoToBuffer 9<CR>", opts)
 --[[ keymap("n", "\\$", ":BufferLineGoToBuffer -1<CR>", opts) ]]
-keymap("n", "\\t", ":tabnew %<CR>", opts)
+keymap("n", "\\t", ":TablineTabNew", opts)
 
 -- Insert
 -- Press jk fast to exit insert mode

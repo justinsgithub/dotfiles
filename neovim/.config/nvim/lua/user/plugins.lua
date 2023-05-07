@@ -24,10 +24,10 @@ end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 -- vim.cmd([[
-  --[[ augroup packer_user_config ]]
-  --[[   autocmd! ]]
-  --[[   autocmd BufWritePost plugins.lua source <afile> | PackerSync ]]
-  --[[ augroup end ]]
+--[[ augroup packer_user_config ]]
+--[[   autocmd! ]]
+--[[   autocmd BufWritePost plugins.lua source <afile> | PackerSync ]]
+--[[ augroup end ]]
 -- ]])
 -- Use a protected call so we don't error out on first use
 
@@ -48,25 +48,54 @@ packer.init({
 -- rm packer_compiled.lua if acting weird
 -- Install plugins here
 return packer.startup(function(use)
-  use({ "MunifTanjim/nui.nvim"} )
-	use({ "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" }) -- Have packer manage itself
-	use({ "nvim-lua/plenary.nvim", commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7" }) -- Useful lua functions used by lots of plugins
-	use({ "windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" }) -- Autopairs, integrates with both cmp and treesitter
-	use({ "numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67" })
-	use({ "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352" })
-	use({ "kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" })
-
-	-- Treesitter
-	use({ "nvim-treesitter/nvim-treesitter", commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac", run = ":TSUpdate" })
-
 	use({
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		commit = "4d3a68c41a53add8804f471fcc49bb398fe8de08",
-		requires = "nvim-treesitter/nvim-treesitter",
+		"MunifTanjim/nui.nvim",
+		{ "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" },
+		{ "nvim-lua/plenary.nvim", commit = "4b7e52044bbb84242158d977a50c4cbcd85070c7" }, -- Useful lua functions used by lots of plugins
+		{ "windwp/nvim-autopairs", commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" }, -- Autopairs, integrates with both cmp and treesitter
+		{ "numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67" },
+		{ "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352" },
+		{ "kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" },
+		{ "nvim-treesitter/nvim-treesitter", commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac", run = ":TSUpdate" },
+		{
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			commit = "4d3a68c41a53add8804f471fcc49bb398fe8de08",
+			requires = "nvim-treesitter/nvim-treesitter",
+		},
 	})
-	use({ "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" })
+
+	--[[ use({ "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" }) ]]
 	use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
 	use({ "nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" })
+  use {
+  'kdheepak/tabline.nvim',
+  config = function()
+    require'tabline'.setup {
+      -- Defaults configuration options
+      enable = true,
+      -- options = {
+      -- If lualine is installed tabline will use separators configured in lualine by default.
+      -- These options can be used to override those settings.
+      --  section_separators = {'', ''},
+      --  component_separators = {'', ''},
+      --  max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
+      --  show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
+      --  show_devicons = true, -- this shows devicons in buffer section
+      --  show_bufnr = false, -- this appends [bufnr] to buffer section,
+      --  show_filename_only = false, -- shows base filename only instead of relative path in filename
+      --  modified_icon = "+ ", -- change the default modified icon
+      --  modified_italic = false, -- set to true by default; this determines whether the filename turns italic if modified
+      --  show_tabs_only = false, -- this shows only tabs instead of tabs + buffers
+      -- }
+    }
+    vim.cmd[[
+      "set guioptions-=e " Use showtabline in gui vim ()
+      set sessionoptions+=tabpages,globals " store tabpages and globals in session
+    ]]
+  end,
+  -- requires = { { 'hoob3rt/lualine.nvim', opt=true }, {'kyazdani42/nvim-web-devicons', opt = true} }
+  requires = 'kyazdani42/nvim-web-devicons'
+}
 	-- use { "akinsho/toggleterm.nvim", commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda" } do not need terminal in text editor
 
 	use({ "lewis6991/impatient.nvim", commit = "b842e16ecc1a700f62adb9802f8355b99b52a5a6" })
@@ -78,8 +107,8 @@ return packer.startup(function(use)
 
 	-- colorscheme plugins
 	use({
-    "loctvl842/monokai-pro.nvim",
-    commit = "c49d65af794cd97c49331237eb7ae208b93f9363",
+		"loctvl842/monokai-pro.nvim",
+		commit = "c49d65af794cd97c49331237eb7ae208b93f9363",
 		config = function()
 			require("monokai-pro").setup({
 				transparent_background = false,
@@ -102,13 +131,19 @@ return packer.startup(function(use)
 	use("norcalli/nvim-colorizer.lua")
 	use("LunarVim/lunar.nvim")
 	--[[ use("/home/justin/github/justinsgithub/monokai-vibrant.nvim") ]]
-  use("navarasu/onedark.nvim")
+	use("navarasu/onedark.nvim")
 	use({
-    "/home/justin/github/justinsgithub/oh-my-monokai",
-    -- commit = "c49d65af794cd97c49331237eb7ae208b93f9363",
+		"/home/justin/github/justinsgithub/oh-my-monokai.nvim",
+		-- commit = "c49d65af794cd97c49331237eb7ae208b93f9363",
 	})
-  --[[ use{"justinsgithub/oh-my-monokai.nvim"} ]]
-  use{"rktjmp/lush.nvim"}
+	--[[ use({ ]]
+	--[[ 	"/home/justin/github/justinsgithub/tab-daddy.nvim", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("nvchad_ui") ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
+	--[[ use{"justinsgithub/oh-my-monokai.nvim"} ]]
+	use({ "rktjmp/lush.nvim" })
 
 	-- cmp plugins
 	use({ "folke/neodev.nvim" })
@@ -149,14 +184,14 @@ return packer.startup(function(use)
 	use({ "neovim/nvim-lspconfig", commit = "f11fdff7e8b5b415e5ef1837bdcdd37ea6764dda" }) -- enable LSP
 	use({ "williamboman/mason.nvim", commit = "c2002d7a6b5a72ba02388548cfaf420b864fbc12" }) -- simple to use language server installer
 	use({ "williamboman/mason-lspconfig.nvim", commit = "0051870dd728f4988110a1b2d47f4a4510213e31" })
-  use({
-  "folke/persistence.nvim",
-  event = "BufReadPre", -- this will only start session saving when an actual file was opened
-  module = "persistence",
-  config = function()
-    require("persistence").setup()
-  end,
-})
+	use({
+		"folke/persistence.nvim",
+		event = "BufReadPre", -- this will only start session saving when an actual file was opened
+		module = "persistence",
+		config = function()
+			require("persistence").setup()
+		end,
+	})
 	use({ "jose-elias-alvarez/null-ls.nvim", commit = "c0c19f32b614b3921e17886c541c13a72748d450" }) -- for formatters and linters
 	use({ "RRethy/vim-illuminate", commit = "a2e8476af3f3e993bb0d6477438aad3096512e42", enabled = true })
 	use({ "jose-elias-alvarez/typescript.nvim", commit = "f66d4472606cb24615dfb7dbc6557e779d177624" })

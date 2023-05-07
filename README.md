@@ -18,6 +18,12 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 
 sudo pip install pynvim
 
+sudo apt-get install fonts-powerline
+
+sudo apt-get install rofi
+
+pip install --user bumblebee-status
+
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 nvm install node
