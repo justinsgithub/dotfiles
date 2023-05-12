@@ -6,8 +6,8 @@ local servers = {
 	"cssls",
 	"html",
 	"tsserver",
-	--[[ "jedi_language_server", ]]
-	--[[ "pyright", ]]
+	"jedi_language_server",
+	"pyright",
 	"tailwindcss",
 	"bashls",
 	"jsonls",

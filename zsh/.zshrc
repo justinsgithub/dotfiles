@@ -113,6 +113,8 @@ alias i3class="xprop"
 
 alias update="sudo apt update && sudo apt upgrade"
 
+alias gtypist="/bin/gtypist -b"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
