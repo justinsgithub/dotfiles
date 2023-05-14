@@ -23,12 +23,11 @@ end
 -- SLOW INTERNET - PackerInstall && PackerCompile
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
--- vim.cmd([[
---[[ augroup packer_user_config ]]
---[[   autocmd! ]]
---[[   autocmd BufWritePost plugins.lua source <afile> | PackerSync ]]
---[[ augroup end ]]
--- ]])
+vim.cmd([[
+augroup packer_user_config
+  autocmd!
+  autocmd BufWritePost plugins.lua source <afile> | PackerSync
+augroup end]])
 -- Use a protected call so we don't error out on first use
 
 local status_ok, packer = pcall(require, "packer")
@@ -103,7 +102,7 @@ return packer.startup(function(use)
 	use({ "goolord/alpha-nvim", commit = "0bb6fc0646bcd1cdb4639737a1cee8d6e08bcc31" })
 	use({ "folke/which-key.nvim" })
 
-	--[[ use("wakatime/vim-wakatime") ]]
+	use("wakatime/vim-wakatime")
 
 	-- colorscheme plugins
 	use({

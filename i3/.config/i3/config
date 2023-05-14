@@ -159,7 +159,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 assign [class="org.wezfurlong.wezterm"] $ws1
-assign [class="Brave-browser"] $ws2
+assign [class="google-chrome"] $ws2
 # assign [class="Joplin"] $ws3
 
 # reload the configuration file
@@ -219,7 +219,7 @@ bar {
 
 # exec xrandr --output eDP-1 --off --output HDMI-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-2 --off
 exec wezterm
-exec brave-browser
+exec google-chrome
 # exec joplin
 exec_always feh --bg-scale ~/.wallpapers/uhdpaper.com-download-hd-wallpaper-1204a.jpg
 exec compton

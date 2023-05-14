@@ -1,5 +1,7 @@
 local wezterm = require("wezterm")
 
+local act = wezterm.action
+
 -- CTRL + SHIFT + ARROW = switch panes
 local mykeys = {}
 for i = 1, 8 do
@@ -7,21 +9,25 @@ for i = 1, 8 do
 	table.insert(mykeys, {
 		key = tostring(i),
 		mods = "ALT",
-		action = wezterm.action({ ActivateTab = i - 1 }),
+		action = act({ ActivateTab = i - 1 }),
 	})
 end
 
-table.insert(mykeys, { key = "[", mods = "ALT", action = wezterm.action.MoveTabRelative(-1) })
-table.insert(mykeys, { key = "]", mods = "ALT", action = wezterm.action.MoveTabRelative(1) })
-table.insert(mykeys, { key = "m", mods = "ALT", action = wezterm.action({ SendString = "Hello" }) })
+table.insert(mykeys, { key = "[", mods = "ALT", action = act.MoveTabRelative(-1) })
+table.insert(mykeys, { key = "]", mods = "ALT", action = act.MoveTabRelative(1) })
+table.insert(mykeys, { key = "m", mods = "ALT", action = act({ SendString = "Hello" }) })
 table.insert(mykeys, { key = "f", mods = "ALT", action = "ToggleFullScreen" })
-table.insert( mykeys, { key = "H", mods = "ALT", action = wezterm.action({ SplitVertical = { domain = "CurrentPaneDomain" } }) })
-table.insert( mykeys, { key = "V", mods = "ALT", action = wezterm.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) })
-table.insert( mykeys, { key = "h", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Left" }) })
-table.insert( mykeys, { key = "j", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Down" }) })
-table.insert( mykeys, { key = "k", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Up" }) })
-table.insert( mykeys, { key = "l", mods = "ALT", action = wezterm.action({ ActivatePaneDirection =  "Right" }) })
-table.insert(mykeys, { key = "n", mods = "ALT", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) })
+table.insert( mykeys, { key = "H", mods = "ALT", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) })
+table.insert( mykeys, { key = "V", mods = "ALT", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) })
+table.insert( mykeys, { key = "h", mods = "ALT", action = act({ ActivatePaneDirection =  "Left" }) })
+table.insert( mykeys, { key = "j", mods = "ALT", action = act({ ActivatePaneDirection =  "Down" }) })
+table.insert( mykeys, { key = "k", mods = "ALT", action = act({ ActivatePaneDirection =  "Up" }) })
+table.insert( mykeys, { key = "l", mods = "ALT", action = act({ ActivatePaneDirection =  "Right" }) })
+table.insert(mykeys, { key = "n", mods = "ALT", action = act({ SpawnTab = "CurrentPaneDomain" }) })
+table.insert(mykeys, { key = "h", mods = "CTRL|ALT", action = act.AdjustPaneSize{'Left', 1} })
+table.insert(mykeys, { key = "j", mods = "CTRL|ALT", action = act.AdjustPaneSize{'Down', 1} })
+table.insert(mykeys, { key = "k", mods = "CTRL|ALT", action = act.AdjustPaneSize{'Up', 1} })
+table.insert(mykeys, { key = "l", mods = "CTRL|ALT", action = act.AdjustPaneSize{'Right', 1} })
 
 -- The filled in variant of the < symbol
 --[[ local SOLID_LEFT_ARROW = utf8.char(0xe0b2) ]]

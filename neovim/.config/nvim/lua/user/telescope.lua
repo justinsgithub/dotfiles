@@ -27,10 +27,10 @@ telescope.setup({
 	extensions = {
 		project = {
 			base_dirs = {
-				"~/github/justinsgithub/prisma-generator-next",
-				"~/github/justinsgithub/prisma-generator-next/generator",
-				"~/github/justinsgithub/prisma-generator-next/testing",
-				"~/github/justinsgithub/prisma-generator-next/usage",
+				--[[ "~/github/justinsgithub/prisma-generator-next", ]]
+				--[[ "~/github/justinsgithub/prisma-generator-next/generator", ]]
+				--[[ "~/github/justinsgithub/prisma-generator-next/testing", ]]
+				--[[ "~/github/justinsgithub/prisma-generator-next/usage", ]]
 				-- { "~/github/justinsgithub/prisma-generator-next" },
 				-- { "~/dev/src3", max_depth = 4 },
 				-- { path = "~/dev/src4" },

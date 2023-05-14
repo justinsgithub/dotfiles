@@ -13,10 +13,10 @@ if not snip_status_ok then
 	return
 end
 
---[[ local tabnine_status_ok, _ = pcall(require, "cmp_tabnine.config") ]]
---[[ if not tabnine_status_ok then ]]
---[[ 	return ]]
---[[ end ]]
+local tabnine_status_ok, _ = pcall(require, "cmp_tabnine.config")
+if not tabnine_status_ok then
+	return
+end
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -90,12 +90,16 @@ cmp.setup({
 			-- Kind icons
 			-- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-			-- if entry.source.name == "cmp_tabnine" then
-			-- if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-			-- menu = entry.completion_item.data.detail .. " " .. menu
-			-- end
-			-- vim_item.kind = icons.misc.Robot
-			--end
+			if entry.source.name == "cmp_tabnine" then
+				local detail = (entry.completion_item.labelDetails or {}).detail
+				vim_item.kind = icons.misc.Robot
+				if detail and detail:find(".*%%.*") then
+					vim_item.kind = vim_item.kind .. " " .. detail
+				end
+				if (entry.completion_item.data or {}).multiline then
+					vim_item.kind = vim_item.kind .. " " .. "[ML]"
+				end
+			end
 			vim_item.menu = ({
 				-- nvim_lsp = "[LSP]",
 				-- luasnip = "[Snippet]",
@@ -120,7 +124,7 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
-		-- { name = "cmp_tabnine" },
+		{ name = "cmp_tabnine" },
 		{ name = "path" },
 		{ name = "emoji" },
 	},

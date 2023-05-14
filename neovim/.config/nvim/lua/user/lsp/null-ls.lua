@@ -16,7 +16,9 @@ null_ls.setup({
      -- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote", "--print-width=150", "--trailing-comma=all" },
     --	}),
     formatting.prettier,
-		formatting.black.with({ extra_args = { "--fast" } }),
+		formatting.black.with({
+      extra_args = { "--fast", "--line-length=120" } }
+    ),
 		formatting.stylua,
 		formatting.yamlfmt,
 		-- diagnostics.eslint, USES WAY TOO MUCH RESOURCES
