@@ -94,12 +94,9 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Set transparent background
 -- keymap("n", "<space>t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
 -- keymap("n", "\\t", ":hi Normal guibg=NONE ctermbg=NONE<CR>", opts)
-local l_status_ok, leap = pcall(require, "leap")
-if not l_status_ok then
-	return
-end
-
-leap.add_default_mappings()
-
-leap.opts.case_sensitive = false
-
+--[[ local l_status_ok, leap = pcall(require, "leap") ]]
+--[[ if not l_status_ok then ]]
+--[[ 	return ]]
+--[[ end ]]
+--[[ leap.add_default_mappings() ]]
+--[[ leap.opts.case_sensitive = false ]]

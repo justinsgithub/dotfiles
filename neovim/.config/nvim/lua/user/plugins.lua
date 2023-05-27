@@ -63,6 +63,8 @@ return packer.startup(function(use)
 		},
 	})
 
+  use {'iamcco/markdown-preview.nvim'}
+
 	--[[ use({ "akinsho/bufferline.nvim", commit = "83bf4dc7bff642e145c8b4547aa596803a8b4dc4" }) ]]
 	use({ "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" })
 	use({ "nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" })
@@ -251,7 +253,7 @@ return packer.startup(function(use)
 	use({ "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" })
 
 	use("rcarriga/nvim-notify")
-	use({ "ggandor/leap.nvim" })
+	--[[ use({ "ggandor/leap.nvim" }) ]]
 	use("b0o/SchemaStore.nvim")
 	use({ "windwp/nvim-ts-autotag" })
 
