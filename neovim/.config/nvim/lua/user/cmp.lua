@@ -28,7 +28,18 @@ end
 local icons = require("user.icons")
 
 local kind_icons = icons.kind
-
+local function border(hl_name)
+  return {
+    { "╭", hl_name },
+    { "─", hl_name },
+    { "╮", hl_name },
+    { "│", hl_name },
+    { "╯", hl_name },
+    { "─", hl_name },
+    { "╰", hl_name },
+    { "│", hl_name },
+  }
+end
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -36,10 +47,13 @@ cmp.setup({
 		end,
 	},
 	window = {
-		border = "rounded",
-	},
-	completion = {
-		border = "rounded",
+		completion = cmp.config.window.bordered({
+			border = border("CmpBorder"),
+			winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+		}),
+		documentation = cmp.config.window.bordered({
+				border = 'single'
+		}),
 	},
 	mapping = {
 		["<C-k>"] = cmp.mapping.select_prev_item(),

@@ -31,10 +31,13 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Registers
+-- Center after scroll by half page
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
 
--- pipe operator accesses system clipboard
-keymap("n", "|", '"+', opts)
+
+-- Registers
+keymap("n", "|", '"+', opts) -- pipe operator accesses system clipboard
 keymap("v", "|", '"+', opts)
 
 
