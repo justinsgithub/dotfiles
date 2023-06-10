@@ -19,11 +19,12 @@ source $ZSH/oh-my-zsh.sh
 
 # hash -d docs=$HOME/Github/docs
 
-hash -d lua=$HOME/.config/nvim/lua
+hash -d ghdir=$HOME/github
+hash -d dfdir=$HOME/.dotfiles
 
 # alias yarn="myyarn"
 
-alias v="nvim"
+alias v="lvim"
 
 alias p="pnpm"
 
@@ -59,29 +60,27 @@ alias pinstall="pip install"
 
 alias sourcevenv="source venv/bin/activate"
 
-alias zshconf="nvim ~/.dotfiles/zsh/.zshrc && source ~/.zshrc"
+alias zshconf="lvim ~/.dotfiles/zsh/.zshrc && source ~/.zshrc"
 
-alias addchatgpt="nvim ~/.dotfiles/chatgpt"
+alias addchatgpt="lvim ~/.dotfiles/chatgpt"
 
 alias mkserve="mkdocs serve"
 
 alias mkbuild="mkdocs build"
 
-alias vimconf="nvim ~/.dotfiles/neovim/.config/nvim"
+alias vimconf="lvim ~/.dotfiles/lunarvim/.config/lvim/config.lua"
 
-alias vimplugs="nvim ~/.dotfiles/neovim/.config/nvim/lua/user/plugins.lua"
+alias alaconf="lvim ~/.dotfiles/alacritty/.config/alacritty/alacritty.yml"
 
-alias alaconf="nvim ~/.dotfiles/alacritty/.config/alacritty/alacritty.yml"
+alias dotconf="lvim ~/.dotfiles/README.md"
 
-alias dotconf="nvim ~/.dotfiles/README.md"
+alias i3conf="lvim ~/.dotfiles/i3/.config/i3/config"
 
-alias i3conf="nvim ~/.dotfiles/i3/.config/i3/config"
+alias tmuxconf="lvim ~/.dotfiles/tmux/.config/tmux/tmux.conf.local"
 
-alias tmuxconf="nvim ~/.dotfiles/tmux/.config/tmux/tmux.conf.local"
+alias weztermconf="lvim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
 
-alias weztermconf="nvim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
-
-alias promptconf="nvim ~/.oh-my-zsh/custom/themes/agnosterzac.zsh-theme"
+alias promptconf="lvim ~/.oh-my-zsh/custom/themes/agnosterzac.zsh-theme"
 
 alias rustdocs="rustup docs --book"
 
