@@ -94,9 +94,5 @@ press q to stop recording macro
 press @<KEY> to use macro
 
 -- INCREMENT
-visual block select
-
-g<Ctrl+a>
-
 
 ]]

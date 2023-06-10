@@ -55,19 +55,19 @@ keymap("n", ">", ">>", opts)
 keymap("n", "<", "<<", opts)
 
 -- THE BEES KNEES (backslash commands)
-keymap("n", "\\b", ":BufferLinePick<CR>", opts)
+--[[ keymap("n", "\\b", ":BufferLinePick<CR>", opts) ]]
 keymap("n", "\\c", ":Bwipeout<CR>", opts)
 -- keymap("n", "\\f", ":Telescope live_grep theme=ivy<cr>", opts)
 keymap("n", "\\s", ":w<CR>", opts)
-keymap("n", "\\1", ":BufferLineGoToBuffer 1<CR>", opts)
-keymap("n", "\\2", ":BufferLineGoToBuffer 2<CR>", opts)
-keymap("n", "\\3", ":BufferLineGoToBuffer 3<CR>", opts)
-keymap("n", "\\4", ":BufferLineGoToBuffer 4<CR>", opts)
-keymap("n", "\\5", ":BufferLineGoToBuffer 5<CR>", opts)
-keymap("n", "\\6", ":BufferLineGoToBuffer 6<CR>", opts)
-keymap("n", "\\7", ":BufferLineGoToBuffer 7<CR>", opts)
-keymap("n", "\\8", ":BufferLineGoToBuffer 8<CR>", opts)
-keymap("n", "\\9", ":BufferLineGoToBuffer 9<CR>", opts)
+--[[ keymap("n", "\\1", ":BufferLineGoToBuffer 1<CR>", opts) ]]
+--[[ keymap("n", "\\2", ":BufferLineGoToBuffer 2<CR>", opts) ]]
+--[[ keymap("n", "\\3", ":BufferLineGoToBuffer 3<CR>", opts) ]]
+--[[ keymap("n", "\\4", ":BufferLineGoToBuffer 4<CR>", opts) ]]
+--[[ keymap("n", "\\5", ":BufferLineGoToBuffer 5<CR>", opts) ]]
+--[[ keymap("n", "\\6", ":BufferLineGoToBuffer 6<CR>", opts) ]]
+--[[ keymap("n", "\\7", ":BufferLineGoToBuffer 7<CR>", opts) ]]
+--[[ keymap("n", "\\8", ":BufferLineGoToBuffer 8<CR>", opts) ]]
+--[[ keymap("n", "\\9", ":BufferLineGoToBuffer 9<CR>", opts) ]]
 --[[ keymap("n", "\\$", ":BufferLineGoToBuffer -1<CR>", opts) ]]
 keymap("n", "\\t", ":TablineTabNew", opts)
 
