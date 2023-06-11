@@ -1,7 +1,7 @@
 export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin
 
 export ZSH="$HOME/.oh-my-zsh"
-
+# export POETRY_VIRTUALENVS_IN_PROJECT=true
 # [ -f ~/.envars ] && source ~/.envars
 
 # [ -f ~/.zreferences.sh ] && source ~/.zreferences.sh
