@@ -24,6 +24,7 @@ hash -d dotfilesdir=$HOME/.dotfiles
 hash -d justinsgithubdir=$HOME/github/justinsgithub
 hash -d tttdir=$HOME/github/justinsgithub/terminal-typing-tutor
 hash -d ommdir=$HOME/github/justinsgithub/oh-my-monokai.nvim
+hash -d fontsdir=$HOME/.local/share/fonts
 
 # alias yarn="myyarn"
 
