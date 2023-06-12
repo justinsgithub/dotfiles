@@ -59,8 +59,10 @@ table.insert(mykeys, { key = "k", mods = "CTRL|ALT", action = act.AdjustPaneSize
 table.insert(mykeys, { key = "l", mods = "CTRL|ALT", action = act.AdjustPaneSize { 'Right', 1 } })
 
 -- TODO: look into other features for fonts https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist
-config.font = wezterm.font 'Fira Code'
--- config.font = wezterm.font('Fira Code', { italic = true })
+-- config.font = wezterm.font 'Fira Code Nerd Font'
+-- config.font = wezterm.font('Fira Code Nerd Font', { weight = 'Medium', italic = false, stretch= 'Normal' })
+-- config.font = wezterm.font('Fira Code Nerd Font Propo', { weight = 'Medium', italic = false, stretch= 'Normal' })
+config.font = wezterm.font('JetBrains Mono', { weight = 'Medium', italic = false, stretch= 'Normal' })
 config.harfbuzz_features = {
   'calt=1',
   'clig=1',

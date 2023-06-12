@@ -1,6 +1,6 @@
 local options = {
 	backup = false, -- creates a backup file
-	--clipboard = 'unnamedplus',               -- allows neovim to access the system clipboard
+	clipboard = 'unnamedplus',               -- allows neovim to access the system clipboard
   showcmd = true,
 	cmdheight = 2, -- more space in the neovim command line for displaying messages
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp

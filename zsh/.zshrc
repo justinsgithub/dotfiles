@@ -19,12 +19,10 @@ source $ZSH/oh-my-zsh.sh
 
 # hash -d docs=$HOME/Github/docs
 
-hash -d githubdir=$HOME/github
-hash -d dotfilesdir=$HOME/.dotfiles
-hash -d justinsgithubdir=$HOME/github/justinsgithub
-hash -d tttdir=$HOME/github/justinsgithub/terminal-typing-tutor
-hash -d ommdir=$HOME/github/justinsgithub/oh-my-monokai.nvim
-hash -d fontsdir=$HOME/.local/share/fonts
+hash -d github=$HOME/github
+hash -d dotfiles=$HOME/.dotfiles
+hash -d justinsgithub=$HOME/github/justinsgithub
+hash -d fonts=$HOME/.local/share/fonts
 
 # alias yarn="myyarn"
 
