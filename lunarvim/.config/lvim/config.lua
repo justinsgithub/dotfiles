@@ -3,24 +3,35 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 --
---[[ 
-   TODO: 
-        vim-surround
-        harpoon
-        trevj
-        marksman
-        markdown preview
+--[[
+   TODO:
+        harpoon ? no use case yet
 --]]
+-- MasonInstall marksman
+
+require("lvim.lsp.manager").setup("marksman")
 
 -- PLUGINS
 lvim.plugins = {
   "ChristianChiarulli/swenv.nvim",
+  "norcalli/nvim-colorizer.lua",
+  "AckslD/nvim-trevJ.lua",
   "stevearc/dressing.nvim",
+  "tpope/vim-surround",
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    ft = "markdown",
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end,
+  },
   "mfussenegger/nvim-dap-python",
   "nvim-neotest/neotest",
   "nvim-neotest/neotest-python",
+  'iamcco/markdown-preview.nvim',
   { dir = "/home/justin/github/justinsgithub/oh-my-monokai.nvim" },
-  "tiagovla/scope.nvim"
+  "tiagovla/scope.nvim",
 }
 
 -- OPTIONS
@@ -40,6 +51,9 @@ vim.g.maplocalleader = '\\'
 -- Normal --
 keymap("n", "<LocalLeader>b", ":BufferLinePick<CR>", opts)
 keymap("n", "<LocalLeader>w", ":w<CR>", opts)
+keymap("n", "<LocalLeader>c", ":BufferKill<cr>", opts)
+keymap("n", "<LocalLeader>s", ":%s///g", opts)
+keymap("n", "<LocalLeader>j", ":lua require('trevj').format_at_cursor()<CR>", opts)
 keymap("n", "<S-h>", ":bprev<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 
@@ -85,8 +99,48 @@ pcall(function()
 end)
 
 pcall(function()
+  require("colorizer").setup({
+      "css",
+      "scss",
+      "html",
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "lua",
+      "json",
+      "toml",
+      "yaml",
+    },
+    {
+      RGB = true,  -- #RGB hex codes
+      RRGGBB = true, -- #RRGGBB hex codes
+      RRGGBBAA = true, -- #RRGGBBAA hex codes
+      rgb_fn = true, -- CSS rgb() and rgba() functions
+      hsl_fn = true, -- CSS hsl() and hsla() functions
+      css = true,  -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+      css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+    }
+  )
+end)
+
+pcall(function()
   require("scope").setup({
-    restore_state = true,   -- false, -- experimental
+    restore_state = true, -- false, -- experimental
+  })
+end)
+
+pcall(function()
+  require('trevj').setup({
+    containers = {
+      lua = {
+        -- default lua setup
+        table_constructor = { final_separator = ',', final_end_line = true },
+        arguments = { final_separator = false, final_end_line = true },
+        parameters = { final_separator = false, final_end_line = true },
+      },
+      ---   ... other filetypes
+    },
   })
 end)
 
@@ -110,23 +164,22 @@ lvim.format_on_save.enabled = false
 -- WHICH_KEY
 local which_key = lvim.builtin.which_key
 which_key.setup = {
-	plugins = {
-		marks = true, -- shows a list of your marks on ' and `
-		registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-		spelling = {
-			enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-			suggestions = 20, -- how many suggestions should be shown in the list?
-		},
+  plugins = {
+    marks = true,       -- shows a list of your marks on ' and `
+    registers = true,   -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+    spelling = {
+      enabled = true,   -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+      suggestions = 20, -- how many suggestions should be shown in the list?
+    },
   }
 }
 
 which_key.mappings["w"] = {
   name = "Window",
-  c = { "<cmd>close<cr>", "Close Window" },
+  c = { "<cmd>close<CR>", "Close Window" },
 }
 which_key.mappings["t"] = {
   name = "Tabs",
-  n = { "<cmd>tabnew<cr>", "New Tab" },
+  n = { "<cmd>tabnew<CR>", "New Tab" },
   c = { "<cmd>tabclose<cr>", "Close Tab" },
 }
-which_key.mappings["bc"] = { "<cmd>BufferKill<cr>", "Close Buffer" }
