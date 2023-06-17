@@ -7,9 +7,10 @@
    TODO:
         harpoon ? no use case yet
 --]]
--- MasonInstall marksman
+-- MasonInstall marksman yamlfmt
 
 require("lvim.lsp.manager").setup("marksman")
+-- require("lvim.lsp.manager").setup("yamlfmt")
 
 -- PLUGINS
 lvim.plugins = {
@@ -113,13 +114,13 @@ pcall(function()
       "yaml",
     },
     {
-      RGB = true,  -- #RGB hex codes
-      RRGGBB = true, -- #RRGGBB hex codes
+      RGB = true,      -- #RGB hex codes
+      RRGGBB = true,   -- #RRGGBB hex codes
       RRGGBBAA = true, -- #RRGGBBAA hex codes
-      rgb_fn = true, -- CSS rgb() and rgba() functions
-      hsl_fn = true, -- CSS hsl() and hsla() functions
-      css = true,  -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-      css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+      rgb_fn = true,   -- CSS rgb() and rgba() functions
+      hsl_fn = true,   -- CSS hsl() and hsla() functions
+      css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+      css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
     }
   )
 end)
@@ -150,12 +151,34 @@ end)
 
 -- FORMATTING
 local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup { {
-  name = "black",
-  args = { "--print-width", "120" },
-} }
-lvim.format_on_save.enabled = false
--- lvim.format_on_save.pattern = { "*.py" }
+formatters.setup {
+  { name = "black", args = { "--print-width", "120" },
+  { command = "yamlfmt", filetypes= {"yaml"}}
+}
+}
+
+-- local helpers = require("null-ls.helpers")
+-- local FORMATTING = require("null-ls.methods").internal.FORMATTING
+
+-- require("null-ls").register({
+--   --your custom sources go here
+--   --
+--   helpers.make_builtin(
+--     {
+--     name = "yamlfmt",
+--     method = FORMATTING,
+--     filetypes = { "yaml" },
+--     generator_opts = {
+--       command = "yamlfmt",
+--       args = {"-formatter", "max_line_length", "90"}, -- put any required arguments in this table
+--       to_stdin = true, -- instructs the command to ingest the file from STDIN (i.e. run the currently open buffer through the linter/formatter)
+--     },
+--     factory = helpers.formatter_factory,
+--   })
+-- }
+-- )
+
+lvim.format_on_save.pattern = { "*.lua" }
 
 -- LINTING
 -- local linters = require "lvim.lsp.null-ls.linters"

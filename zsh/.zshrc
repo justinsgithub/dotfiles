@@ -20,6 +20,7 @@ source $ZSH/oh-my-zsh.sh
 # hash -d docs=$HOME/Github/docs
 
 hash -d github=$HOME/github
+hash -d docs=$HOME/github/justinsgithub/docs
 hash -d dotfiles=$HOME/.dotfiles
 hash -d justinsgithub=$HOME/github/justinsgithub
 hash -d fonts=$HOME/.local/share/fonts
