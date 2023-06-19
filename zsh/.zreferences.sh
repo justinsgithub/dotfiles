@@ -45,3 +45,7 @@ alias Arepos='cat /etc/apt/sources.list'
 
 # basics 
 alias timels='time ls -R1'  # times the specified command and shows how much of the time was in user space and how much of it was in kernel / system space
+
+# github
+alias _ghlogin="gh auth login"  # checkout pull request
+alias _ghprcheckout="gh pr checkout $1" # checkout pull request

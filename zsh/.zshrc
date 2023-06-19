@@ -12,12 +12,9 @@ CASE_SENSITIVE="true"
 
 export EDITOR="nvim"
 
-# plugins=( npm-yarn vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 plugins=( vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 
 source $ZSH/oh-my-zsh.sh
-
-# hash -d docs=$HOME/Github/docs
 
 hash -d github=$HOME/github
 hash -d docs=$HOME/github/justinsgithub/docs
