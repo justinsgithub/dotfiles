@@ -132,6 +132,8 @@ which_key.setup = {
 }
 which_key.mappings["w"] = {
   name = "Window",
+  h = { "<cmd>split<CR>", "Split Horizontal" },
+  v = { "<cmd>vsplit<CR>", "Split Vertical" },
   c = { "<cmd>close<CR>", "Close Window" },
 }
 
