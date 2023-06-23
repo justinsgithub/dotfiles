@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# changes BASEDIR/nvim to BASEDIR/lvim
+# :- uses NVIM_APPNAME if its set or lvim otherwise
+export NVIM_APPNAME="${NVIM_APPNAME:-"lvim"}"
+
+export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-"/home/justin/.local/share/lunarvim"}"
+export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"/home/justin/.config/lvim"}"
+export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"/home/justin/.cache/lvim"}"
+
+export LUNARVIM_BASE_DIR="${LUNARVIM_BASE_DIR:-"/home/justin/.local/share/lunarvim/lvim"}"
+
+# sets lvim to $0
+exec -a "$NVIM_APPNAME" nvim -u "$LUNARVIM_BASE_DIR/init.lua" "$@"
