@@ -14,6 +14,7 @@ lvim.plugins = {
   "norcalli/nvim-colorizer.lua",
   "AckslD/nvim-trevJ.lua",
   "tpope/vim-surround",
+  "panozzaj/vim-autocorrect",
   {
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install",
@@ -22,6 +23,46 @@ lvim.plugins = {
   },
   { dir = "/home/justin/github/justinsgithub/oh-my-monokai.nvim" },
   "tiagovla/scope.nvim",
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          -- default options: exact mode, multi window, all directions, with a backdrop
+          require("flash").jump(
+            {
+              search = {
+                mode = function(str)
+                  return "\\<" .. str
+                end,
+              },
+            }
+          )
+        end,
+        desc = "Flash",
+      },
+      {
+        "S",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+      {
+        "r",
+        mode = "o",
+        function()
+          require("flash").remote()
+        end,
+        desc = "Remote Flash",
+      },
+    },
+  }
 }
 
 -- OPTIONS
@@ -63,6 +104,17 @@ keymap("v", "|", '"+', opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
+-- AUTOCOMMANDS
+lvim.autocommands = {
+  {
+    "BufEnter", -- see `:h autocmd-events`
+    {
+      -- this table is passed verbatim as `opts` to `nvim_create_autocmd`
+      pattern = { "*.md", "*.txt", "[^.]\\+" }, -- see `:h autocmd-events`
+      command = "call AutoCorrect()",
+    }
+  },
+}
 -- SETUP
 pcall(function()
   require("oh-my-monokai").setup({
@@ -73,7 +125,8 @@ end)
 
 pcall(function()
   require("colorizer").setup(
-    { "css", "scss", "html", "javascript", "typescript", "javascriptreact", "typescriptreact", "lua", "json", "toml", "yaml", },
+    { "css", "scss", "html", "javascript", "typescript", "javascriptreact", "typescriptreact", "lua", "json", "toml",
+      "yaml", },
     {
       RGB = true,      -- #RGB hex codes
       RRGGBB = true,   -- #RRGGBB hex codes
@@ -113,7 +166,7 @@ end)
 -- FORMATTING
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { name = "black",      args = { "--print-width", "120" }, },
+  { name = "black",   args = { "--print-width", "120" }, },
   { name = "yamlfmt", filetypes = { "yaml" } }
 }
 
