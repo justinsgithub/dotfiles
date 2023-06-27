@@ -1,146 +1,75 @@
 export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin
-
 export ZSH="$HOME/.oh-my-zsh"
-# export POETRY_VIRTUALENVS_IN_PROJECT=true
-# [ -f ~/.envars ] && source ~/.envars
-
-# [ -f ~/.zreferences.sh ] && source ~/.zreferences.sh
+export EDITOR="nvim"
+export NVM_DIR="$HOME/.nvm"
+export PNPM_HOME="/home/justin/.local/share/pnpm"
 
 ZSH_THEME="robbyrussell"
-
 CASE_SENSITIVE="true"
-
-export EDITOR="nvim"
-
 plugins=( vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
-
 source $ZSH/oh-my-zsh.sh
 
 hash -d github=$HOME/github
 hash -d docs=$HOME/github/justinsgithub/docs
-hash -d dotfiles=$HOME/.dotfiles
+hash -d dotfiles=$HOME/github/justinsgithub/dotfiles
 hash -d justinsgithub=$HOME/github/justinsgithub
 hash -d fonts=$HOME/.local/share/fonts
 
-# alias yarn="myyarn"
-
 alias v="lvim"
-
 alias p="pnpm"
-
 alias quicknote="vim $HOME/myself/quicknotes.md"
-
 alias laravel="$HOME/.config/composer/vendor/laravel/installer/bin/laravel"
-
 alias -g L='|less'
-
 alias cat="ccat"
-
 alias -g NUL="> /dev/null 2>&1"
-
 alias ls='ls --color=auto'
-
 alias l="ls -1"
-
 alias rm="gio trash"
-
 alias mkdir="mkdir -pv"
-
 alias INSTALL='sudo apt install --install-suggests'
-
-# alias python="python3.11"
-
-# alias py="python3.11"
-
-# alias python3="python3.11"
-
 alias pyvenv="python3 -m venv venv"
-
 alias pinstall="pip install"
-
 alias sourcevenv="source venv/bin/activate"
-
-alias zshconf="lvim ~/.dotfiles/zsh/.zshrc && source ~/.zshrc"
-
-alias addchatgpt="lvim ~/.dotfiles/chatgpt"
-
 alias mkserve="mkdocs serve"
-
 alias mkbuild="mkdocs build"
-
-alias vimconf="lvim ~/.dotfiles/lunarvim/.config/lvim/config.lua"
-
-alias alaconf="lvim ~/.dotfiles/alacritty/.config/alacritty/alacritty.yml"
-
-alias dotconf="lvim ~/.dotfiles/README.md"
-
-alias i3conf="lvim ~/.dotfiles/i3/.config/i3/config"
-
-alias tmuxconf="lvim ~/.dotfiles/tmux/.config/tmux/tmux.conf.local"
-
-alias weztermconf="lvim ~/.dotfiles/wezterm/.config/wezterm/wezterm.lua"
-
-alias promptconf="lvim ~/.oh-my-zsh/custom/themes/agnosterzac.zsh-theme"
-
+alias zshconf="lvim ~dotfiles/zsh/.zshrc && source ~/.zshrc"
+alias vimconf="lvim ~dotfiles/lunarvim/.config/lvim/config.lua"
+alias weztermconf="lvim ~dotfiles/wezterm/.config/wezterm/wezterm.lua"
 alias rustdocs="rustup docs --book"
-
 alias packjson="cat ./package.json"
-
 alias whichtheme="print $RANDOM_THEME"
-
 alias whichports="sudo lsof -i -P -n | grep LISTEN"
-
 alias f="find . -name $1"
-
 alias capswitch="setxkbmap -option caps:escape"
-
 alias nv="node --version"
-
 alias yd="yarn dev"
-
 alias gc="git clone"
-
 alias yb="yarn build"
-
 alias json="python3 -m json.tool"
-
 alias pyserve="python3 -m http.server"
-
-# alias pip="python3.11 -m pip"
-
 alias i3class="xprop"
-
 alias update="sudo apt update && sudo apt upgrade"
-
 alias gtypist="/bin/gtypist -b"
+alias stow="stow --dir=$HOME/github/justinsgithub/dotfiles --target=$HOME"
+alias windowclassname="xprop"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# export PATH="$HOME/.rbenv/bin:$PATH"
-# export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-# eval "$(rbenv init - zsh)"
-
-# [ -f "$HOME/Github/social-automation/env/bin/activate" ] && source "$HOME/Github/social-automation/env/bin/activate"
-
-# pnpm
-export PNPM_HOME="/home/justin/.local/share/pnpm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
-alias windowclassname="xprop"
-
 
 # to fix Node.js error, added command to the beginning of package.json "dev" command instead
 # export NODE_OPTIONS=--openssl-legacy-provider 
-
 # setxkbmap -I$HOME/.xkb -print | sed 's/\(xkb_symbols.*\)"/\1+custom(numlock_to_super)"/' | xkbcomp -I$HOME/.xkb - $DISPLAY  > /dev/null 2>&1
 # setxkbmap -option "caps:swapescape"
 # feh --bg-scale ~/.wallpapers/uhdpaper.com-download-hd-wallpaper-1204a.jpg
+# export POETRY_VIRTUALENVS_IN_PROJECT=true
+# [ -f ~/.envars ] && source ~/.envars
+# [ -f ~/.zreferences.sh ] && source ~/.zreferences.sh
+# alias yarn="myyarn"
