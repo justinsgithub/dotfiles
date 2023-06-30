@@ -79,6 +79,7 @@ lvim.plugins = {
 
 -- OPTIONS
 vim.opt.relativenumber = true -- relative line numbers
+vim.opt.showmode = true -- relative line numbers
 vim.opt.timeoutlen = 500
 vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block"
 vim.opt.clipboard = ""
@@ -90,32 +91,32 @@ lvim.transparent_window = true
 
 -- KEYMAPS
 local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local keyopts = { noremap = true, silent = true }
 vim.g.maplocalleader = '\\'
 
 -- Normal --
-keymap("n", "<LocalLeader>b", ":BufferLinePick<CR>", opts)
-keymap("n", "<LocalLeader>w", ":w<CR>", opts)
-keymap("n", "<LocalLeader>c", ":BufferKill<cr>", opts)
-keymap("n", "<LocalLeader>s", ":%s///g", opts)
-keymap("n", "<LocalLeader>j", ":lua require('trevj').format_at_cursor()<CR>", opts)
-keymap("n", "<S-h>", ":bprev<CR>", opts)
-keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<LocalLeader>b", ":BufferLinePick<CR>", keyopts)
+keymap("n", "<LocalLeader>w", ":w<CR>", keyopts)
+keymap("n", "<LocalLeader>c", ":BufferKill<cr>", keyopts)
+keymap("n", "<LocalLeader>s", ":%s///g", keyopts)
+keymap("n", "<LocalLeader>j", ":lua require('trevj').format_at_cursor()<CR>", keyopts)
+keymap("n", "<S-h>", ":bprev<CR>", keyopts)
+keymap("n", "<S-l>", ":bnext<CR>", keyopts)
 -- pipe operator accesses system clipboard
-keymap("n", "|", '"+', opts)
+keymap("n", "|", '"+', keyopts)
 -- single press indent
-keymap("n", ">", ">>", opts)
-keymap("n", "<", "<<", opts)
+keymap("n", ">", ">>", keyopts)
+keymap("n", "<", "<<", keyopts)
 -- Visual --
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap("v", "<", "<gv", keyopts)
+keymap("v", ">", ">gv", keyopts)
 -- pipe operator accesses system clipboard
-keymap("v", "|", '"+', opts)
+keymap("v", "|", '"+', keyopts)
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv-gv", keyopts)
+keymap("x", "K", ":move '<-2<CR>gv-gv", keyopts)
 
 -- AUTOCOMMANDS
 lvim.autocommands = {
@@ -183,6 +184,16 @@ formatters.setup {
   { name = "yamlfmt", filetypes = { "yaml" } }
 }
 
+-- COMMANDS
+
+vim.api.nvim_create_user_command('MkOpenSrc', function (args)
+  local srcpath = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
+  -- vim.cmd.execute('normal "cyiW')
+  -- vim.cmd("let @m=:e ")
+  vim.cmd("e " .. srcpath)
+end, {desc = "Open code block source file",force = true})
+
+
 -- WHICH_KEY
 local which_key = lvim.builtin.which_key
 
@@ -215,5 +226,14 @@ which_key.mappings["w"] = {
 which_key.mappings["t"] = {
   name = "Tabs",
   n = { "<cmd>tabnew<CR>", "New Tab" },
-  c = { "<cmd>tabclose<cr>", "Close Tab" },
+  c = { "<cmd>tabclose<CR>", "Close Tab" },
+}
+
+which_key.mappings["f"] = which_key.mappings["s"]
+which_key.mappings["f"].name = "Find"
+which_key.mappings["s"] = nil
+
+which_key.mappings["c"] = {
+  name = "My Commands",
+  o = { "<cmd>MkOpenSrc<CR>", "Open Src File" },
 }

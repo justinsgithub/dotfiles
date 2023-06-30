@@ -1,29 +1,7 @@
 local wezterm = require("wezterm")
 
-wezterm.on('user-var-changed', function(window, pane, name, value)
-    local overrides = window:get_config_overrides() or {}
-    if name == "ZEN_MODE" then
-        local incremental = value:find("+")
-        local number_value = tonumber(value)
-        if incremental ~= nil then
-            while (number_value > 0) do
-                window:perform_action(wezterm.action.IncreaseFontSize, pane)
-                number_value = number_value - 1
-            end
-            overrides.enable_tab_bar = false
-        elseif number_value < 0 then
-            window:perform_action(wezterm.action.ResetFontSize, pane)
-            overrides.font_size = nil
-            overrides.enable_tab_bar = true
-        else
-            overrides.font_size = number_value
-            overrides.enable_tab_bar = false
-        end
-    end
-    window:set_config_overrides(overrides)
-end)
-
 local act = wezterm.action
+
 local config = {}
 
 if wezterm.config_builder then
@@ -33,6 +11,7 @@ end
 
 -- CTRL + SHIFT + ARROW = switch panes
 local mykeys = {}
+
 for i = 1, 8 do
   -- CTRL+ALT + number to activate that tab
   table.insert(mykeys, {
@@ -42,27 +21,37 @@ for i = 1, 8 do
   })
 end
 
+table.insert(mykeys, { key = "n", mods = "ALT", action = act({ SpawnTab = "CurrentPaneDomain" }) })
+
+table.insert(mykeys, { key = "f", mods = "ALT", action = "ToggleFullScreen" })
+
+
 table.insert(mykeys, { key = "[", mods = "ALT", action = act.MoveTabRelative(-1) })
 table.insert(mykeys, { key = "]", mods = "ALT", action = act.MoveTabRelative(1) })
-table.insert(mykeys, { key = "m", mods = "ALT", action = act({ SendString = "Hello" }) })
-table.insert(mykeys, { key = "f", mods = "ALT", action = "ToggleFullScreen" })
+
 table.insert(mykeys, { key = "H", mods = "ALT", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) })
 table.insert(mykeys, { key = "V", mods = "ALT", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) })
+
 table.insert(mykeys, { key = "h", mods = "ALT", action = act({ ActivatePaneDirection = "Left" }) })
 table.insert(mykeys, { key = "j", mods = "ALT", action = act({ ActivatePaneDirection = "Down" }) })
 table.insert(mykeys, { key = "k", mods = "ALT", action = act({ ActivatePaneDirection = "Up" }) })
 table.insert(mykeys, { key = "l", mods = "ALT", action = act({ ActivatePaneDirection = "Right" }) })
-table.insert(mykeys, { key = "n", mods = "ALT", action = act({ SpawnTab = "CurrentPaneDomain" }) })
+
+
 table.insert(mykeys, { key = "h", mods = "CTRL|ALT", action = act.AdjustPaneSize { 'Left', 1 } })
 table.insert(mykeys, { key = "j", mods = "CTRL|ALT", action = act.AdjustPaneSize { 'Down', 1 } })
 table.insert(mykeys, { key = "k", mods = "CTRL|ALT", action = act.AdjustPaneSize { 'Up', 1 } })
 table.insert(mykeys, { key = "l", mods = "CTRL|ALT", action = act.AdjustPaneSize { 'Right', 1 } })
 
--- TODO: look into other features for fonts https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist
--- config.font = wezterm.font 'Fira Code Nerd Font'
--- config.font = wezterm.font('Fira Code Nerd Font', { weight = 'Medium', italic = false, stretch= 'Normal' })
--- config.font = wezterm.font('Fira Code Nerd Font Propo', { weight = 'Medium', italic = false, stretch= 'Normal' })
+table.insert(mykeys, { key = "c", mods = "ALT", action = act.ActivateCopyMode })
+
+table.insert(mykeys, { key = "q", mods = "ALT", action = act.QuickSelect })
+
+table.insert(mykeys, { key = "s", mods = "ALT", action = act.Search { CaseSensitiveString = '' } })
+
+
 config.font = wezterm.font('JetBrains Mono', { weight = 'Medium', italic = false, stretch= 'Normal' })
+
 config.harfbuzz_features = {
   'calt=1',
   'clig=1',
@@ -120,45 +109,72 @@ config.keys = mykeys
 
 return config
 
+-- TODO: look into other features for fonts https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist
+-- config.font = wezterm.font 'Fira Code Nerd Font'
+-- config.font = wezterm.font('Fira Code Nerd Font', { weight = 'Medium', italic = false, stretch= 'Normal' })
+-- config.font = wezterm.font('Fira Code Nerd Font Propo', { weight = 'Medium', italic = false, stretch= 'Normal' })
+
+
 -- The filled in variant of the < symbol
---[[ local SOLID_LEFT_ARROW = utf8.char(0xe0b2) ]]
+-- local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
 
 -- The filled in variant of the > symbol
---[[ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0) ]]
+-- local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
 
---[[ wezterm.on( ]]
---[[   'format-tab-title', ]]
---[[   function(tab, tabs, panes, config, hover, max_width) ]]
---[[     local edge_background = '#0b0022' ]]
---[[     local background = '#1b1032' ]]
---[[     local foreground = '#808080' ]]
---[[]]
---[[     if tab.is_active then ]]
---[[       background = '#2b2042' ]]
---[[       foreground = '#c0c0c0' ]]
---[[     elseif hover then ]]
---[[       background = '#3b3052' ]]
---[[       foreground = '#909090' ]]
---[[     end ]]
---[[]]
---[[     local edge_foreground = background ]]
---[[]]
--- ensure that the titles fit in the available space,
--- and that we have room for the edges.
---[[ local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2) ]]
---[[ local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2) ]]
---[[ local t = wezterm.truncate_right(tab.active_pane.pane_id, max_width - 2) ]]
+-- wezterm.on( 'format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+--   local edge_background = '#0b0022'
+--   local background = '#1b1032'
+--   local foreground = '#808080'
 
---[[     return { ]]
---[[       { Background = { Color = edge_background } }, ]]
---[[       { Foreground = { Color = edge_foreground } }, ]]
---[[       --[[ { Text = SOLID_LEFT_ARROW }, ]]
---[[       { Background = { Color = background } }, ]]
---[[       { Foreground = { Color = foreground } }, ]]
---[[       { Text = title }, ]]
---[[       { Background = { Color = edge_background } }, ]]
---[[       { Foreground = { Color = edge_foreground } }, ]]
---[[       --[[ { Text = SOLID_RIGHT_ARROW }, ]]
---[[     } ]]
---[[   end ]]
---[[ ) ]]
+--   if tab.is_active then
+--     background = '#2b2042'
+--     foreground = '#c0c0c0'
+--   elseif hover then
+--     background = '#3b3052'
+--     foreground = '#909090'
+--   end
+
+--   local edge_foreground = background
+
+-- -- ensure that the titles fit in the available space
+-- -- and that we have room for the edges.
+-- local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2)
+-- local title = wezterm.truncate_right(tab.active_pane.title, max_width - 2)
+-- local t = wezterm.truncate_right(tab.active_pane.pane_id, max_width - 2)
+
+--   return {
+--     { Background = { Color = edge_background } },
+--     { Foreground = { Color = edge_foreground } },
+--     { Text = SOLID_LEFT_ARROW },
+--     { Background = { Color = background } },
+--     { Foreground = { Color = foreground } },
+--     { Text = title },
+--     { Background = { Color = edge_background } },
+--     { Foreground = { Color = edge_foreground } },
+--     { Text = SOLID_RIGHT_ARROW },
+--   }
+-- end
+-- )
+-- wezterm.on('user-var-changed', function(window, pane, name, value)
+
+--     local overrides = window:get_config_overrides() or {}
+--     if name == "ZEN_MODE" then
+--         local incremental = value:find("+")
+--         local number_value = tonumber(value)
+--         if incremental ~= nil then
+--             while (number_value > 0) do
+--                 window:perform_action(wezterm.action.IncreaseFontSize, pane)
+--                 number_value = number_value - 1
+--             end
+--             overrides.enable_tab_bar = false
+--         elseif number_value < 0 then
+--             window:perform_action(wezterm.action.ResetFontSize, pane)
+--             overrides.font_size = nil
+--             overrides.enable_tab_bar = true
+--         else
+--             overrides.font_size = number_value
+--             overrides.enable_tab_bar = false
+--         end
+--     end
+--     window:set_config_overrides(overrides)
+-- end)
