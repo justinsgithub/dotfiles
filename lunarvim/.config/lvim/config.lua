@@ -185,13 +185,12 @@ formatters.setup {
 }
 
 -- COMMANDS
-
 vim.api.nvim_create_user_command('MkOpenSrc', function (args)
-  local srcpath = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
   -- vim.cmd.execute('normal "cyiW')
   -- vim.cmd("let @m=:e ")
+  local srcpath = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
   vim.cmd("e " .. srcpath)
-end, {desc = "Open code block source file",force = true})
+end, {desc = "Open code block source file", force = true})
 
 
 -- WHICH_KEY
