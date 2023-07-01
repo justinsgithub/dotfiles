@@ -8,6 +8,7 @@ require("lvim.lsp.manager").setup("marksman")
 -- PLUGINS
 lvim.plugins = {
   "ChristianChiarulli/swenv.nvim",
+  "ja-ford/delaytrain.nvim",
   "nvim-neotest/neotest",
   "nvim-neotest/neotest-python",
   "stevearc/dressing.nvim",
@@ -78,8 +79,9 @@ lvim.plugins = {
 }
 
 -- OPTIONS
+lvim.reload_config_on_save = true
 vim.opt.relativenumber = true -- relative line numbers
-vim.opt.showmode = true -- relative line numbers
+vim.opt.showmode = true       -- relative line numbers
 vim.opt.timeoutlen = 500
 vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block"
 vim.opt.clipboard = ""
@@ -129,6 +131,17 @@ lvim.autocommands = {
     }
   },
 }
+
+require('delaytrain').setup{
+        delay_ms = 1000,  -- How long repeated usage of a key should be prevented
+        grace_period = 1, -- How many repeated keypresses are allowed
+        keys = {          -- Which keys (in which modes) should be delayed
+            ['nv'] = {'h', 'j', 'k', 'l'},
+            ['nvi'] = {'<Left>', '<Down>', '<Up>', '<Right>'},
+        },
+        ignore_filetypes = {}, -- Example: set to {"help", "NvimTr*"} to
+                                -- disable the plugin for help and NvimTree
+    }
 -- SETUP
 pcall(function()
   require("oh-my-monokai").setup({
@@ -185,12 +198,12 @@ formatters.setup {
 }
 
 -- COMMANDS
-vim.api.nvim_create_user_command('MkOpenSrc', function (args)
+vim.api.nvim_create_user_command('MkOpenSrc', function(args)
   -- vim.cmd.execute('normal "cyiW')
   -- vim.cmd("let @m=:e ")
   local srcpath = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
   vim.cmd("e " .. srcpath)
-end, {desc = "Open code block source file", force = true})
+end, { desc = "Open code block source file", force = true })
 
 
 -- WHICH_KEY
@@ -229,7 +242,9 @@ which_key.mappings["t"] = {
 }
 
 which_key.mappings["f"] = which_key.mappings["s"]
+
 which_key.mappings["f"].name = "Find"
+
 which_key.mappings["s"] = nil
 
 which_key.mappings["c"] = {
