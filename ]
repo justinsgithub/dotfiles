@@ -95,7 +95,7 @@ lvim.reload_config_on_save = true
 vim.opt.relativenumber = true -- relative line numbers
 vim.opt.showmode = true       -- relative line numbers
 vim.opt.timeoutlen = 500
-vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block,a:blinkon50"
+vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block"
 vim.opt.clipboard = ""
 vim.opt_global.clipboard = ""
 vim.opt.showcmd = true
@@ -104,14 +104,14 @@ lvim.colorscheme = "oh-my-monokai"
 lvim.transparent_window = true
 
 -- KEYMAPS
--- local keymap = vim.api.nvim_set_keymap
-local keymap = vim.keymap.set
-local keyopts = { remap = false, silent = true }
+local keymap = vim.api.nvim_set_keymap
+local keyopts = { noremap = true, silent = true }
 vim.g.maplocalleader = '\\'
 
 -- Normal --
-keymap("n", "<LocalLeader>o", ":OpenLine below<CR>", keyopts)
-keymap("n", "<LocalLeader>O", ":OpenLine above<CR>", keyopts)
+keymap("n", "<LocalLeader>o", ":OpenLine below", keyopts)
+keymap("n", "<LocalLeader>O", ":OpenLine above", keyopts)
+keymap("n", "<LocalLeader>O", ":BufferLinePick<CR>", keyopts)
 keymap("n", "<LocalLeader>b", ":BufferLinePick<CR>", keyopts)
 keymap("n", "<LocalLeader>w", ":w<CR>", keyopts)
 keymap("n", "<LocalLeader>c", ":BufferKill<cr>", keyopts)
@@ -120,7 +120,7 @@ keymap("n", "<LocalLeader>j", ":lua require('trevj').format_at_cursor()<CR>", ke
 keymap("n", "<S-h>", ":bprev<CR>", keyopts)
 keymap("n", "<S-l>", ":bnext<CR>", keyopts)
 -- pipe operator accesses system clipboard
-keymap({"v","n"}, "|", '"+', keyopts)
+keymap("n", "|", '"+', keyopts)
 -- single press indent
 keymap("n", ">", ">>", keyopts)
 keymap("n", "<", "<<", keyopts)
@@ -128,6 +128,8 @@ keymap("n", "<", "<<", keyopts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", keyopts)
 keymap("v", ">", ">gv", keyopts)
+-- pipe operator accesses system clipboard
+keymap("v", "|", '"+', keyopts)
 -- Visual Block --
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", keyopts)
@@ -148,7 +150,7 @@ lvim.autocommands = {
 -- SETUP
 require('delaytrain').setup {
   delay_ms = 1000,  -- How long repeated usage of a key should be prevented
-  grace_period = 3, -- How many repeated keypresses are allowed
+  grace_period = 1, -- How many repeated keypresses are allowed
   keys = {
     -- Which keys (in which modes) should be delayed
     ['nv'] = { 'h', 'j', 'k', 'l' },
@@ -243,7 +245,9 @@ end, {
   nargs = 1
 })
 
+---@param opts Opts
 vim.api.nvim_create_user_command('MkOpenSrc', function(opts)
+  -- vim.cmd("let @m=:e ")
   local srcpath = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
   vim.cmd("e " .. srcpath)
 end, { desc = "Open code block source file", force = true })
@@ -284,11 +288,11 @@ which_key.mappings["t"] = {
   c = { "<cmd>tabclose<CR>", "Close Tab" },
 }
 
-which_key.mappings.s.name = 'Find'
-
 which_key.mappings["f"] = which_key.mappings["s"]
 
-which_key.mappings["s"] = {}
+which_key.mappings["f"].name = "Find"
+
+which_key.mappings["s"] = nil
 
 which_key.mappings["c"] = {
   name = "My Commands",
