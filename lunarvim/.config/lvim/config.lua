@@ -83,7 +83,7 @@ lvim.reload_config_on_save = true
 vim.opt.relativenumber = true -- relative line numbers
 vim.opt.showmode = true       -- relative line numbers
 vim.opt.timeoutlen = 500
-vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block"
+vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block,a:blinkon50"
 vim.opt.clipboard = ""
 vim.opt_global.clipboard = ""
 vim.opt.showcmd = true
@@ -134,7 +134,7 @@ lvim.autocommands = {
 -- SETUP
 require('delaytrain').setup {
   delay_ms = 1000,  -- How long repeated usage of a key should be prevented
-  grace_period = 1, -- How many repeated keypresses are allowed
+  grace_period = 3, -- How many repeated keypresses are allowed
   keys = {
     -- Which keys (in which modes) should be delayed
     ['nv'] = { 'h', 'j', 'k', 'l' },
@@ -248,11 +248,11 @@ which_key.mappings["t"] = {
   c = { "<cmd>tabclose<CR>", "Close Tab" },
 }
 
+which_key.mappings.s.name = 'Find'
+
 which_key.mappings["f"] = which_key.mappings["s"]
 
-which_key.mappings["f"].name = "Find"
-
-which_key.mappings["s"] = nil
+which_key.mappings["s"] = {}
 
 which_key.mappings["c"] = {
   name = "My Commands",

@@ -106,6 +106,10 @@ config.scrollback_lines = 10000
 config.color_scheme = "Monokai Vivid"
 config.exit_behavior = "Close"
 config.keys = mykeys
+config.animation_fps = 1
+config.cursor_blink_ease_in = 'Constant'
+config.cursor_blink_ease_out = 'Constant'
+config.default_cursor_style = 'BlinkingBlock'
 
 return config
 
