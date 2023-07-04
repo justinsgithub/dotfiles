@@ -1,544 +1,102 @@
--- local icons = {
---   kind = {
---     Array = "",
---     Boolean = "",
---     Class = "",
---     Color = "",
---     Constant = "",
---     Constructor = "",
---     Enum = "",
---     EnumMember = "",
---     Event = "",
---     Field = "",
---     File = "",
---     Folder = "󰉋",
---     Function = "",
---     Interface = "",
---     Key = "",
---     Keyword = "",
---     Method = "",
---     Module = "",
---     Namespace = "",
---     Null = "󰟢",
---     Number = "",
---     Object = "",
---     Operator = "",
---     Package = "",
---     Property = "",
---     Reference = "",
---     Snippet = "",
---     String = "",
---     Struct = "",
---     Text = "",
---     TypeParameter = "",
---     Unit = "",
---     Value = "",
---     Variable = "",
---   },
---   git = {
---     LineAdded = "",
---     LineModified = "",
---     LineRemoved = "",
---     FileDeleted = "",
---     FileIgnored = "◌",
---     FileRenamed = "",
---     FileStaged = "S",
---     FileUnmerged = "",
---     FileUnstaged = "",
---     FileUntracked = "U",
---     Diff = "",
---     Repo = "",
---     Octoface = "",
---     Branch = "",
---   },
---   ui = {
---     ArrowCircleDown = "",
---     ArrowCircleLeft = "",
---     ArrowCircleRight = "",
---     ArrowCircleUp = "",
---     BoldArrowDown = "",
---     BoldArrowLeft = "",
---     BoldArrowRight = "",
---     BoldArrowUp = "",
---     BoldClose = "",
---     BoldDividerLeft = "",
---     BoldDividerRight = "",
---     BoldLineLeft = "▎",
---     BookMark = "",
---     BoxChecked = "",
---     Bug = "",
---     Stacks = "",
---     Scopes = "",
---     Watches = "󰂥",
---     DebugConsole = "",
---     Calendar = "",
---     Check = "",
---     ChevronRight = "",
---     ChevronShortDown = "",
---     ChevronShortLeft = "",
---     ChevronShortRight = "",
---     ChevronShortUp = "",
---     Circle = "",
---     Close = "󰅖",
---     CloudDownload = "",
---     Code = "",
---     Comment = "",
---     Dashboard = "",
---     DividerLeft = "",
---     DividerRight = "",
---     DoubleChevronRight = "»",
---     Ellipsis = "",
---     EmptyFolder = "",
---     EmptyFolderOpen = "",
---     File = "",
---     FileSymlink = "",
---     Files = "",
---     FindFile = "󰈞",
---     FindText = "󰊄",
---     Fire = "",
---     Folder = "󰉋",
---     FolderOpen = "",
---     FolderSymlink = "",
---     Forward = "",
---     Gear = "",
---     History = "",
---     Lightbulb = "",
---     LineLeft = "▏",
---     LineMiddle = "│",
---     List = "",
---     Lock = "",
---     NewFile = "",
---     Note = "",
---     Package = "",
---     Pencil = "󰏫",
---     Plus = "",
---     Project = "",
---     Search = "",
---     SignIn = "",
---     SignOut = "",
---     Tab = "󰌒",
---     Table = "",
---     Target = "󰀘",
---     Telescope = "",
---     Text = "",
---     Tree = "",
---     Triangle = "󰐊",
---     TriangleShortArrowDown = "",
---     TriangleShortArrowLeft = "",
---     TriangleShortArrowRight = "",
---     TriangleShortArrowUp = "",
---   },
---   diagnostics = {
---     BoldError = "",
---     Error = "",
---     BoldWarning = "",
---     Warning = "",
---     BoldInformation = "",
---     Information = "",
---     BoldQuestion = "",
---     Question = "",
---     BoldHint = "",
---     Hint = "󰌶",
---     Debug = "",
---     Trace = "✎",
---   },
---   misc = {
---     Robot = "󰚩",
---     Squirrel = "",
---     Tag = "",
---     Watch = "",
---     Smiley = "",
---     Package = "",
---     CircuitBoard = "",
---   },
--- }
+-- recommended by nvim-tree
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+require("user.plugins")
+require("user.alpha")
+require("user.autocommands")
+require("user.autopairs")
+-- require("user.bufferline")
+require("user.cmp")
+require("user.colorscheme")
+require("user.comment")
+require("user.gitsigns")
+require("user.hot-reload")
+require("user.impatient")
+require("user.indentline")
+require("user.illuminate")
+require("user.keymaps")
+require("user.lsp")
+require("user.lualine")
+require("user.notify")
+require("user.nvim-tree")
+require("user.options")
+require("user.telescope")
+require("user.treesitter")
+require("user.whichkey")
 
--- local Mkeys = {}
+-- VIM HINTS
+--[[
 
--- local generic_opts_any = { noremap = true, silent = true }
+double space entire file
+:%s/.*\n/\0\r/g
 
--- local generic_opts = {
---   insert_mode = generic_opts_any,
---   normal_mode = generic_opts_any,
---   visual_mode = generic_opts_any,
---   visual_block_mode = generic_opts_any,
---   command_mode = generic_opts_any,
---   operator_pending_mode = generic_opts_any,
---   term_mode = { silent = true },
--- }
+search for EXACT word under cursor
+*
 
--- local mode_adapters = {
---   insert_mode = "i",
---   normal_mode = "n",
---   term_mode = "t",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   command_mode = "c",
---   operator_pending_mode = "o",
--- }
+search for word under cursor including partials ("for" would also find "forlorn")
+g* 
 
--- ---@class Keys
--- local keydefaults = {
---   insert_mode = {
---     -- Move current line / block with Alt-j/k ala vscode.
---     ["<A-j>"] = "<Esc>:m .+1<CR>==gi",
---     -- Move current line / block with Alt-j/k ala vscode.
---     ["<A-k>"] = "<Esc>:m .-2<CR>==gi",
---     -- navigation
---     ["<A-Up>"] = "<C-\\><C-N><C-w>k",
---     ["<A-Down>"] = "<C-\\><C-N><C-w>j",
---     ["<A-Left>"] = "<C-\\><C-N><C-w>h",
---     ["<A-Right>"] = "<C-\\><C-N><C-w>l",
---   },
+search for words that end in the
+/the\> 
 
---   normal_mode = {
---     -- Better window movement
---     ["<C-h>"] = "<C-w>h",
---     ["<C-j>"] = "<C-w>j",
---     ["<C-k>"] = "<C-w>k",
---     ["<C-l>"] = "<C-w>l",
+search for the exact word the
+/\<the\> 
 
---     -- Resize with arrows
---     ["<C-Up>"] = ":resize -2<CR>",
---     ["<C-Down>"] = ":resize +2<CR>",
---     ["<C-Left>"] = ":vertical resize -2<CR>",
---     ["<C-Right>"] = ":vertical resize +2<CR>",
+finds there and these 
+/the.e 
 
---     -- Move current line / block with Alt-j/k a la vscode.
---     ["<A-j>"] = ":m .+1<CR>==",
---     ["<A-k>"] = ":m .-2<CR>==",
+MARKS
 
---     -- QuickFix
---     ["]q"] = ":cnext<CR>",
---     ["[q"] = ":cprev<CR>",
---     ["<C-q>"] = ":call QuickFixToggle()<CR>",
---   },
+a mark is automatically deleted when its line is deleted
 
---   term_mode = {
---     -- Terminal window navigation
---     ["<C-h>"] = "<C-\\><C-N><C-w>h",
---     ["<C-j>"] = "<C-\\><C-N><C-w>j",
---     ["<C-k>"] = "<C-\\><C-N><C-w>k",
---     ["<C-l>"] = "<C-\\><C-N><C-w>l",
---   },
+mark a spot locally in current file
+m<a-z>
 
---   visual_mode = {
---     -- Better indenting
---     ["<"] = "<gv",
---     [">"] = ">gv",
+go to line of locally marked spot in file
+'<a-z>
 
---     -- ["p"] = '"0p',
---     -- ["P"] = '"0P',
---   },
+go to line and column of locally marked spot in file
+`<a-z>
 
---   visual_block_mode = {
---     -- Move current line / block with Alt-j/k ala vscode.
---     ["<A-j>"] = ":m '>+1<CR>gv-gv",
---     ["<A-k>"] = ":m '<-2<CR>gv-gv",
---   },
+mark a spot globally
+m<A-Z>
 
---   command_mode = {
---     -- navigate tab completion with <c-j> and <c-k>
---     -- runs conditionally
---     ["<C-j>"] = { 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', { expr = true, noremap = true } },
---     ["<C-k>"] = { 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', { expr = true, noremap = true } },
---   },
--- }
+go to line of globally marked spot
+'<A-Z>
 
--- if vim.fn.has "mac" == 1 then
---   keydefaults.normal_mode["<A-Up>"] = keydefaults.normal_mode["<C-Up>"]
---   keydefaults.normal_mode["<A-Down>"] = keydefaults.normal_mode["<C-Down>"]
---   keydefaults.normal_mode["<A-Left>"] = keydefaults.normal_mode["<C-Left>"]
---   keydefaults.normal_mode["<A-Right>"] = keydefaults.normal_mode["<C-Right>"]
---   -- Log:debug "Activated mac keymappings"
--- end
+go to line and column of globally marked spot
+`<A-Z>
 
--- -- Unsets all keybindings defined in keymaps
--- -- @param keymaps The table of key mappings containing a list per mode (normal_mode, insert_mode, ..)
--- function Mkeys.clear(keymaps)
---   local default = Mkeys.get_defaults()
---   for mode, mappings in pairs(keymaps) do
---     local translated_mode = mode_adapters[mode] and mode_adapters[mode] or mode
---     for key, _ in pairs(mappings) do
---       -- some plugins may override default bindings that the user hasn't manually overriden
---       if default[mode][key] ~= nil or (default[translated_mode] ~= nil and default[translated_mode][key] ~= nil) then
---         pcall(vim.api.nvim_del_keymap, translated_mode, key)
---       end
---     end
---   end
--- end
+delete mark a
+:delmarks a
 
--- -- Set key mappings individually
--- -- @param mode The keymap mode, can be one of the keys of mode_adapters
--- -- @param key The key of keymap
--- -- @param val Can be form as a mapping or tuple of mapping and user defined opt
--- function Mkeys.set_keymaps(mode, key, val)
---   local opt = generic_opts[mode] or generic_opts_any
---   if type(val) == "table" then
---     opt = val[2]
---     val = val[1]
---   end
---   if val then
---     vim.keymap.set(mode, key, val, opt)
---   else
---     pcall(vim.api.nvim_del_keymap, mode, key)
---   end
--- end
+delete marks a, b, c, d
+:delmarks a-d
 
--- -- Load key mappings for a given mode
--- -- @param mode The keymap mode, can be one of the keys of mode_adapters
--- -- @param keymaps The list of key mappings
--- function Mkeys.load_mode(mode, keymaps)
---   mode = mode_adapters[mode] or mode
---   for k, v in pairs(keymaps) do
---     Mkeys.set_keymaps(mode, k, v)
---   end
--- end
+delete marks a, b, x, y
+:delmarks abxy
 
--- -- Load key mappings for all provided modes
--- -- @param keymaps A list of key mappings for each mode
--- function Mkeys.load(keymaps)
---   keymaps = keymaps or {}
---   for mode, mapping in pairs(keymaps) do
---     Mkeys.load_mode(mode, mapping)
---   end
--- end
+delete marks a, A
+:delmarks aA
 
--- -- Get the default keymappings
--- function Mkeys.get_defaults()
---   return keydefaults
--- end
+delete all lowercase marks for the current buffer (a-z)
+:delmarks!
 
--- -- Load the default keymappings
--- function Mkeys.load_defaults()
---   Mkeys.load(Mkeys.get_defaults())
---   lvim.keys = lvim.keys or {}
---   for idx, _ in pairs(keydefaults) do
---     if not lvim.keys[idx] then
---       lvim.keys[idx] = {}
---     end
---   end
--- end
+-- VIM MACROS
 
--- Mkeys.load_defaults()
+use macros to record an action you need repeated multiple times in file
+such as adding 3 dashes to end and beginning of every paragraph in file
 
--- local Moptions = {}
+press q<KEY>  to start recording macro (saved to KEY)
+press whatever keys needed to perform action you need repeated
+press q to stop recording macro
 
--- Moptions.load_default_options = function()
---   -- EXPLAIN CHANGE
---   -- local utils = require "lvim.utils"
---   -- local join_paths = utils.join_paths
+press @<KEY> to use macro
 
---   -- local undodir = join_paths(get_cache_dir(), "undo")
+-- INCREMENT
+visual block select
 
---   -- if not utils.is_directory(undodir) then
---   --   vim.fn.mkdir(undodir, "p")
---   -- end
-
---   local default_options = {
---     backup = false, -- creates a backup file
---     clipboard = "unnamedplus", -- allows neovim to access the system clipboard
---     cmdheight = 1, -- more space in the neovim command line for displaying messages
---     completeopt = { "menuone", "noselect" },
---     conceallevel = 0, -- so that `` is visible in markdown files
---     fileencoding = "utf-8", -- the encoding written to a file
---     foldmethod = "manual", -- folding, set to "expr" for treesitter based folding -- {count}zF zd
---     foldexpr = "", -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
---     guifont = "monospace:h17", -- the font used in graphical neovim applications
---     hidden = true, -- required to keep multiple buffers and open multiple buffers
---     hlsearch = true, -- highlight all matches on previous search pattern
---     ignorecase = true, -- ignore case in search patterns
---     mouse = "a", -- allow the mouse to be used in neovim
---     pumheight = 10, -- pop up menu height
---     showmode = false, -- we don't need to see things like -- INSERT -- anymore
---     smartcase = true, -- smart case
---     splitbelow = true, -- force all horizontal splits to go below current window
---     splitright = true, -- force all vertical splits to go to the right of current window
---     swapfile = false, -- creates a swapfile
---     termguicolors = true, -- set term gui colors (most terminals support this)
---     timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
---     title = true, -- set the title of window to the value of the titlestring
---     -- opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
---     -- undodir = undodir, -- set an undo directory - EXPLAIN CHANGE
---     undofile = true, -- enable persistent undo
---     updatetime = 100, -- faster completion
---     writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
---     expandtab = true, -- convert tabs to spaces
---     shiftwidth = 2, -- the number of spaces inserted for each indentation
---     tabstop = 2, -- insert 2 spaces for a tab
---     cursorline = true, -- highlight the current line
---     number = true, -- set numbered lines
---     numberwidth = 4, -- set number column width to 2 {default 4}
---     signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
---     wrap = false, -- display lines as one long line
---     -- shadafile = join_paths(get_cache_dir(), "lvim.shada"), - EXPLAIN CHANGE
---     scrolloff = 8, -- minimal number of screen lines to keep above and below the cursor.
---     sidescrolloff = 8, -- minimal number of screen lines to keep left and right of the cursor.
---     showcmd = false,
---     ruler = false,
---     laststatus = 3,
---   }
-
---   ---  SETTINGS  ---
---   vim.opt.spelllang:append "cjk" -- disable spellchecking for asian characters (VIM algorithm does not support it)
---   vim.opt.shortmess:append "c" -- don't show redundant messages from ins-completion-menu
---   vim.opt.shortmess:append "I" -- don't show the default intro message
---   vim.opt.whichwrap:append "<,>,[,],h,l"
-
---   for k, v in pairs(default_options) do
---     vim.opt[k] = v
---   end
-
---   vim.filetype.add {
---     extension = {
---       tex = "tex",
---       zir = "zir",
---       cr = "crystal",
---     },
---     pattern = {
---       ["[jt]sconfig.*.json"] = "jsonc",
---     },
---   }
-
---   local default_diagnostic_config = {
---     signs = {
---       active = true,
---       values = {
---         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
---         { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
---         { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
---         { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
---       },
---     },
---     virtual_text = true,
---     update_in_insert = false,
---     underline = true,
---     severity_sort = true,
---     float = {
---       focusable = true,
---       style = "minimal",
---       border = "rounded",
---       source = "always",
---       header = "",
---       prefix = "",
---     },
---   }
-
---   vim.diagnostic.config(default_diagnostic_config)
--- end
-
--- Moptions.load_headless_options = function()
---   vim.opt.shortmess = "" -- try to prevent echom from cutting messages off or prompting
---   vim.opt.more = false -- don't pause listing when screen is filled
---   vim.opt.cmdheight = 9999 -- helps avoiding |hit-enter| prompts.
---   vim.opt.columns = 9999 -- set the widest screen possible
---   vim.opt.swapfile = false -- don't use a swap file
--- end
-
--- Moptions.load_defaults = function()
---   if #vim.api.nvim_list_uis() == 0 then
---     Moptions.load_headless_options()
---     return
---   end
---   Moptions.load_default_options()
--- end
-
--- Moptions.load_defaults()
-
--- ---filter passed to vim.lsp.buf.format
--- ---always selects null-ls if it's available and caches the value per buffer
--- ---@param client table client attached to a buffer
--- ---@return boolean if client matches
--- function Moptions.format_filter(client)
---   local filetype = vim.bo.filetype
---   local n = require "null-ls"
---   local s = require "null-ls.sources"
---   local method = n.methods.FORMATTING
---   local available_formatters = s.get_available(filetype, method)
-
---   if #available_formatters > 0 then
---     return client.name == "null-ls"
---   elseif client.supports_method "textDocument/formatting" then
---     return true
---   else
---     return false
---   end
--- end
+g<Ctrl+a>
 
 
-
--- lvim = {
---   leader = "space",
---   reload_config_on_save = true,
---   colorscheme = "lunar",
---   transparent_window = false,
---   format_on_save = {
---     ---@usage boolean: format on save (Default: false)
---     enabled = false,
---     ---@usage pattern string pattern used for the autocommand (Default: '*')
---     pattern = "*",
---     ---@usage timeout number timeout in ms for the format request (Default: 1000)
---     timeout = 1000,
---     ---@usage filter func to select client
---     filter = Moptions.format_filter,
---   },
---   keys = {},
-
---   use_icons = true,
---   icons = icons,
-
---   builtin = {},
-
---   plugins = {
---     -- use config.lua for this not put here
---   },
-
---   lazy = {
---     opts = {
---       install = {
---         missing = true,
---         colorscheme = { "lunar", "habamax" },
---       },
---       ui = {
---         border = "rounded",
---       },
---       -- root = require("lvim.utils").join_paths(get_runtime_dir(), "site", "pack", "lazy", "opt"),
---       git = {
---         timeout = 120,
---       },
---       -- lockfile = require("lvim.utils").join_paths(get_config_dir(), "lazy-lock.json"),
---       performance = {
---         rtp = {
---           reset = false,
---         },
---       },
---       defaults = {
---         lazy = false,
---         version = nil,
---       },
---       readme = {
---         -- root = require("lvim.utils").join_paths(get_runtime_dir(), "lazy", "readme"),
---       },
---     },
---   },
-
---   autocommands = {},
---   lang = {},
---   log = {
---     ---@usage can be { "trace", "debug", "info", "warn", "error", "fatal" },
---     level = "info",
---     viewer = {
---       ---@usage this will fallback on "less +F" if not found
---       cmd = "lnav",
---       layout_config = {
---         ---@usage direction = 'vertical' | 'horizontal' | 'window' | 'float',
---         direction = "horizontal",
---         open_mapping = "",
---         size = 40,
---         float_opts = {},
---       },
---     },
---     -- currently disabled due to instabilities
---     override_notify = false,
---   },
--- }
+]]
