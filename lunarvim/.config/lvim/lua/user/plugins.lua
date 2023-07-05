@@ -96,7 +96,6 @@ lvim.plugins = {
         desc = "Remote Flash",
       },
     },
-  }
+  },
+  "wakatime/vim-wakatime"
 }
-
-

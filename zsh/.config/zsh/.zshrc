@@ -1,8 +1,20 @@
-export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin
-export ZSH="$HOME/.oh-my-zsh"
+export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin:/home/justin/.local/share/cargo/bin
 export EDITOR="nvim"
-export NVM_DIR="$HOME/.nvm"
 export PNPM_HOME="/home/justin/.local/share/pnpm"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+export HISTFILE="$XDG_STATE_HOME/bash/history"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export ZSH="$XDG_DATA_HOME/oh-my-zsh"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
 ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
@@ -15,6 +27,7 @@ hash -d dotfiles=$HOME/github/justinsgithub/dotfiles
 hash -d justinsgithub=$HOME/github/justinsgithub
 hash -d fonts=$HOME/.local/share/fonts
 
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias v="lvim"
 alias p="pnpm"
 alias quicknote="vim $HOME/myself/quicknotes.md"
@@ -32,7 +45,7 @@ alias pinstall="pip install"
 alias sourcevenv="source venv/bin/activate"
 alias mkserve="mkdocs serve"
 alias mkbuild="mkdocs build"
-alias zshconf="lvim ~dotfiles/zsh/.zshrc && source ~/.zshrc"
+alias zshconf="lvim ~dotfiles/zsh/.config/zsh/.zshrc && source ~/.config/zsh/.zshrc"
 alias vimconf="lvim ~dotfiles/lunarvim/.config/lvim/config.lua"
 alias weztermconf="lvim ~dotfiles/wezterm/.config/wezterm/wezterm.lua"
 alias rustdocs="rustup docs --book"
