@@ -6,21 +6,14 @@
 local Util = require("lazyvim.util")
 
 local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  ---@cast keys LazyKeysHandler
-  -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    if opts.remap and not vim.g.vscode then
-      opts.remap = nil
-    end
-    vim.keymap.set(mode, lhs, rhs, opts)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
   end
+  vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- local leader
-map("n", "<LocalLeader>w", ":w<CR>", { desc = "Write File" })
 map("n", "<localleader>q", "<cmd>qa<cr>", { desc = "Quit all" })
 -- map("n", "<LocalLeader>z", ":ZenMode<CR>", keyopts)
 map("n", "<localleader>b", ":BiPolar<CR>")
@@ -31,7 +24,7 @@ map("n", "<localleader>p", ":BufferLinePick<CR>")
 -- map("n", "<LocalLeader>j", ":lua require('trevj').format_at_cursor()<CR>", keyopts)
 
 --  misc
-map("n", "<leader>co", ":MkOpenSrc<CR>")
+map("n", "<leader>co", "<cmd>MkOpenSrc<CR>")
 map({ "v", "n" }, "|", '"+', { desc = "System Clipboard" })
 map("n", ">", ">>", { desc = "Single Press Indent" })
 map("n", "<", "<<", { desc = "Single Press Unkndent" })
