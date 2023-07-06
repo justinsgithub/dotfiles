@@ -9,9 +9,9 @@
 ---@field smods table: a table containing the command modifiers (see |<mods>|)
 
 ---@param opts Opts
-vim.api.nvim_create_user_command('OpenLine', function(opts)
+vim.api.nvim_create_user_command("OpenLine", function(opts)
   local where = opts.fargs[1]
-  if where == 'below' then
+  if where == "below" then
     vim.cmd("normal mzo`z")
   else
     vim.cmd("normal mzO`z")
@@ -19,10 +19,10 @@ vim.api.nvim_create_user_command('OpenLine', function(opts)
 end, {
   desc = "Better open line",
   force = true,
-  nargs = 1
+  nargs = 1,
 })
 
-vim.api.nvim_create_user_command('MkOpenSrc', function(_)
+vim.api.nvim_create_user_command("MkOpenSrc", function(_)
   local srcpath = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
   vim.cmd("e " .. srcpath)
 end, {
@@ -31,7 +31,7 @@ end, {
   nargs = "?",
 })
 
-vim.api.nvim_create_user_command('BiPolar', function(_)
+vim.api.nvim_create_user_command("BiPolar", function(_)
   local moods_table = {
     ["true"] = "false",
     ["false"] = "true",
