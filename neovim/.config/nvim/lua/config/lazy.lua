@@ -13,7 +13,9 @@ require("lazy").setup({
     -- import any extras modules here
     -- { import = "lazyvim.plugins.extras.lang.typescript" },
     -- { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.util.project" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
+    { import = "lazyvim.plugins.extras.editor.flash" },
     -- import/override with your plugins
     { import = "plugins" },
   },
@@ -30,7 +32,10 @@ require("lazy").setup({
     missing = true, -- default
     -- colorscheme = { "oh-my-monokai", "default" }, -- This does not work
   },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = {
+    enabled = false,
+    frequency = 604800, -- check for updates once a week
+  }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins

@@ -2,6 +2,68 @@ local Util = require("lazyvim.util")
 
 return {
   {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        offsets = {
+          {
+            filetype = "undotree",
+            text = "Undotree",
+            highlight = "PanelHeading",
+            padding = 1,
+          },
+          {
+            filetype = "NvimTree",
+            text = "Explorer",
+            highlight = "PanelHeading",
+            padding = 1,
+          },
+          {
+            filetype = "DiffviewFiles",
+            text = "Diff View",
+            highlight = "PanelHeading",
+            padding = 1,
+          },
+          {
+            filetype = "flutterToolsOutline",
+            text = "Flutter Outline",
+            highlight = "PanelHeading",
+          },
+          {
+            filetype = "lazy",
+            text = "Lazy",
+            highlight = "PanelHeading",
+            padding = 1,
+          },
+        },
+      },
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = "all",
+    },
+  },
+  {
+    "folke/trouble.nvim",
+    keys = {
+      { "<leader>dx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>dX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+      { "<leader>dL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
+      { "<leader>dQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+    },
+  },
+  {
+    "folke/todo-comments.nvim",
+    keys = {
+      { "<leader>dt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+      { "<leader>dT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+    },
+  },
+  {
     "echasnovski/mini.surround",
     opts = {
       mappings = {
@@ -15,35 +77,29 @@ return {
       },
     },
   },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    keys = {
-      {
-        "<leader>e",
-        function()
-          require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").get_root() })
-        end,
-        desc = "Explorer",
-      },
-      {
-        "<leader>E",
-        false, -- function() require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() }) end, desc = "Explorer (cwd)", },
-        { "<leader>fe", false },
-        { "<leader>fE", false },
-      },
-    },
-  },
   -- buffer remove
   {
     "echasnovski/mini.bufremove",
+    -- disable all keys
+    -- keys = function()
+    --   return {}
+    -- end,
     -- stylua: ignore
-    keys = {
-      { "<leader>bc", function() require("mini.bufremove").delete(0, false) end, desc = "Close Buffer" },
-      { "<localleader>c", function() require("mini.bufremove").delete(0, false) end, desc = "Close Buffer" },
-      { "<leader>bC", function() require("mini.bufremove").delete(0, true) end, desc = "Close Buffer (Force)" },
-      { "<leader>bd", false },
-      { "<leader>bD", false },
-    },
+    keys = function()
+      return {
+        { "<leader>bc", function() require("mini.bufremove").delete(0, false) end, desc = "Close Buffer" },
+        { "<localleader>c", function() require("mini.bufremove").delete(0, false) end, desc = "Close Buffer" },
+        { "<leader>bC", function() require("mini.bufremove").delete(0, true) end, desc = "Close Buffer (Force)" },
+      }
+    end,
+    -- stylua: ignore
+    -- keys = {
+    --   { "<leader>bc", function() require("mini.bufremove").delete(0, false) end, desc = "Close Buffer" },
+    --   { "<localleader>c", function() require("mini.bufremove").delete(0, false) end, desc = "Close Buffer" },
+    --   { "<leader>bC", function() require("mini.bufremove").delete(0, true) end, desc = "Close Buffer (Force)" },
+    --   { "<leader>bd", false },
+    --   { "<leader>bD", false },
+    -- },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -100,12 +156,14 @@ return {
       local defaults = {
         mode = { "n", "v" },
         ["g"] = { name = "+goto" },
-        ["gz"] = { name = "+surround" },
+        -- ["gz"] = { name = "+surround" },
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
+        ["<localleader>s"] = { name = "+Surround" },
         ["<leader>t"] = { name = "+Tabs" },
         ["<leader>b"] = { name = "+Buffer" },
         ["<leader>c"] = { name = "+Code" },
+        ["<leader>d"] = { name = "+Diagnostics" },
         ["<leader>f"] = { name = "+Find" },
         ["<leader>g"] = { name = "+Git" },
         ["<leader>gh"] = { name = "+Hunks" },
@@ -114,7 +172,6 @@ return {
         ["<leader>p"] = { name = "+Plugins" },
         ["<leader>u"] = { name = "+UI" },
         ["<leader>w"] = { name = "+Windows" },
-        ["<leader>x"] = { name = "+Diagnostics" },
       }
       local wk = require("which-key")
       wk.setup(opts)
@@ -140,13 +197,6 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      checker = {
-        -- automatically check for plugin updates
-        enabled = false,
-        concurrency = nil, ---@type number? set to 1 to check for updates very slowly
-        notify = true, -- get a notification when new updates are found
-        frequency = 604800, -- check for updates once a week
-      },
       colorscheme = "oh-my-monokai",
     },
   },

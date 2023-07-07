@@ -15,27 +15,27 @@ end
 
 -- local leader
 map("n", "<localleader>q", "<cmd>qa<cr>", { desc = "Quit all" })
--- map("n", "<LocalLeader>z", ":ZenMode<CR>", keyopts)
+map("n", "<LocalLeader>z", ":ZenMode<CR>", { desc = "Zen Mode" })
 map("n", "<localleader>b", ":BiPolar<CR>")
+map("n", "<localleader>w", ":w<CR>", { desc = "Save Buffer" })
+map("n", "<localleader>W", ":wall<CR>", { desc = "Save All Buffers" })
 map("n", "<localleader>o", ":OpenLine below<CR>")
 map("n", "<localleader>O", ":OpenLine above<CR>")
 map("n", "<localleader>p", ":BufferLinePick<CR>")
 -- map("n", "<LocalLeader>s", ":%s///g", keyopts)
 -- map("n", "<LocalLeader>j", ":lua require('trevj').format_at_cursor()<CR>", keyopts)
 
---  misc
+--  commands
 map("n", "<leader>co", "<cmd>MkOpenSrc<CR>")
+map("n", "gh", "<cmd>OpenGithubRepo<CR>", { desc = "Open Github Repo" })
+map({ "i", "v", "n", "s" }, "<C-s>", "")
+
+--  access system clipboard
 map({ "v", "n" }, "|", '"+', { desc = "System Clipboard" })
+
+-- better indent
 map("n", ">", ">>", { desc = "Single Press Indent" })
 map("n", "<", "<<", { desc = "Single Press Unkndent" })
-
--- overrides
-vim.keymap.set({ "n" }, "<leader>bd", "", { remap = true, silent = true })
-vim.keymap.set({ "n" }, "<leader>bD", "", { remap = true, silent = true })
-vim.keymap.set({ "n" }, "<leader>,", "", { remap = true, silent = true })
-vim.keymap.set({ "n" }, "<leader>/", "", { remap = true, silent = true })
-vim.keymap.set({ "n" }, "<leader>:", "", { remap = true, silent = true })
-vim.keymap.set({ "n" }, "<leader><space>", "", { remap = true, silent = true })
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -144,15 +144,6 @@ if vim.fn.has("nvim-0.9.0") == 1 then
   map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 end
 
--- floating terminal
-local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
--- map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
--- map("n", "<leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
-map("n", "<leader>ft", "<cmd>Telescope live_grep<cr>", { desc = "Text" })
-map("n", "<leader>fT", '')
-map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
-
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wc", "<C-W>c", { desc = "Close window", remap = true })
@@ -164,18 +155,18 @@ map("n", "<leader>|", "")
 -- tabs
 map("n", "<leader>tl", "<cmd>tablast<cr>", { desc = "Last Tab" })
 map("n", "<leader>tf", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-map("n", "<leader>tN", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map("n", "<leader>tn", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader>tn", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader>tN", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader>tp", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 map("n", "<leader>tc", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
-vim.keymap.set("n", "<leader><tab>l", "")
-vim.keymap.set("n", "<leader><tab>f", "")
-vim.keymap.set("n", "<leader><tab>N", "")
-vim.keymap.set("n", "<leader><tab>n", "")
-vim.keymap.set("n", "<leader><tab>p", "")
-vim.keymap.set("n", "<leader><tab>c", "")
-vim.keymap.set("n", "<leader><tab><tab>", "")
-vim.keymap.set("n", "<leader><tab>[", "")
-vim.keymap.set("n", "<leader><tab>]", "")
-vim.keymap.set("n", "<leader><tab>d", "")
+map("n", "<leader><tab>l", "")
+map("n", "<leader><tab>f", "")
+map("n", "<leader><tab>N", "")
+map("n", "<leader><tab>n", "")
+map("n", "<leader><tab>p", "")
+map("n", "<leader><tab>c", "")
+map("n", "<leader><tab><tab>", "")
+map("n", "<leader><tab>[", "")
+map("n", "<leader><tab>]", "")
+map("n", "<leader><tab>d", "")
