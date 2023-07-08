@@ -1,4 +1,3 @@
-export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin:/home/justin/.local/share/cargo/bin
 export EDITOR="nvim"
 export PNPM_HOME="/home/justin/.local/share/pnpm"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -20,12 +19,6 @@ ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
 plugins=( vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 source $ZSH/oh-my-zsh.sh
-
-hash -d github=$HOME/github
-hash -d docs=$HOME/github/justinsgithub/docs
-hash -d dotfiles=$HOME/github/justinsgithub/dotfiles
-hash -d justinsgithub=$HOME/github/justinsgithub
-hash -d fonts=$HOME/.local/share/fonts
 
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias v="nvim"

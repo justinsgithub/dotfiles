@@ -10,7 +10,7 @@ require("user.keymaps")
 -- OPTIONS
 lvim.reload_config_on_save = true
 vim.opt.relativenumber = true -- relative line numbers
-vim.opt.showmode = true       -- relative line numbers
+vim.opt.showmode = true -- relative line numbers
 vim.opt.timeoutlen = 500
 vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block,a:blinkon50"
 vim.opt.clipboard = ""
@@ -21,21 +21,21 @@ lvim.colorscheme = "oh-my-monokai"
 lvim.transparent_window = true
 lvim.builtin.nvimtree.setup.open_on_tab = true
 lvim.builtin.nvimtree.setup.trash = {
-  cmd = "gio trash",
-  require_confirm = true,
+	cmd = "gio trash",
+	require_confirm = true,
 }
 lvim.builtin.nvimtree.setup.view.relativenumber = true
 lvim.builtin.nvimtree.setup.view.float.enable = false
 -- AUTOCOMMANDS
 lvim.autocommands = {
-  {
-    "BufEnter", -- see `:h autocmd-events`
-    {
-      -- this table is passed verbatim as `opts` to `nvim_create_autocmd`
-      pattern = { "*.md", "*.txt", "[^.]\\+" }, -- see `:h autocmd-events`
-      command = "call AutoCorrect()",
-    }
-  },
+	{
+		"BufEnter", -- see `:h autocmd-events`
+		{
+			-- this table is passed verbatim as `opts` to `nvim_create_autocmd`
+			pattern = { "*.md", "*.txt", "[^.]\\+" }, -- see `:h autocmd-events`
+			command = "call AutoCorrect()",
+		},
+	},
 }
 
 -- SETUP
@@ -51,48 +51,56 @@ lvim.autocommands = {
 -- }
 
 pcall(function()
-  require("colorizer").setup(
-    { "css", "scss", "html", "javascript", "typescript", "javascriptreact", "typescriptreact", "lua", "json", "toml",
-      "yaml", },
-    {
-      RGB = true,      -- #RGB hex codes
-      RRGGBB = true,   -- #RRGGBB hex codes
-      RRGGBBAA = true, -- #RRGGBBAA hex codes
-      rgb_fn = true,   -- CSS rgb() and rgba() functions
-      hsl_fn = true,   -- CSS hsl() and hsla() functions
-      css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-      css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
-    }
-  )
+	require("colorizer").setup({
+		"css",
+		"scss",
+		"html",
+		"javascript",
+		"typescript",
+		"javascriptreact",
+		"typescriptreact",
+		"lua",
+		"json",
+		"toml",
+		"yaml",
+	}, {
+		RGB = true, -- #RGB hex codes
+		RRGGBB = true, -- #RRGGBB hex codes
+		RRGGBBAA = true, -- #RRGGBBAA hex codes
+		rgb_fn = true, -- CSS rgb() and rgba() functions
+		hsl_fn = true, -- CSS hsl() and hsla() functions
+		css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+		css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+	})
 end)
 
 pcall(function()
-  require("scope").setup({
-    restore_state = true, -- false, -- experimental
-  })
+	require("scope").setup({
+		restore_state = true, -- false, -- experimental
+	})
 end)
 
 pcall(function()
-  require('trevj').setup({
-    containers = {
-      lua = {
-        -- default lua setup
-        table_constructor = { final_separator = ',', final_end_line = true },
-        arguments = { final_separator = false, final_end_line = true },
-        parameters = { final_separator = false, final_end_line = true },
-      },
-      ---   ... other filetypes
-    },
-  })
+	require("trevj").setup({
+		containers = {
+			lua = {
+				-- default lua setup
+				table_constructor = { final_separator = ",", final_end_line = true },
+				arguments = { final_separator = false, final_end_line = true },
+				parameters = { final_separator = false, final_end_line = true },
+			},
+			---   ... other filetypes
+		},
+	})
 end)
 
 pcall(function()
-  require("Comment").setup()
+	require("Comment").setup()
 end)
 
 -- FORMATTING
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  { name = "black",   args = { "--print-width", "120" }, },
-  { name = "yamlfmt", filetypes = { "yaml" } }
-}
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+	{ name = "black", args = { "--print-width", "120" } },
+	{ name = "yamlfmt", filetypes = { "yaml" } },
+})
