@@ -694,4 +694,4 @@ function __setprompt
 	PS4='\[${DARKGRAY}\]+\[${NOCOLOR}\] '
 }
 PROMPT_COMMAND='__setprompt'
-. "$HOME/.cargo/env"
+

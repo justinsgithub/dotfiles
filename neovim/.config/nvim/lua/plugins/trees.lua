@@ -1,4 +1,20 @@
-local nvimtreeopts = {
+local function on_attach(bufnr)
+  local api = require("nvim-tree.api")
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  api.config.mappings.default_on_attach(bufnr)
+
+  vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
+  vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
+  vim.keymap.set("n", "v", api.node.open.vertical, opts("Open: Vertical Split"))
+  vim.keymap.del("n", "<C-k>", { buffer = bufnr })
+  vim.keymap.set("n", "<S-k>", api.node.open.preview, opts("Open Preview"))
+end
+
+local opts = {
   auto_reload_on_write = false,
   disable_netrw = false,
   hijack_cursor = false,
@@ -10,7 +26,7 @@ local nvimtreeopts = {
   sync_root_with_cwd = true, -- NEED
   reload_on_bufenter = false,
   respect_buf_cwd = false,
-  on_attach = "default",
+  on_attach = on_attach,
   remove_keymaps = false,
   select_prompts = false,
   view = {
@@ -134,7 +150,7 @@ local nvimtreeopts = {
     },
   },
   trash = {
-    cmd = "trash",
+    cmd = "gio trash",
     require_confirm = true,
   },
   live_filter = {
@@ -177,37 +193,10 @@ return {
     keys = {
       { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer" },
     },
-    opts = nvimtreeopts,
+    opts = opts,
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
     enabled = false,
-    opts = {
-      filesystem = {
-        commands = {
-          -- Override delete to use trash instead of rm
-          delete = function(state)
-            local path = state.tree:get_node().path
-            vim.fn.system({ "gio", "trash", vim.fn.fnameescape(path) })
-            require("neo-tree.sources.manager").refresh(state.name)
-          end,
-        },
-      },
-    },
-    keys = {
-      {
-        "<leader>e",
-        function()
-          require("neo-tree.command").execute({ toggle = true, dir = require("lazyvim.util").get_root() })
-        end,
-        desc = "Explorer",
-      },
-      {
-        "<leader>E",
-        false, -- function() require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() }) end, desc = "Explorer (cwd)", },
-        { "<leader>fe", false },
-        { "<leader>fE", false },
-      },
-    },
   },
 }

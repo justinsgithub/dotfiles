@@ -4,14 +4,14 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
-export HISTFILE="$XDG_STATE_HOME/bash/history"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export ZSH="$XDG_DATA_HOME/oh-my-zsh"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
-export NVM_DIR="$XDG_DATA_HOME/nvm"
+# export NVM_DIR="$XDG_DATA_HOME/nvm"
+export NVM_DIR="$HOME/.config/nvm"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
@@ -56,7 +56,7 @@ alias pyserve="python3 -m http.server"
 alias i3class="xprop"
 alias update="sudo apt update && sudo apt upgrade"
 alias gtypist="/bin/gtypist -b"
-alias stow="stow --dir=$HOME/github/justinsgithub/dotfiles --target=$HOME"
+alias stow="stow --dir=$HOME/Github/justinsgithub/dotfiles --target=$HOME"
 alias windowclassname="xprop"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -79,3 +79,22 @@ fpath+=~/.zfunc
 # [ -f ~/.envars ] && source ~/.envars
 # [ -f ~/.zreferences.sh ] && source ~/.zreferences.sh
 # alias yarn="myyarn"
+
+# pnpm
+export PNPM_HOME="/home/justin/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
+# pnpm
+export PNPM_HOME="/home/justin/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
