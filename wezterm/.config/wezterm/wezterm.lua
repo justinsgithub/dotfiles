@@ -6,6 +6,8 @@ local config = wezterm.config_builder()
 
 config.leader = { key = "RightAlt", mods = "ALT" }
 
+config.disable_default_key_bindings = true
+
 -- CTRL + SHIFT + ARROW = switch panes
 local mykeys = {}
 
@@ -25,6 +27,10 @@ end
 --   end
 --   window:set_right_status(leader)
 -- end)
+
+table.insert(mykeys, { key = "L", mods = "LEADER", action = act.ShowDebugOverylay })
+
+table.insert(mykeys, { key = "P", mods = "LEADER", action = act.ActivateCommandPalette })
 
 table.insert(mykeys, { key = "n", mods = "LEADER", action = act({ SpawnTab = "CurrentPaneDomain" }) })
 

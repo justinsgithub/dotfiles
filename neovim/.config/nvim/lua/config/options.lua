@@ -2,13 +2,27 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 -- This file is automatically loaded by plugins.core
+-- see DEFAULTS at bottom of file to see the default options LazyVim sets (copied from the above url)
+local opt = vim.opt
+
+opt.clipboard = "" -- As it should be
+opt.ignorecase = false -- Let's not be ignorant
+
+vim.opt.showcmd = true
+
+-- how to configure cursor, example below keeps cursor blinking in block mode instead of changing to line
+-- vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block,a:blinkon50"
+
+--[[
+DEFAULTS
+These are the default options that LazyVim sets
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
--- opt.clipboard = "unnamedplus" -- Sync with system clipboard
+opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
@@ -56,7 +70,4 @@ end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
-
-vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block,a:blinkon50"
-vim.opt.clipboard = ""
-vim.opt.showcmd = true
+]]

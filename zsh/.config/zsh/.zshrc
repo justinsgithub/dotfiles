@@ -1,4 +1,6 @@
-export EDITOR="nvim"
+export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin:/home/justin/.local/share/cargo/bin:/home/justin/.local/share/bob/nvim-bin
+export EDITOR="/usr/bin/nvim"
+export VISUAL="/usr/bin/nvim"
 export PNPM_HOME="/home/justin/.local/share/pnpm"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -14,14 +16,22 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export NVM_DIR="$HOME/.config/nvm"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
+hash -d github=$HOME/Github
+hash -d config=$HOME/.config
+hash -d docs=$HOME/Github/justinsgithub/docs
+hash -d dotfiles=$HOME/Github/justinsgithub/dotfiles
+hash -d justinsgithub=$HOME/Github/justinsgithub
+hash -d justindevelops=$HOME/Github/justinsgithub/justindevelops
+hash -d fonts=$HOME/.local/share/fonts
 
 ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
 plugins=( vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 source $ZSH/oh-my-zsh.sh
-
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
-alias v="nvim"
+alias n='export NVIM_APPNAME=nvim; nvim'
+alias npm="echo USE PNPM $@"
+alias nn='export NVIM_APPNAME=natty-nvim; nvim'
 alias p="pnpm"
 alias quicknote="vim $HOME/myself/quicknotes.md"
 alias laravel="$HOME/.config/composer/vendor/laravel/installer/bin/laravel"
@@ -76,7 +86,7 @@ fpath+=~/.zfunc
 # setxkbmap -option "caps:swapescape"
 # feh --bg-scale ~/.wallpapers/uhdpaper.com-download-hd-wallpaper-1204a.jpg
 # export POETRY_VIRTUALENVS_IN_PROJECT=true
-# [ -f ~/.envars ] && source ~/.envars
+[ -f ~/.envars ] && source ~/.envars
 # [ -f ~/.zreferences.sh ] && source ~/.zreferences.sh
 # alias yarn="myyarn"
 
@@ -98,3 +108,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+. "$HOME/.local/share/cargo/env"
+eval "$(zoxide init zsh)"
