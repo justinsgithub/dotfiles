@@ -1,3 +1,3 @@
-local u = require("_oml.utils")
+local u = require("utils")
 
 return u.require_plugin_files("editor")

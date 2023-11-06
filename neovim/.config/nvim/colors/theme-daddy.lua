@@ -1,1 +1,1 @@
-require("_oml.theme-daddy").load()
+require("theme-daddy").load()
