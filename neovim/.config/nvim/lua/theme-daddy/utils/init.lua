@@ -7,9 +7,8 @@ local function get_real_color(hex_color, base)
     return hex_color
   end
 
-  local theme = require("theme-daddy.colorscheme").theme
   ---@module "theme-daddy.colorscheme.colors"
-  local c = require("theme-daddy.colorscheme.themes" .. theme)
+  local c = require("theme-daddy.colorscheme.colors")
   if base == nil then
     base = c.background
   end
