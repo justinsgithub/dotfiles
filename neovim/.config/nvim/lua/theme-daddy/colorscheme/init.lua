@@ -1,10 +1,5 @@
 local config = require("theme-daddy.utils.config").options
 
-local M = {
-  theme = "default",
-  colors = {},
-}
-
 local hp = require("theme-daddy.utils.color_helper")
 
 ---@module "theme-daddy.colorscheme.colors"
@@ -166,6 +161,4 @@ cs.diffEditorOverview = {
 
 cs.base = theme
 
-M.colors = cs
-
-return M
+return cs

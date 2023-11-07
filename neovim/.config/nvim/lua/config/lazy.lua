@@ -10,7 +10,15 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      opts = {
+        -- call function to setup colorscheme options
+        -- normally would be done automatically but theme-daddy is your own config, not a third-party plugin
+        colorscheme = "theme-daddy",
+      },
+    },
 
     -- { import = "lazyvim.plugins.extras.lang.go" },
     -- { import = "lazyvim.plugins.extras.lang.ruby" },

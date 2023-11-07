@@ -60,7 +60,7 @@ local function generate_hl_groups(colorscheme, config)
 end
 
 local config = require("theme-daddy.utils.config").options
-local colorscheme = require("theme-daddy.colorscheme").colors
+local colorscheme = require("theme-daddy.colorscheme")
 -- generate highlight groups
 -- Example:
 -- local hl_groups = {

@@ -42,7 +42,7 @@ local highlight = function(group, value)
   vim.api.nvim_set_hl(0, group, generatedHlValue)
 end
 
-local draw = function(groups)
+M.draw = function(groups)
   if groups == nil then
     return
   end
@@ -96,32 +96,6 @@ M.terminal = function(colors)
 
   vim.g.terminal_color_6 = colors.base.cyan
   vim.g.terminal_color_14 = colors.base.cyan
-end
-
----@param hl_groups HlGroups
-M.load = function(hl_groups)
-  if vim.g.colors_name then
-    vim.cmd([[hi clear]])
-  end
-
-  vim.o.termguicolors = true
-  vim.g.colors_name = "theme-daddy"
-
-  draw(hl_groups)
-
-  local bufferline_icon_group = require("theme-daddy.theme.plugins.bufferline").setup_bufferline_icon()
-  draw(bufferline_icon_group)
-  -- draw bufferline icons
-  vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "BufWinEnter", "BufRead" }, {
-    pattern = "*",
-    callback = function()
-      if vim.g.colors_name ~= "theme-daddy" then
-        return true
-      end
-      bufferline_icon_group = require("theme-daddy.theme.plugins.bufferline").setup_bufferline_icon()
-      draw(bufferline_icon_group)
-    end,
-  })
 end
 
 return M

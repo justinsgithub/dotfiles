@@ -1,7 +1,4 @@
-local c = require("theme-daddy.colorscheme").colors
-if not c or not c.editor then
-  c = require("theme-daddy.colorscheme").setup("default")
-end
+local c = require("theme-daddy.colorscheme")
 
 local M = {
   normal = { bg = c.editor.background, fg = c.breadcrumb.foreground },
