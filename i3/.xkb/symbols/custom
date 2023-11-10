@@ -1,3 +1,0 @@
-xkb_symbols "numlock_to_super" {
-    key <NMLK> { [ Super_L ] };
-};
