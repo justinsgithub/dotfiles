@@ -30,7 +30,7 @@ plugins=( vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer 
 source $ZSH/oh-my-zsh.sh
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias n='export NVIM_APPNAME=nvim; nvim'
-alias npm="echo USE PNPM $@"
+# alias npm="echo USE PNPM $@"
 alias nn='export NVIM_APPNAME=natty-nvim; nvim'
 alias p="pnpm"
 alias quicknote="vim $HOME/myself/quicknotes.md"
@@ -69,7 +69,7 @@ alias gtypist="/bin/gtypist -b"
 alias stow="stow --dir=$HOME/Github/justinsgithub/dotfiles --target=$HOME"
 alias windowclassname="xprop"
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
@@ -109,4 +109,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 . "$HOME/.local/share/cargo/env"
-eval "$(zoxide init zsh)"
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
+eval "$(zoxide init zsh --cmd j)"
