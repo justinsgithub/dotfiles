@@ -112,3 +112,5 @@ esac
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
 eval "$(zoxide init zsh --cmd j)"
+alias cd="j"
+alias cdi="j"
