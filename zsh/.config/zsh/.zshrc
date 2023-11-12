@@ -23,6 +23,7 @@ hash -d dotfiles=$HOME/Github/justinsgithub/dotfiles
 hash -d justinsgithub=$HOME/Github/justinsgithub
 hash -d justindevelops=$HOME/Github/justinsgithub/justindevelops
 hash -d fonts=$HOME/.local/share/fonts
+hash -d scripts=$HOME/.local/share/fonts
 
 ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
