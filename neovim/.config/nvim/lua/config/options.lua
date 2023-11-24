@@ -8,7 +8,11 @@ local opt = vim.opt
 opt.clipboard = "" -- As it should be
 opt.ignorecase = false -- Let's not be ignorant
 
-vim.opt.showcmd = true
+opt.showcmd = true
+
+opt.foldmethod = "manual"
+opt.foldcolumn = "1"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- how to configure cursor, example below keeps cursor blinking in block mode instead of changing to line
 -- vim.opt.guicursor = "i-n-v-c-sm-ci-ve-r-cr-o:block,a:blinkon50"

@@ -1,4 +1,4 @@
-export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin:/home/justin/.local/share/cargo/bin:/home/justin/.local/share/bob/nvim-bin
+export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin:/home/justin/.local/share/cargo/bin:/home/justin/.local/share/bob/nvim-bin
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 export PNPM_HOME="/home/justin/.local/share/pnpm"
@@ -23,12 +23,13 @@ hash -d dotfiles=$HOME/Github/justinsgithub/dotfiles
 hash -d justinsgithub=$HOME/Github/justinsgithub
 hash -d justindevelops=$HOME/Github/justinsgithub/justindevelops
 hash -d fonts=$HOME/.local/share/fonts
-hash -d scripts=$HOME/.local/share/fonts
+hash -d scripts="$HOME/Github/justinsgithub/dotfiles/scripts"
 
 ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
 plugins=( vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 source $ZSH/oh-my-zsh.sh
+alias docker="sudo docker"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 alias n='export NVIM_APPNAME=nvim; nvim'
 # alias npm="echo USE PNPM $@"
