@@ -115,4 +115,4 @@ esac
 . "$HOME/.asdf/completions/asdf.bash"
 eval "$(zoxide init zsh --cmd j)"
 alias cd="j"
-alias cdi="j"
+alias cdi="ji"

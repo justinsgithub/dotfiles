@@ -3,36 +3,19 @@ return {
   "nvim-telescope/telescope.nvim",
   commit = vim.fn.has("nvim-0.9.0") == 0 and "057ee0f8783" or nil,
   cmd = "Telescope",
-  -- add telescope-fzf-native
-  -- dependencies = {
-  --   "nvim-telescope/telescope-fzf-native.nvim",
-  --   build = "make",
-  --   config = function()
-  --     require("telescope").load_extension("fzf")
-  --   end,
-  -- },
-  version = false, -- telescope did only one release, so use HEAD for now
-  -- change some options
-  -- opts = {
-  --   defaults = {
-  --     layout_strategy = "horizontal",
-  --     layout_config = { prompt_position = "top" },
-  --     sorting_strategy = "ascending",
-  --     winblend = 0,
-  --   },
-  -- },
+  version = false,
   keys = {
     { "<Leader>,", false },
     { "<Leader>/", false },
     { "<Leader>:", false },
     { "<Leader><Space>", false },
-    -- find
     { "<Leader>fc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      -- add a keymap to browse plugin files
-      -- stylua: ignore
+    -- stylua: ignore add a keymap to browse plugin files
     {
       "<leader>fP",
-      function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+      function()
+        require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root })
+      end,
       desc = "Find Plugin File",
     },
       -- add a keymap to browse LazyVim default config

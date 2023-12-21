@@ -1,4 +1,5 @@
 -- add pyright to lspconfig
+-- add pyright to lspconfig
 return
 -- add pyright to lspconfig
 {
@@ -7,6 +8,23 @@ return
   opts = {
     ---@type lspconfig.options
     servers = {
+      lua_ls = {
+        -- mason = false, -- set to false if you don't want this server to be installed with mason
+        -- Use this to add any additional keymaps
+        -- for specific lsp servers
+        ---@type LazyKeysSpec[]
+        -- keys = {},
+        settings = {
+          Lua = {
+            workspace = {
+              checkThirdParty = "Disable",
+            },
+            completion = {
+              callSnippet = "Replace",
+            },
+          },
+        },
+      },
       -- Ensure mason installs the server
       rust_analyzer = {
         keys = {

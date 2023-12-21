@@ -1,3 +1,4 @@
+-- this file will not be imported because of file name
 return {
   "tzachar/cmp-tabnine",
   build = "./install.sh",

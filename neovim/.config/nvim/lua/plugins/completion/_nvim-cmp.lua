@@ -5,29 +5,7 @@ return {
   opts = function(_, opts)
     local cmp = require("cmp")
     local luasnip = require("luasnip")
-
-    local compare = require("cmp.config.compare")
-
-    opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
-      { name = "emoji" },
-      { name = "cmp_tabnine" },
-    }))
-
-    opts.sorting = {
-      priority_weight = 2,
-      comparators = {
-        require("cmp_tabnine.compare"),
-        compare.offset,
-        compare.exact,
-        compare.score,
-        compare.recently_used,
-        compare.kind,
-        compare.sort_text,
-        compare.length,
-        compare.order,
-      },
-    }
-
+    opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
     local has_words_before = function()
       unpack = unpack or table.unpack
       local line, col = unpack(vim.api.nvim_win_get_cursor(0))
