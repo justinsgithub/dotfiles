@@ -12,6 +12,7 @@ opt.showcmd = true
 
 opt.foldmethod = "manual"
 opt.foldcolumn = "1"
+opt.scrolloff = 8 -- Lines of context
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- how to configure cursor, example below keeps cursor blinking in block mode instead of changing to line

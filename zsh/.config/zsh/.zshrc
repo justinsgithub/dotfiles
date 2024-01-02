@@ -1,4 +1,4 @@
-export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin:/home/justin/.local/share/cargo/bin:/home/justin/.local/share/bob/nvim-bin
+export PATH=$PATH:/usr/local/go/bin:/home/justin/.local/bin:/home/justin/go/bin:/home/linuxbrew/.linuxbrew/bin:/home/justin/.local/share/cargo/bin:/home/justin/.local/share/bob/nvim-bin:/home/justin/Github/practice/bin
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 export PNPM_HOME="/home/justin/.local/share/pnpm"
@@ -23,7 +23,8 @@ hash -d dotfiles=$HOME/Github/justinsgithub/dotfiles
 hash -d justinsgithub=$HOME/Github/justinsgithub
 hash -d justindevelops=$HOME/Github/justinsgithub/justindevelops
 hash -d fonts=$HOME/.local/share/fonts
-hash -d scripts="$HOME/Github/justinsgithub/dotfiles/scripts"
+hash -d scripts=$HOME/Github/justinsgithub/dotfiles/scripts
+hash -d practice=$HOME/Github/practice
 
 ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
