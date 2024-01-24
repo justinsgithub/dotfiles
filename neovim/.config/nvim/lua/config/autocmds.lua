@@ -38,6 +38,15 @@ vim.api.nvim_create_autocmd("BufNewFile", {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufNewFile", {
+  group = augroup("md"),
+  pattern = { "*.md" },
+  callback = function()
+    local skelpath = utils.join_paths(utils.skeleton_dir, "md")
+    vim.cmd("0r " .. skelpath)
+  end,
+})
+
 -- stop from annoyance of calling source % after changing config file, (won't work right for plugin specs)
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = augroup("neovimdev"),

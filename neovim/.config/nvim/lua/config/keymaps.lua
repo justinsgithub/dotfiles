@@ -8,6 +8,9 @@ local map = require("utils").keymap
 vim.keymap.set("n", "<leader>A", ":Alpha<cr>", { desc = "Alpha" })
 
 -- stylua: ignore start
+-- add normal jk movements to jumplist (if over 2 lines of movement)
+-- vim.keymap.set( "n", "j", [[v:count ? (v:count >= 3 ? "m'" . v:count : '') . 'j' : 'gj']], { noremap = true, expr = true })
+-- vim.keymap.set( "n", "k", [[v:count ? (v:count >= 3 ? "m'" . v:count : '') . 'k' : 'gk']], { noremap = true, expr = true })
 map( "n", "<leader>pp", "<cmd>lua require('goto-preview').goto_preview_definition()<cr>", { desc = "Preview Definition" })
 map( "n", "<leader>pt", "<cmd>lua require('goto-preview').goto_preview_type_definition()<cr>", { desc = "Preview Type Definition" })
 map( "n", "<leader>pi", "<cmd>lua require('goto-preview').goto_preview_implementation()<cr>", { desc = "Preview Implementation" })
@@ -30,8 +33,8 @@ map("n", "<localleader>p", ":BufferLinePick<cr>", { desc = "Pick Buffer" })
 map("n", "<localleader>b", ":BiPolar<cr>")
 
 -- open line without moving cursor or entering insert mode
-map("n", "<localleader>o", ":OpenLine below<cr>")
-map("n", "<localleader>O", ":OpenLine above<cr>")
+map("n", "<leader>o", ":OpenLine below<cr>")
+map("n", "<leader>O", ":OpenLine above<cr>")
 
 -- may need modified for windows or Mac, not sure, in oh-my-lazyvim/commands.lua
 map("n", "gh", "<cmd>OpenGithubRepo<cr>", { desc = "Open Github Repo" })
@@ -125,8 +128,8 @@ if vim.lsp.inlay_hint then
 end
 
 -- lazygit
-map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
-map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, {esc_esc = false, ctrl_hjkl = false}) end, { desc = "Lazygit (cwd)" })
+-- map("n", "<leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit (root dir)" })
+-- map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, {esc_esc = false, ctrl_hjkl = false}) end, { desc = "Lazygit (cwd)" })
 
 map("n", "<leader>qq", "")
 
@@ -155,9 +158,9 @@ map("n", "<leader><tab>c", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
 map("n", "gl", vim.diagnostic.open_float, { desc = "View Diagnostic"})
 -- floating terminal
-local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
-map("n", "<leader>tl", lazyterm, { desc = "Lazy Term (root dir)" })
-map("n", "<leader>tL", function() Util.float_term() end, { desc = "Lazy Term (cwd)" })
+-- local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
+-- map("n", "<leader>tl", lazyterm, { desc = "Lazy Term (root dir)" })
+-- map("n", "<leader>tL", function() Util.float_term() end, { desc = "Lazy Term (cwd)" })
 
 -- must override keys for telescope here
 map("n", "<leader>ft", Util.telescope("live_grep"), { desc = "Text" })
