@@ -23,8 +23,10 @@ vim.api.nvim_create_user_command("OpenLine", function(opts)
   local where = opts.fargs[1]
   if where == "below" then
     vim.cmd("normal mzo`z")
+    vim.cmd("delmarks z")
   else
     vim.cmd("normal mzO`z")
+    vim.cmd("delmarks z")
   end
 end, {
   desc = "Better open line",

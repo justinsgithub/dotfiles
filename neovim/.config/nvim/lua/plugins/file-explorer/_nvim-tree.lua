@@ -9,6 +9,7 @@ local function on_attach(bufnr)
 
   vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
   vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
+  vim.keymap.set("n", "d", api.fs.trash, opts("Trash File"))
   vim.keymap.set("n", "v", api.node.open.vertical, opts("Open: Vertical Split"))
   vim.keymap.del("n", "<C-k>", { buffer = bufnr })
   vim.keymap.set("n", "<S-k>", api.node.open.preview, opts("Open Preview"))
@@ -150,8 +151,8 @@ local opts = {
     },
   },
   trash = {
-    cmd = "trash",
-    -- cmd = "gio trash",
+    -- cmd = "trash",
+    cmd = "gio trash",
     require_confirm = true,
   },
   live_filter = {
