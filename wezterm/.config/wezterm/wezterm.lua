@@ -4,7 +4,7 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
-config.leader = { key = "RightAlt", mods = "ALT" }
+config.leader = { key = "RightAlt", mods = "NONE" }
 
 config.disable_default_key_bindings = true
 
@@ -20,15 +20,15 @@ for i = 1, 8 do
 	})
 end
 
--- wezterm.on('update-right-status', function(window, pane)
---   local leader = ''
---   if window:leader_is_active() then
---     leader = 'LEADER'
---   end
---   window:set_right_status(leader)
+-- wezterm.on("update-right-status", function(window, pane)
+-- 	local leader = "NOT LEADER"
+-- 	if window:leader_is_active() then
+-- 		leader = "LEADER"
+-- 	end
+-- 	window:set_right_status(leader)
 -- end)
 
-table.insert(mykeys, { key = "L", mods = "LEADER", action = act.ShowDebugOverylay })
+-- table.insert(mykeys, { key = "L", mods = "LEADER", action = act.ShowDebugOverylay })
 
 table.insert(mykeys, { key = "P", mods = "LEADER", action = act.ActivateCommandPalette })
 
