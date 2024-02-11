@@ -3,6 +3,14 @@ return {
   enabled = true,
   opts = {
     options = {
+      tab_size = 8,
+      buffer_close_icon = "",
+      close_icon = "",
+      show_buffer_icons = false,
+      show_buffer_close_icons = false,
+      show_tab_indicators = true,
+      show_duplicate_prefix = true,
+      separator_style = "thin",
       offsets = {
         {
           filetype = "undotree",
