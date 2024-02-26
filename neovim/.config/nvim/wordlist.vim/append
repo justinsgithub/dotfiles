@@ -1,0 +1,38 @@
+#! /bin/bash
+set -eu
+
+DIR="$(dirname "${0}")"
+
+#
+# Augment the Vim/Neovim en.utf-8.add file with this repo's word list.
+#
+
+function update_vim {
+  local vimspelldir=${HOME}/.vim/spell/
+  mkdir -p "${vimspelldir}"
+  if [ -f "${vimspelldir}"/en.utf-8.add ]; then
+    cat "${vimspelldir}"/en.utf-8.add > "${TMP}"
+    cat "${DIR}"/spell/en.utf-8.add >> "${TMP}"
+    sort -d -f -u "${TMP}" > "${vimspelldir}"/en.utf-8.add
+  else
+    cp "${DIR}"/spell/en.utf-8.add "${vimspelldir}"/en.utf-8.add
+  fi
+}
+
+function update_neovim {
+  local nvimspelldir=${HOME}/.config/nvim/spell/
+  mkdir -p "${nvimspelldir}"
+  if [ -f "${nvimspelldir}"/en.utf-8.add ]; then
+    cat "${nvimspelldir}"/en.utf-8.add > "${TMP}"
+    cat "${DIR}"/spell/en.utf-8.add >> "${TMP}"
+    sort -d -f -u "${TMP}" > "${nvimspelldir}"/en.utf-8.add
+  else
+    cp "${DIR}"/spell/en.utf-8.add "${nvimspelldir}"/en.utf-8.add
+  fi
+}
+
+TMP="$(mktemp)"
+trap 'rm -f "${TMP}"; exit' INT TERM ERR EXIT
+
+update_vim
+update_neovim

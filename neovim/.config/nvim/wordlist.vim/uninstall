@@ -1,0 +1,21 @@
+#! /bin/bash
+set -eu
+
+function uninstall_vim {
+  local vimspelldir="${HOME}/.vim/spell"
+  if [ -d "${vimspelldir}" ]; then
+    rm -vf "${vimspelldir}"/en.utf-8.add{,.spl}
+    rmdir --ignore-fail-on-non-empty "${vimspelldir}"
+  fi
+}
+
+function uninstall_neovim {
+  local nvimspelldir="${HOME}/.config/nvim/spell"
+  if [ -d "${nvimspelldir}" ]; then
+    rm -vf "${nvimspelldir}"/en.utf-8.add{,.spl}
+    rmdir --ignore-fail-on-non-empty "${nvimspelldir}"
+  fi
+}
+
+uninstall_vim
+uninstall_neovim

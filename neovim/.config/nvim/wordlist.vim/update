@@ -1,0 +1,31 @@
+#! /bin/bash
+set -eu
+
+DIR="$(dirname "${0}")"
+
+#
+# Augment this repo's word list with the Vim/Neovim en.utf-8.add file.
+#
+
+function update_word_list {
+  local vimspelldir=${HOME}/.vim/spell/
+  local neovimspelldir=${HOME}/.config/nvim/spell/
+
+  cat "${DIR}"/spell/en.utf-8.add > "${TMP}"
+
+  if [ -f "${vimspelldir}"/en.utf-8.add ]; then
+    cat "${vimspelldir}"/en.utf-8.add >> "${TMP}"
+  fi
+
+  if [ -f "${neovimspelldir}"/en.utf-8.add ]; then
+    cat "${neovimspelldir}"/en.utf-8.add >> "${TMP}"
+  fi
+
+  mv "${DIR}"/spell/en.utf-8.add spell/en.utf-8.add_"$(date +%Y%m%d-%H%M%S)".bak
+  sort -d -f -u "${TMP}" > "${DIR}"/spell/en.utf-8.add
+}
+
+TMP="$(mktemp)"
+trap 'rm -f "${TMP}"; exit' INT TERM ERR EXIT
+
+update_word_list

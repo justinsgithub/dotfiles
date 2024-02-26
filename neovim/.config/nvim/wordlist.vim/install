@@ -1,0 +1,19 @@
+#! /bin/bash
+set -eu
+
+DIR="$(dirname "${0}")"
+
+function install_vim {
+  local vimspelldir=${HOME}/.vim/spell
+  mkdir -p "${vimspelldir}"
+  cp -vf "${DIR}"/spell/en.utf-8.add{,.spl} "${vimspelldir}/"
+}
+
+function install_neovim {
+  local nvimspelldir=${HOME}/.config/nvim/spell
+  mkdir -p "${nvimspelldir}"
+  cp -vf "${DIR}"/spell/en.utf-8.add{,.spl} "${nvimspelldir}/"
+}
+
+install_vim
+install_neovim

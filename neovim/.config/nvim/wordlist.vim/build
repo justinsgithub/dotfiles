@@ -1,0 +1,30 @@
+#! /bin/bash
+set -eu
+
+check_command() {
+  local package
+  local missing=()
+  for package in "${@}"; do
+    if ! command -v "${package}" > /dev/null; then
+      missing+=("${package}")
+    fi
+  done
+  if [ ${#missing[@]} -eq 0 ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+DIR="$(dirname "${0}")"
+
+cd "${DIR}"/spell
+
+if check_command vim; then
+  vim -E -c "mkspell! en.utf-8.add" +qall
+elif check_command nvim; then
+  nvim -E -c "mkspell! en.utf-8.add" +qall
+else
+  echo "ERROR: 'vim' and 'nvim' not installed. Exiting."
+  exit 3
+fi
