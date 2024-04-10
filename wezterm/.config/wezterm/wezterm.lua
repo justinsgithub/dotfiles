@@ -31,6 +31,7 @@ end
 -- table.insert(mykeys, { key = "L", mods = "LEADER", action = act.ShowDebugOverylay })
 
 table.insert(mykeys, { key = "P", mods = "LEADER", action = act.ActivateCommandPalette })
+table.insert(mykeys, { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") })
 
 table.insert(mykeys, { key = "n", mods = "LEADER", action = act({ SpawnTab = "CurrentPaneDomain" }) })
 
