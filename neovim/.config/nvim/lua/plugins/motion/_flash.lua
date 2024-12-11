@@ -17,22 +17,22 @@ return {
       autojump = true,
     },
   },
-  keys = {
-    {
-      "s",
-      mode = { "n", "x", "o" },
-      function()
-        require("flash").jump(flashopts)
-      end,
-      desc = "Flash",
-    },
-    {
-      "r",
-      mode = "o",
-      function()
-        require("flash").remote(flashopts)
-      end,
-      desc = "Remote Flash",
-    },
-  },
+  -- keys = {
+  --   {
+  --     "s",
+  --     mode = { "n", "x", "o" },
+  --     function()
+  --       require("flash").jump(flashopts)
+  --     end,
+  --     desc = "Flash",
+  --   },
+  --   {
+  --     "r",
+  --     mode = "o",
+  --     function()
+  --       require("flash").remote(flashopts)
+  --     end,
+  --     desc = "Remote Flash",
+  --   },
+  -- },
 }

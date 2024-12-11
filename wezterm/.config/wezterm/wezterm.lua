@@ -30,6 +30,7 @@ end
 
 -- table.insert(mykeys, { key = "L", mods = "LEADER", action = act.ShowDebugOverylay })
 
+table.insert(mykeys, { key = "X", mods = "LEADER", action = act.ActivateCopyMode })
 table.insert(mykeys, { key = "P", mods = "LEADER", action = act.ActivateCommandPalette })
 table.insert(mykeys, { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboard") })
 
@@ -56,7 +57,7 @@ table.insert(mykeys, { key = "j", mods = "CTRL|ALT", action = act.AdjustPaneSize
 table.insert(mykeys, { key = "k", mods = "CTRL|ALT", action = act.AdjustPaneSize({ "Up", 1 }) })
 table.insert(mykeys, { key = "l", mods = "CTRL|ALT", action = act.AdjustPaneSize({ "Right", 1 }) })
 
-table.insert(mykeys, { key = "c", mods = "LEADER", action = act.ActivateCopyMode })
+-- table.insert(mykeys, { key = "c", mods = "LEADER", action = act.ActivateCopyMode })
 
 table.insert(mykeys, { key = "q", mods = "LEADER", action = act.QuickSelect })
 

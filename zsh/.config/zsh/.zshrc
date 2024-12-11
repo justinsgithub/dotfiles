@@ -28,7 +28,7 @@ hash -d practice=$HOME/Github/practice
 
 ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
-plugins=( vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
+plugins=( poetry vi-mode debian nvm pip docker docker-compose sudo copypath copybuffer copyfile fzf colorize colored-man-pages zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting )
 source $ZSH/oh-my-zsh.sh
 alias docker="sudo docker"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
@@ -39,7 +39,7 @@ alias p="pnpm"
 alias quicknote="vim $HOME/myself/quicknotes.md"
 alias laravel="$HOME/.config/composer/vendor/laravel/installer/bin/laravel"
 alias -g L='|less'
-alias cat="ccat"
+# alias cat="ccat"
 alias -g NUL="> /dev/null 2>&1"
 alias ls='ls --color=auto'
 alias l="ls -1"
@@ -71,6 +71,7 @@ alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"
 alias gtypist="/bin/gtypist -b"
 alias stow="stow --dir=$HOME/Github/justinsgithub/dotfiles --target=$HOME"
 alias windowclassname="xprop"
+alias npx="pnpm dlx"
 
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
@@ -79,9 +80,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+autoload -Uz compinit
 
 # to fix Node.js error, added command to the beginning of package.json "dev" command instead
 # export NODE_OPTIONS=--openssl-legacy-provider 
@@ -99,21 +100,28 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+# pnpm end
 
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
-
-# pnpm
-export PNPM_HOME="/home/justin/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 . "$HOME/.local/share/cargo/env"
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
 eval "$(zoxide init zsh --cmd j)"
 alias cd="j"
 alias cdi="ji"
+# autoload -U bashcompinit
+# bashcompinit
+# eval "$(register-python-argcomplete pipx)"
+python_venv() {
+  MYVENV=./env
+  # when you cd into a folder that contains $MYVENV
+  [[ -d $MYVENV ]] && source $MYVENV/bin/activate > /dev/null 2>&1
+  # when you cd into a folder that doesn't
+  [[ ! -d $MYVENV ]] && deactivate > /dev/null 2>&1
+}
+autoload -U add-zsh-hook
+add-zsh-hook chpwd python_venv
+
+python_venv

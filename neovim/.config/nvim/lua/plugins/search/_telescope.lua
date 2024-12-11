@@ -27,7 +27,7 @@ return {
     },
     {
       "<Leader>ft",
-      Util.telescope("live_grep"),
+      Util.pick("live_grep"),
       desc = "Text",
     },
     { "<Leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
@@ -38,12 +38,12 @@ return {
     },
     {
       "<Leader>fw",
-      Util.telescope("grep_string"),
+      Util.pick("grep_string"),
       desc = "Word (root dir)",
     },
     {
       "<Leader>fW",
-      Util.telescope("grep_string", { cwd = false }),
+      Util.pick("grep_string", { cwd = false }),
       desc = "Word (cwd)",
     },
     {
