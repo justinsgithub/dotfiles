@@ -36,7 +36,7 @@ table.insert(mykeys, { key = "V", mods = "CTRL", action = act.PasteFrom("Clipboa
 
 table.insert(mykeys, { key = "n", mods = "LEADER", action = act({ SpawnTab = "CurrentPaneDomain" }) })
 
-table.insert(mykeys, { key = "f", mods = "LEADER", action = "ToggleFullScreen" })
+table.insert(mykeys, { key = "u", mods = "LEADER", action = "ToggleFullScreen" })
 
 table.insert(mykeys, { key = "[", mods = "LEADER", action = act.MoveTabRelative(-1) })
 table.insert(mykeys, { key = "]", mods = "LEADER", action = act.MoveTabRelative(1) })
@@ -64,6 +64,7 @@ table.insert(mykeys, { key = "q", mods = "LEADER", action = act.QuickSelect })
 table.insert(mykeys, { key = "s", mods = "LEADER", action = act.Search({ CaseSensitiveString = "" }) })
 
 config.font = wezterm.font("JetBrains Mono", { weight = "Medium", italic = false, stretch = "Normal" })
+config.font_size = 11
 
 config.harfbuzz_features = {
 	"calt=1",
@@ -114,7 +115,7 @@ config.harfbuzz_features = {
 	"cv31",
 }
 config.audible_bell = "Disabled"
-config.window_background_opacity = 0.90
+config.window_background_opacity = 1
 config.scrollback_lines = 10000
 config.color_scheme = "Monokai Vivid"
 config.exit_behavior = "Close"

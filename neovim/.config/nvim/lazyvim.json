@@ -1,6 +1,35 @@
 {
   "extras": [
-
+    "lazyvim.plugins.extras.ai.supermaven",
+    "lazyvim.plugins.extras.coding.blink",
+    "lazyvim.plugins.extras.coding.luasnip",
+    "lazyvim.plugins.extras.coding.mini-comment",
+    "lazyvim.plugins.extras.coding.mini-surround",
+    "lazyvim.plugins.extras.coding.neogen",
+    "lazyvim.plugins.extras.coding.nvim-cmp",
+    "lazyvim.plugins.extras.coding.yanky",
+    "lazyvim.plugins.extras.dap.core",
+    "lazyvim.plugins.extras.dap.nlua",
+    "lazyvim.plugins.extras.editor.dial",
+    "lazyvim.plugins.extras.editor.illuminate",
+    "lazyvim.plugins.extras.editor.inc-rename",
+    "lazyvim.plugins.extras.editor.refactoring",
+    "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.lang.json",
+    "lazyvim.plugins.extras.lang.sql",
+    "lazyvim.plugins.extras.lang.tailwind",
+    "lazyvim.plugins.extras.lang.toml",
+    "lazyvim.plugins.extras.lang.typescript",
+    "lazyvim.plugins.extras.linting.eslint",
+    "lazyvim.plugins.extras.lsp.neoconf",
+    "lazyvim.plugins.extras.ui.mini-animate",
+    "lazyvim.plugins.extras.ui.mini-starter",
+    "lazyvim.plugins.extras.ui.treesitter-context",
+    "lazyvim.plugins.extras.util.dot",
+    "lazyvim.plugins.extras.util.gitui",
+    "lazyvim.plugins.extras.util.mini-hipatterns",
+    "lazyvim.plugins.extras.util.project",
+    "lazyvim.plugins.extras.vscode"
   ],
   "news": {
     "NEWS.md": "10960"

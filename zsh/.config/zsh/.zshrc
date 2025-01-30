@@ -32,7 +32,8 @@ plugins=( poetry vi-mode debian nvm pip docker docker-compose sudo copypath copy
 source $ZSH/oh-my-zsh.sh
 alias docker="sudo docker"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
-alias n='export NVIM_APPNAME=nvim; nvim'
+# alias n='export NVIM_APPNAME=nvim; nvim'
+alias v='export NVIM_APPNAME=nvim; nvim'
 # alias npm="echo USE PNPM $@"
 alias nn='export NVIM_APPNAME=natty-nvim; nvim'
 alias p="pnpm"
@@ -51,7 +52,7 @@ alias pinstall="pip install"
 alias sourcevenv="source venv/bin/activate"
 alias mkserve="mkdocs serve"
 alias mkbuild="mkdocs build"
-alias zshconf="nvim ~dotfiles/zsh/.config/zsh/.zshrc && source ~/.config/zsh/.zshrc"
+alias zshconf="nvim ~/.zshrc"
 alias vimconf="nvim ~dotfiles/neovim/.config/nvim/init.lua"
 alias weztermconf="nvim ~dotfiles/wezterm/.config/wezterm/wezterm.lua"
 alias rustdocs="rustup docs --book"
