@@ -405,7 +405,7 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "theme-daddy" } },
     conformplug,
-    cmplug,
+    -- cmplug,
     flashplug,
     -- import/override with your plugins
     -- { import = "lazyvim.plugins.extras.ui.edgy" },
