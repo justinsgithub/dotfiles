@@ -115,7 +115,7 @@ config.harfbuzz_features = {
 	"cv31",
 }
 config.audible_bell = "Disabled"
-config.window_background_opacity = 1
+config.window_background_opacity = 0.8
 config.scrollback_lines = 10000
 config.color_scheme = "Monokai Vivid"
 config.exit_behavior = "Close"
@@ -125,29 +125,29 @@ config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
 config.default_cursor_style = "BlinkingBlock"
 
-wezterm.on("user-var-changed", function(window, pane, name, value)
-	local overrides = window:get_config_overrides() or {}
-	if name == "ZEN_MODE" then
-		local incremental = value:find("+")
-		local number_value = tonumber(value)
-		if incremental ~= nil then
-			while number_value > 0 do
-				window:perform_action(wezterm.action.IncreaseFontSize, pane)
-				number_value = number_value - 1
-			end
-			overrides.enable_tab_bar = false
-		elseif number_value < 0 then
-			window:perform_action(wezterm.action.ResetFontSize, pane)
-			overrides.font_size = nil
-			overrides.enable_tab_bar = true
-		else
-			overrides.font_size = number_value
-			overrides.enable_tab_bar = false
-		end
-	end
-	window:set_config_overrides(overrides)
-end)
-
+-- wezterm.on("user-var-changed", function(window, pane, name, value)
+-- 	local overrides = window:get_config_overrides() or {}
+-- 	if name == "ZEN_MODE" then
+-- 		local incremental = value:find("+")
+-- 		local number_value = tonumber(value)
+-- 		if incremental ~= nil then
+-- 			while number_value > 0 do
+-- 				window:perform_action(wezterm.action.IncreaseFontSize, pane)
+-- 				number_value = number_value - 1
+-- 			end
+-- 			overrides.enable_tab_bar = false
+-- 		elseif number_value < 0 then
+-- 			window:perform_action(wezterm.action.ResetFontSize, pane)
+-- 			overrides.font_size = nil
+-- 			overrides.enable_tab_bar = true
+-- 		else
+-- 			overrides.font_size = number_value
+-- 			overrides.enable_tab_bar = false
+-- 		end
+-- 	end
+-- 	window:set_config_overrides(overrides)
+-- end)
+--
 return config
 
 -- TODO: look into other features for fonts https://docs.microsoft.com/en-us/typography/opentype/spec/featurelist
